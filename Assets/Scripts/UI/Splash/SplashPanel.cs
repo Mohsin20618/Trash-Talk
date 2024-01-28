@@ -6,6 +6,7 @@ using UnityEngine;
 public class SplashPanel : UIPanel
 {
     public RectTransform progressBar;
+    public List<GameObject> fillersObjects = new List<GameObject>();   
     private float maxWidth;
     private float loadingTime = 3f;
 
@@ -19,15 +20,22 @@ public class SplashPanel : UIPanel
         float elapsedTime = 0f;
         float targetWidth = progressBar.GetComponentInParent<RectTransform>().rect.width;
         float initialWidth = 0f;
-
+        int i = 0;
         while (elapsedTime < loadingTime)
         {
-            float progress = elapsedTime / loadingTime;
-            float currentWidth = Mathf.Lerp(initialWidth, targetWidth, progress);
 
-            progressBar.sizeDelta = new Vector2(currentWidth, progressBar.rect.height);
 
+            //float progress = elapsedTime / loadingTime;
+            //float currentWidth = Mathf.Lerp(initialWidth, targetWidth, progress);
+
+            //progressBar.sizeDelta = new Vector2(currentWidth, progressBar.rect.height);
+
+            if (i < fillersObjects.Count)
+                fillersObjects[i].SetActive(true);
+            else
+                break;
             elapsedTime += Time.deltaTime;
+            i++;
             yield return null;
         }
 

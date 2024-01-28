@@ -1,0 +1,431 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8439cb8182ce44308c70dc94c2ddd11, type: 3}
+  m_Name: CardDB
+  m_EditorClassIdentifier: 
+  list:
+  - name: Ace of Spades
+    shortCode: aceOfSpades
+    suit: Spades
+    valueName: Ace
+    description: Ace of Spades
+    score: 14
+    rank: 1
+    value: 0
+  - name: King of Spades
+    shortCode: kingOfSpades
+    suit: Spades
+    valueName: King
+    description: King of Spades
+    score: 13
+    rank: 13
+    value: 0
+  - name: Queen of Spades
+    shortCode: queenOfSpades
+    suit: Spades
+    valueName: Queen
+    description: Queen of Spades
+    score: 12
+    rank: 12
+    value: 0
+  - name: Jack of Spades
+    shortCode: jackOfSpades
+    suit: Spades
+    valueName: Jack
+    description: Jack of Spades
+    score: 11
+    rank: 11
+    value: 0
+  - name: Ten of Spades
+    shortCode: tenOfSpades
+    suit: Spades
+    valueName: Ten
+    description: Ten of Spades
+    score: 10
+    rank: 10
+    value: 0
+  - name: Nine of Spades
+    shortCode: nineOfSpades
+    suit: Spades
+    valueName: Nine
+    description: Nine of Spades
+    score: 9
+    rank: 9
+    value: 0
+  - name: Eight of Spades
+    shortCode: eightOfSpades
+    suit: Spades
+    valueName: Eight
+    description: Eight of Spades
+    score: 8
+    rank: 8
+    value: 0
+  - name: Seven of Spades
+    shortCode: sevenOfSpades
+    suit: Spades
+    valueName: Seven
+    description: Seven of Spades
+    score: 7
+    rank: 7
+    value: 0
+  - name: Six of Spades
+    shortCode: sixOfSpades
+    suit: Spades
+    valueName: Six
+    description: Six of Spades
+    score: 6
+    rank: 6
+    value: 0
+  - name: Five of Spades
+    shortCode: fiveOfSpades
+    suit: Spades
+    valueName: Five
+    description: Five of Spades
+    score: 5
+    rank: 5
+    value: 0
+  - name: Four of Spades
+    shortCode: fourOfSpades
+    suit: Spades
+    valueName: Four
+    description: Four of Spades
+    score: 4
+    rank: 4
+    value: 0
+  - name: Three of Spades
+    shortCode: threeOfSpades
+    suit: Spades
+    valueName: Three
+    description: Three of Spades
+    score: 3
+    rank: 3
+    value: 0
+  - name: Two of Spades
+    shortCode: twoOfSpades
+    suit: Spades
+    valueName: Two
+    description: Two of Spades
+    score: 2
+    rank: 2
+    value: 0
+  - name: Ace of Hearts
+    shortCode: aceOfHearts
+    suit: Hearts
+    valueName: Ace
+    description: Ace of Hearts
+    score: 14
+    rank: 1
+    value: 0
+  - name: King of Hearts
+    shortCode: kingOfHearts
+    suit: Hearts
+    valueName: King
+    description: King of Hearts
+    score: 13
+    rank: 13
+    value: 0
+  - name: Queen of Hearts
+    shortCode: queenOfHearts
+    suit: Hearts
+    valueName: Queen
+    description: Queen of Hearts
+    score: 12
+    rank: 12
+    value: 0
+  - name: Jack of Hearts
+    shortCode: jackOfHearts
+    suit: Hearts
+    valueName: Jack
+    description: Jack of Hearts
+    score: 11
+    rank: 11
+    value: 0
+  - name: Ten of Hearts
+    shortCode: tenOfHearts
+    suit: Hearts
+    valueName: 
+    description: Ten of Hearts
+    score: 10
+    rank: 10
+    value: 0
+  - name: Nine of Hearts
+    shortCode: nineOfHearts
+    suit: Hearts
+    valueName: 
+    description: Nine of Hearts
+    score: 9
+    rank: 9
+    value: 0
+  - name: Eight of Hearts
+    shortCode: eightOfHearts
+    suit: Hearts
+    valueName: 
+    description: Eight of Hearts
+    score: 8
+    rank: 8
+    value: 0
+  - name: Seven of Hearts
+    shortCode: sevenOfHearts
+    suit: Hearts
+    valueName: 
+    description: Seven of Hearts
+    score: 7
+    rank: 7
+    value: 0
+  - name: Six of Hearts
+    shortCode: sixOfHearts
+    suit: Hearts
+    valueName: 
+    description: Six of Hearts
+    score: 6
+    rank: 6
+    value: 0
+  - name: Five of Hearts
+    shortCode: fiveOfHearts
+    suit: Hearts
+    valueName: 
+    description: Five of Hearts
+    score: 5
+    rank: 5
+    value: 0
+  - name: Four of Hearts
+    shortCode: fourOfHearts
+    suit: Hearts
+    valueName: 
+    description: Four of Hearts
+    score: 4
+    rank: 4
+    value: 0
+  - name: Three of Hearts
+    shortCode: threeOfHearts
+    suit: Hearts
+    valueName: 
+    description: Three of Hearts
+    score: 3
+    rank: 3
+    value: 0
+  - name: High Joker
+    shortCode: highJoker
+    suit: Joker
+    valueName: Joker
+    description: High Joker
+    score: 2
+    rank: 2
+    value: 0
+  - name: Ace of Diamonds
+    shortCode: aceOfDiamonds
+    suit: Diamonds
+    valueName: Ace
+    description: Ace of Diamonds
+    score: 14
+    rank: 1
+    value: 0
+  - name: King of Diamonds
+    shortCode: kingOfDiamonds
+    suit: Diamonds
+    valueName: King
+    description: King of Diamonds
+    score: 13
+    rank: 13
+    value: 0
+  - name: Queen of Diamonds
+    shortCode: queenOfDiamonds
+    suit: Diamonds
+    valueName: Queen
+    description: Queen of Diamonds
+    score: 12
+    rank: 12
+    value: 0
+  - name: Jack of Diamonds
+    shortCode: jackOfDiamonds
+    suit: Diamonds
+    valueName: Jack
+    description: Jack of Diamonds
+    score: 11
+    rank: 11
+    value: 0
+  - name: Ten of Diamonds
+    shortCode: tenOfDiamonds
+    suit: Diamonds
+    valueName: 
+    description: Ten of Diamonds
+    score: 10
+    rank: 10
+    value: 0
+  - name: Nine of Diamonds
+    shortCode: nineOfDiamonds
+    suit: Diamonds
+    valueName: 
+    description: Nine of Diamonds
+    score: 9
+    rank: 9
+    value: 0
+  - name: Eight of Diamonds
+    shortCode: eightOfDiamonds
+    suit: Diamonds
+    valueName: 
+    description: Eight of Diamonds
+    score: 8
+    rank: 8
+    value: 0
+  - name: Seven of Diamonds
+    shortCode: sevenOfDiamonds
+    suit: Diamonds
+    valueName: 
+    description: Seven of Diamonds
+    score: 7
+    rank: 7
+    value: 0
+  - name: Six of Diamonds
+    shortCode: sixOfDiamonds
+    suit: Diamonds
+    valueName: 
+    description: Six of Diamonds
+    score: 6
+    rank: 6
+    value: 0
+  - name: Five of Diamonds
+    shortCode: fiveOfDiamonds
+    suit: Diamonds
+    valueName: 
+    description: Five of Diamonds
+    score: 5
+    rank: 5
+    value: 0
+  - name: Four of Diamonds
+    shortCode: fourOfDiamonds
+    suit: Diamonds
+    valueName: 
+    description: Four of Diamonds
+    score: 4
+    rank: 4
+    value: 0
+  - name: Three of Diamonds
+    shortCode: threeOfDiamonds
+    suit: Diamonds
+    valueName: 
+    description: Three of Diamonds
+    score: 3
+    rank: 3
+    value: 0
+  - name: Two of Diamonds
+    shortCode: twoOfDiamonds
+    suit: Diamonds
+    valueName: 
+    description: Two of Diamonds
+    score: 2
+    rank: 2
+    value: 0
+  - name: Ace of Clubs
+    shortCode: aceOfClubs
+    suit: Clubs
+    valueName: Ace
+    description: Ace of Clubs
+    score: 14
+    rank: 1
+    value: 0
+  - name: King of Clubs
+    shortCode: kingOfClubs
+    suit: Clubs
+    valueName: King
+    description: King of Clubs
+    score: 13
+    rank: 13
+    value: 0
+  - name: Queen of Clubs
+    shortCode: queenOfClubs
+    suit: Clubs
+    valueName: Queen
+    description: Queen of Clubs
+    score: 12
+    rank: 0
+    value: 0
+  - name: Jack of Clubs
+    shortCode: jackOfClubs
+    suit: Clubs
+    valueName: Jack
+    description: Jack of Clubs
+    score: 11
+    rank: 0
+    value: 0
+  - name: Ten of Clubs
+    shortCode: tenOfClubs
+    suit: Clubs
+    valueName: 
+    description: Ten of Clubs
+    score: 10
+    rank: 10
+    value: 0
+  - name: Nine of Clubs
+    shortCode: nineOfClubs
+    suit: Clubs
+    valueName: 
+    description: Nine of Clubs
+    score: 9
+    rank: 9
+    value: 0
+  - name: Eight of Clubs
+    shortCode: eightOfClubs
+    suit: Clubs
+    valueName: 
+    description: Eight of Clubs
+    score: 8
+    rank: 8
+    value: 0
+  - name: Seven of Clubs
+    shortCode: sevenOfClubs
+    suit: Clubs
+    valueName: 
+    description: Seven of Clubs
+    score: 7
+    rank: 7
+    value: 0
+  - name: Six of Clubs
+    shortCode: sixOfClubs
+    suit: Clubs
+    valueName: 
+    description: Six of Clubs
+    score: 6
+    rank: 6
+    value: 0
+  - name: Five of Clubs
+    shortCode: fiveOfClubs
+    suit: Clubs
+    valueName: 
+    description: Five of Clubs
+    score: 5
+    rank: 5
+    value: 0
+  - name: Four of Clubs
+    shortCode: fourOfClubs
+    suit: Clubs
+    valueName: 
+    description: Four of Clubs
+    score: 4
+    rank: 4
+    value: 0
+  - name: Three of Clubs
+    shortCode: threeOfClubs
+    suit: Clubs
+    valueName: 
+    description: Three of Clubs
+    score: 3
+    rank: 3
+    value: 0
+  - name: Low Joker
+    shortCode: lowJoker
+    suit: Joker
+    valueName: Joker
+    description: Low Joker
+    score: 1
+    rank: 1
+    value: 0

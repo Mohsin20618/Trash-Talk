@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcf24473f8f074477b90be62d8cb8b1a, type: 3}
+  m_Name: PlayersDB
+  m_EditorClassIdentifier: 
+  list:
+  - name: Player 1
+    id: 
+    serverId: 
+    isMe: 1
+    tablePosition: {x: 0, y: -219, z: 0}
+  - name: Player 2
+    id: 
+    serverId: 
+    isMe: 0
+    tablePosition: {x: -792, y: 62, z: 0}
+  - name: Player 3
+    id: 
+    serverId: 
+    isMe: 0
+    tablePosition: {x: 0, y: 251, z: 0}
+  - name: Player 4
+    id: 
+    serverId: 
+    isMe: 0
+    tablePosition: {x: 790, y: 62, z: 0}

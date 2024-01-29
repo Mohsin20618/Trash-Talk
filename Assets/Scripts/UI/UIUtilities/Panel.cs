@@ -18,5 +18,6 @@ public enum Panel
     TabPanels,
     Popup,
     EndGamePanel,
-    LeaderboardPanel
+    LeaderboardPanel,
+    SpinWheel
 }

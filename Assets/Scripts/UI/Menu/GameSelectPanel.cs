@@ -37,7 +37,16 @@ public class GameSelectPanel : UIPanel
         //   OpenTabPanel();
         UIEvents.UpdateData(Panel.TabPanels, null, "SelectPanel", 4);
     }
+    public void ShowSpinWheel()
+    {
+        UIEvents.HidePanel(Panel.TabPanels);
+        UIEvents.ShowPanel(Panel.SpinWheel);
+    }
 
+    public void ShareonNativeApp()
+    {
+        new NativeShare().SetUrl("Will be store link").Share();
+    }
     void OpenTabPanel()
     {
      //   UIEvents.ShowPanel(Panel.TabPanels);

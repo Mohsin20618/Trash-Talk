@@ -42,7 +42,10 @@ public class GameSelectPanel : UIPanel
         UIEvents.HidePanel(Panel.TabPanels);
         UIEvents.ShowPanel(Panel.SpinWheel);
     }
-
+    public void ShowLeaderBoard()
+    {
+        UIEvents.ShowPanel(Panel.LeaderboardPanel);
+    }
     public void ShareonNativeApp()
     {
         new NativeShare().SetUrl("Will be store link").Share();

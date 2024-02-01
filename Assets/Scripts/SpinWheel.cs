@@ -26,6 +26,10 @@ public class SpinWheel : UIPanel
         backBtn.onClick.AddListener(() => { OnBackCallback(); });
         taptocollectBtn.onClick.AddListener(() => { OnRewardCollect(); });
     }
+    private void OnEnable()
+    {
+        spinBtn.interactable = true;
+    }
     public override void Show()
     {
         gameObject.SetActive(true);
@@ -48,6 +52,8 @@ public class SpinWheel : UIPanel
     public void OnRewardCollect()
     {
         bonousScreen.SetActive(false);
+        Hide();
+        UIEvents.ShowPanel(Panel.TabPanels);
     }
     IEnumerator SpinWheelCoroutine()
     {
@@ -102,11 +108,16 @@ public class SpinWheel : UIPanel
         // Provide the reward to the user
         Debug.Log("Reward: " + reward);
         rewardText.text = reward;
+        spinBtn.interactable = false;
+        Invoke("ShowBonousScreen", 0.5f);
+    }
+    private void ShowBonousScreen()
+    {
         bonousScreen.SetActive(true);
     }
 }
 
-    [Serializable]
+[Serializable]
     public class RotationReward
     {
         public float targetRotation;

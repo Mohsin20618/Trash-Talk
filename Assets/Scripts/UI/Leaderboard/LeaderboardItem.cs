@@ -10,6 +10,11 @@ public class LeaderboardItem : MonoBehaviour
     public Text nameText;
     public Text wonText;
 
+    public Sprite Rank1Image;
+    public Sprite Rank2Image;
+    public Sprite Rank3Image;
+
+    public Image indexImage;
     public Image thumb;
     public GameObject imageLoader;
 
@@ -21,10 +26,10 @@ public class LeaderboardItem : MonoBehaviour
     {
         this.user = user;
 
-        indexText.text = $"{index}";
+        SetRank(index);
         nameText.text = this.user.FullName;
-        wonText.text = $"Won {this.user.winCount}";
-
+        wonText.text = this.user.winCount.ToString();
+        //this.imageURL = this.user.ImagePath;
         if (this.imageURL != null && this.imageURL != "")
         {
             ImageCacheManager.instance.CheckOrDownloadImage(this.imageURL, this.thumb,DownloadCallBack);
@@ -32,7 +37,28 @@ public class LeaderboardItem : MonoBehaviour
         else
             imageLoader.SetActive(false);
     }
+    public void SetRank(int index) 
+    { 
+        if (index < 4)
+        {
+            if(index ==1)
+                indexImage.sprite = Rank1Image;
+            if(index == 2)
+                indexImage.sprite = Rank2Image;
+            if (index == 3)
+                indexImage.sprite = Rank3Image;
 
+            indexImage.gameObject.SetActive(true);
+            indexText.gameObject.SetActive(false);
+        }
+        else
+        {
+            indexText.text = index.ToString();
+
+            indexImage.gameObject.SetActive(false);
+            indexText.gameObject.SetActive(true);
+        }
+    }
     void DownloadCallBack(Texture2D texture2D)
     {
         imageLoader.SetActive(false);

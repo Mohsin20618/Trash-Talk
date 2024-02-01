@@ -1273,6 +1273,7 @@ MonoBehaviour:
   indexText: {fileID: 7494832603254908528}
   nameText: {fileID: 4499912813325474696}
   wonText: {fileID: 4499912813637275553}
+  indexImage: {fileID: 0}
   thumb: {fileID: 4499912812855029577}
   imageLoader: {fileID: 8286289156652423500}
 --- !u!1 &8286289156652423500

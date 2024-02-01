@@ -61,7 +61,7 @@ public class LeaderboardPanel : UIPanel
 
     public void OnBackButton()
     {
-        UIEvents.ShowPanel(Panel.FriendsPanel);
+        //UIEvents.ShowPanel(Panel.FriendsPanel);
         Hide();
 
     }

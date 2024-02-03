@@ -111,6 +111,11 @@ public class TabPanels : UIPanel
 
      }
 
+    public void ToggleTabBar(bool show)
+    {
+        buttons.gameObject.SetActive(show);
+    }
+
     public void OnBackButton()
     {
         UIEvents.ShowPanel(Panel.SignupPanel);
@@ -129,8 +134,10 @@ public class TabPanels : UIPanel
         //    return;
         //}
 
+        ToggleTabBar(index == 3);
+
         if (index == 4)
-        {
+            {
             Hide();
             UIEvents.ShowPanel(Panel.FriendsPanel);
             UIEvents.UpdateData(Panel.FriendsPanel, null, "SelectPanel", 1);

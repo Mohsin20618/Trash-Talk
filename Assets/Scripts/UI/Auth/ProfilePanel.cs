@@ -16,12 +16,17 @@ public class ProfilePanel : UIPanel
     public InputField email;
     public InputField password;
     public Button submitBtn;
+    public Button pictureBtn;
+
+    public GameObject avatarPopup;
+    public GameObject profilePopup;
 
     PlayerProfile profile;
 
     public override void Show()
     {
         gameObject.SetActive(true);
+        avatarPopup.SetActive(false);
     }
 
     public void Start()
@@ -29,6 +34,19 @@ public class ProfilePanel : UIPanel
         email.interactable = false;
         password.interactable = false;
         submitBtn.onClick.AddListener(()=> UpdateProfile());
+        pictureBtn.onClick.AddListener(()=> ShowAvatarPopup());
+    }
+
+    private void ShowAvatarPopup()
+    {
+        avatarPopup.SetActive(true);
+        profilePopup.SetActive(false);
+    }
+
+    public void BackFromAvatarPopup()
+    {
+        avatarPopup.SetActive(false);
+        profilePopup.SetActive(true);
     }
 
     private void UpdateProfile()

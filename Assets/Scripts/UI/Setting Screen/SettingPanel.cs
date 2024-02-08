@@ -7,6 +7,10 @@ using UnityEngine.UI;
 
 public class SettingPanel : UIPanel
 {
+    public GameObject popUp;
+    public GameObject ppScreen;
+    public GameObject rulesScreen;
+    public GameObject tcScreen;
 
     public Button soundButton;
     public Button termsOfServices;
@@ -34,6 +38,8 @@ public class SettingPanel : UIPanel
     private void OnEnable()
     {
         logout.gameObject.SetActive(!insideGamePlayScreen);
+        popUp.transform.localScale = Vector3.zero;
+        LeanTween.scale(popUp, Vector3.one, .5f).setEaseOutBack();
     }
 
     // Start is called before the first frame update
@@ -53,7 +59,8 @@ public class SettingPanel : UIPanel
 
     private void Rules_CallBack()
     {
-
+        rulesScreen.SetActive(true);
+        //UIEvents.HidePanel(Panel.SettingPanel);
     }
 
     void ToggleValueChanged(Toggle m_Toggle)
@@ -63,12 +70,14 @@ public class SettingPanel : UIPanel
 
     private void HTP_CallBack()
     {
-
+        ppScreen.SetActive(true);
+        //UIEvents.HidePanel(Panel.SettingPanel);
     }
 
     private void TC_CallBack()
     {
-
+        tcScreen.SetActive(true);
+        //UIEvents.HidePanel(Panel.SettingPanel);
     }
 
     /// <summary>

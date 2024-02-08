@@ -12,7 +12,9 @@ public class TabPanels : UIPanel
 
     public Text coinsText;
 
-    public RectTransform levelBar;
+    //public RectTransform levelBar;
+    public Image levelBarProgreess;
+    public Text levelText;
 
     public Text playerName;
     public Image profileThumb;
@@ -27,7 +29,7 @@ public class TabPanels : UIPanel
 
     private void Awake()
     {
-        levelBarWidth = levelBar.sizeDelta.x;
+        //levelBarWidth = levelBar.sizeDelta.x;
     }
 
     private void OnEnable()
@@ -83,8 +85,14 @@ public class TabPanels : UIPanel
 
     void SetLevelUI()
     {
-        float progress = PlayerProfile.GetCurrentLevelPercentage();
-        levelBar.sizeDelta = new Vector2((progress * levelBarWidth), levelBar.sizeDelta.y);
+        float progress = 20f;
+        Debug.Log("Level " + progress);
+        levelText.text = (progress).ToString();
+        float fillAmount = progress / 100;
+        levelBarProgreess.fillAmount = fillAmount;  
+        //Vector2 newSizeDelta = new Vector2(fillAmount * levelBar.sizeDelta.x, levelBar.sizeDelta.y);
+        //levelBar.sizeDelta = new Vector2(((progress/100) * levelBarWidth), levelBar.sizeDelta.y);
+        //levelBar.sizeDelta = newSizeDelta;
     }
 
     public override void Show()

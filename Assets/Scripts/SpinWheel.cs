@@ -62,7 +62,7 @@ public class SpinWheel : UIPanel
             isSpinning = true;
 
             // Spin the wheel for 360 degrees in 2-3 seconds
-
+            float spinDuration = UnityEngine.Random.Range(2f, 3f);
             float elapsedTime = 0f;
 
             while (elapsedTime < spinDuration)
@@ -80,23 +80,10 @@ public class SpinWheel : UIPanel
             // Determine the remaining rotation needed to reach the target
             float remainingRotation = selectedReward.targetRotation - rotatingObject.transform.rotation.eulerAngles.z;
 
-            // Rotate to the selected target rotation and stop
-            float stopDuration = 0.5f;
-            float stopTime = 0f;
-
-            while (stopTime < stopDuration)
-            {
-                float rotationAmount = Mathf.Lerp(0f, remainingRotation, stopTime / stopDuration);
-                rotatingObject.transform.Rotate(Vector3.forward, rotationAmount);
-                stopTime += Time.deltaTime;
-                yield return null;
-            }
-
-            // Set the exact target rotation
-            rotatingObject.transform.rotation = Quaternion.Euler(0f, 0f, selectedReward.targetRotation);
-
-            // This is where you can do anything additional when the rotation is complete
-            OnRotationComplete(selectedReward.reward);
+            // Rotate to the selected target rotation and stop with a gradual easing-out effect
+            LeanTween.rotateZ(rotatingObject, rotatingObject.transform.rotation.eulerAngles.z + remainingRotation, 1.5f)
+                .setEaseOutExpo()  // Experiment with different easing functions
+                .setOnComplete(() => OnRotationComplete(selectedReward.reward));
 
             isSpinning = false;
         }
@@ -109,7 +96,7 @@ public class SpinWheel : UIPanel
         Debug.Log("Reward: " + reward);
         rewardText.text = reward;
         spinBtn.interactable = false;
-        Invoke("ShowBonousScreen", 0.5f);
+        Invoke("ShowBonousScreen", 1f);
     }
     private void ShowBonousScreen()
     {

@@ -178,6 +178,7 @@ MonoBehaviour:
   indexText: {fileID: 3663212344606574935}
   nameText: {fileID: 3663212344751426571}
   wonText: {fileID: 3663212344981699040}
+  levelText: {fileID: 3663212346482528637}
   Rank1Image: {fileID: 21300000, guid: 71daa92c7a46ae1449b34240060ee54b, type: 3}
   Rank2Image: {fileID: 21300000, guid: 3dcaf377c3990f34ca8faeb7d5682f85, type: 3}
   Rank3Image: {fileID: 21300000, guid: 92b71ef9690700f42ae5bc882b72c6f6, type: 3}

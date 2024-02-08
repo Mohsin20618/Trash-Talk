@@ -267,6 +267,7 @@ GameObject:
   - component: {fileID: 511846785590156021}
   - component: {fileID: 511846785590156024}
   - component: {fileID: 511846785590156026}
+  - component: {fileID: 3332266812544958710}
   m_Layer: 5
   m_Name: Logo
   m_TagString: Untagged
@@ -332,6 +333,39 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &3332266812544958710
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 511846785590156020}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f19b7e2285c104f6ca47d583f3e5444f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Version: 300
+  m_EffectMaterial: {fileID: 2100000, guid: 3bf50530d49ca504dacf149e786ad485, type: 2}
+  m_EffectFactor: 0
+  m_Width: 0.25
+  m_Rotation: 90
+  m_Softness: 1
+  m_Brightness: 1
+  m_Gloss: 1
+  m_EffectArea: 0
+  m_Player:
+    play: 1
+    initialPlayDelay: 0
+    loop: 1
+    duration: 1
+    loopDelay: 5
+    updateMode: 0
+  m_Play: 0
+  m_Loop: 0
+  m_Duration: 1
+  m_LoopDelay: 1
+  m_UpdateMode: 0
 --- !u!1 &511846786572514008
 GameObject:
   m_ObjectHideFlags: 0
@@ -531,6 +565,7 @@ GameObject:
   - component: {fileID: 7287786382772775680}
   - component: {fileID: 9202710513069166362}
   - component: {fileID: 6933375726056155856}
+  - component: {fileID: 1826333163188983936}
   m_Layer: 5
   m_Name: GuestButton
   m_TagString: Untagged
@@ -654,6 +689,39 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &1826333163188983936
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2263849501541542781}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f19b7e2285c104f6ca47d583f3e5444f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Version: 300
+  m_EffectMaterial: {fileID: 2100000, guid: 3bf50530d49ca504dacf149e786ad485, type: 2}
+  m_EffectFactor: 0
+  m_Width: 0.25
+  m_Rotation: 90
+  m_Softness: 1
+  m_Brightness: 1
+  m_Gloss: 1
+  m_EffectArea: 0
+  m_Player:
+    play: 1
+    initialPlayDelay: 0
+    loop: 1
+    duration: 1
+    loopDelay: 5
+    updateMode: 0
+  m_Play: 0
+  m_Loop: 0
+  m_Duration: 1
+  m_LoopDelay: 1
+  m_UpdateMode: 0
 --- !u!1 &2492760631338748677
 GameObject:
   m_ObjectHideFlags: 0
@@ -787,6 +855,7 @@ GameObject:
   - component: {fileID: 2492760631641128982}
   - component: {fileID: 2492760631641128983}
   - component: {fileID: 2492760631641128976}
+  - component: {fileID: 1624653313393522376}
   m_Layer: 5
   m_Name: FBButton
   m_TagString: Untagged
@@ -910,6 +979,39 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &1624653313393522376
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2492760631641128978}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f19b7e2285c104f6ca47d583f3e5444f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Version: 300
+  m_EffectMaterial: {fileID: 2100000, guid: 3bf50530d49ca504dacf149e786ad485, type: 2}
+  m_EffectFactor: 0
+  m_Width: 0.25
+  m_Rotation: 90
+  m_Softness: 1
+  m_Brightness: 1
+  m_Gloss: 1
+  m_EffectArea: 0
+  m_Player:
+    play: 1
+    initialPlayDelay: 0
+    loop: 1
+    duration: 1
+    loopDelay: 5
+    updateMode: 0
+  m_Play: 0
+  m_Loop: 0
+  m_Duration: 1
+  m_LoopDelay: 1
+  m_UpdateMode: 0
 --- !u!1 &2492760632236187807
 GameObject:
   m_ObjectHideFlags: 0
@@ -1947,6 +2049,7 @@ GameObject:
   - component: {fileID: 6340728263884613499}
   - component: {fileID: 5470719359067694651}
   - component: {fileID: 4475531024711523206}
+  - component: {fileID: 4830638779603013762}
   m_Layer: 5
   m_Name: AppleButton
   m_TagString: Untagged
@@ -2070,6 +2173,39 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &4830638779603013762
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8335012295633753085}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f19b7e2285c104f6ca47d583f3e5444f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Version: 300
+  m_EffectMaterial: {fileID: 2100000, guid: 3bf50530d49ca504dacf149e786ad485, type: 2}
+  m_EffectFactor: 0
+  m_Width: 0.25
+  m_Rotation: 90
+  m_Softness: 1
+  m_Brightness: 1
+  m_Gloss: 1
+  m_EffectArea: 0
+  m_Player:
+    play: 1
+    initialPlayDelay: 0
+    loop: 1
+    duration: 1
+    loopDelay: 5
+    updateMode: 0
+  m_Play: 0
+  m_Loop: 0
+  m_Duration: 1
+  m_LoopDelay: 1
+  m_UpdateMode: 0
 --- !u!1 &8354094549082083701
 GameObject:
   m_ObjectHideFlags: 0

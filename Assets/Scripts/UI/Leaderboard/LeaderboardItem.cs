@@ -9,6 +9,8 @@ public class LeaderboardItem : MonoBehaviour
     public Text indexText;
     public Text nameText;
     public Text wonText;
+    public Text levelText;
+    
 
     public Sprite Rank1Image;
     public Sprite Rank2Image;
@@ -29,6 +31,7 @@ public class LeaderboardItem : MonoBehaviour
         SetRank(index);
         nameText.text = this.user.FullName;
         wonText.text = this.user.winCount.ToString();
+        levelText.text = Utility.CalculateUserLevel(this.user.winCount).ToString();
         //this.imageURL = this.user.ImagePath;
         if (this.imageURL != null && this.imageURL != "")
         {

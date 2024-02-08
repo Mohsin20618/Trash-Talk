@@ -36,8 +36,23 @@ public static class Utility
         }
     }
 
-    public static  int GetRandom(int min, int max)
+    public static int GetRandom(int min, int max)
     {
         return Random.Range(min, max);
+    }
+    public static int CalculateUserLevel(int winnings)
+    {
+        int level = 1;
+        int winningsThreshold = 5; // Initial threshold for level 1
+
+
+        while (winnings >= winningsThreshold)
+        {
+            winnings -= winningsThreshold;
+            level++;
+            winningsThreshold += 5 + (level - 1) * 2;
+        }
+
+        return level;
     }
 }

@@ -5,6 +5,26 @@ using UnityEngine;
 
 public class GameSelectPanel : UIPanel
 {
+    public GameObject spinAvailableSprite;
+    public GameObject adAvailableSprite;
+
+    private void Awake()
+    {
+        EventManager.OnAdorSpinAvailable += OnAdorSpinAvailable;
+    }
+
+
+    private void OnDestroy()
+    {
+        EventManager.OnAdorSpinAvailable -= OnAdorSpinAvailable;
+    }
+    private void OnAdorSpinAvailable(bool isSpin)
+    {
+      if (isSpin)
+            spinAvailableSprite.SetActive(true);
+      else
+            adAvailableSprite.SetActive(true);
+    }
     public override void Show()
     {
         gameObject.SetActive(true);
@@ -39,8 +59,28 @@ public class GameSelectPanel : UIPanel
     }
     public void ShowSpinWheel()
     {
-        UIEvents.HidePanel(Panel.TabPanels);
-        UIEvents.ShowPanel(Panel.SpinWheel);
+        if (Global.isSpinAvailable)
+        {
+            UIEvents.HidePanel(Panel.TabPanels);
+            UIEvents.ShowPanel(Panel.SpinWheel);
+            spinAvailableSprite.SetActive(false);
+        }
+        else
+        {
+            CountDownTimer.instance.ToggleTimerForSpinAndAds(true);
+        }
+    }
+    public void ShowAds()
+    {
+        if (Global.isAdAvailable)
+        {
+            AdManager.instance.ShowRewardedAd();
+            adAvailableSprite.SetActive(false);
+        }
+        else
+        {
+            CountDownTimer.instance.ToggleTimerForSpinAndAds(false);
+        }
     }
     public void ShowLeaderBoard()
     {

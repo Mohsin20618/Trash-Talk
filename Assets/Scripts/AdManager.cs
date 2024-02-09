@@ -5,6 +5,8 @@ using System;
 
 public class AdManager : MonoBehaviour
 {
+    public static AdManager instance;
+
     // These ad units are configured to always serve test ads.
 #if UNITY_ANDROID
     private string _adUnitId = "ca-app-pub-3940256099942544/5224354917";
@@ -14,6 +16,10 @@ public class AdManager : MonoBehaviour
   private string _adUnitId = "ca-app-pub-3940256099942544/5224354917";
 #endif
     private RewardedAd rewardedAd;
+    private void Awake()
+    {
+        instance = this;
+    }
     public void Start()
     {
         MobileAds.RaiseAdEventsOnUnityMainThread = true;

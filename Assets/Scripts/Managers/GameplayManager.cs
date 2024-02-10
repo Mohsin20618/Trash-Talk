@@ -23,7 +23,7 @@ public class GameplayManager : MonoBehaviour
   //  private Trick currentTrick;
 
     public int totalPlayers;
-    int currentPlayerIndex;
+    public int currentPlayerIndex;
     public int totalPlayerPlayed;  //total Player played one round
 
     CardDeck cardDeck;

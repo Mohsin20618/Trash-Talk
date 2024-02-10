@@ -16,8 +16,15 @@ public class ProfilePanel : UIPanel
     public InputField email;
     public InputField password;
     public Button submitBtn;
-    public Button pictureBtn;
 
+    public Text playerName;
+    public Text country;
+    public Text coins;
+    public Text playedCount;
+    public Text winCount;
+    public Text levelCount;
+
+    public Button pictureBtn;
     public GameObject avatarPopup;
     public GameObject profilePopup;
 
@@ -108,6 +115,14 @@ public class ProfilePanel : UIPanel
         Cont_Num.text = PlayerPrefs.GetString("Cont_Num", "");
         displayName.text = PlayerProfile.Player_UserName;
         email.text = PlayerProfile.Player_Email;
+
+
+        playerName.text = PlayerProfile.Player_UserName;
+        country.text = PlayerProfile.PlayerCountry;
+        coins.text = PlayerProfile.Player_coins.ToString();
+        playedCount.text = PlayerProfile.gamesPlayed.ToString();
+        winCount.text = PlayerProfile.gamesWon.ToString();
+        levelCount.text = PlayerProfile.level.ToString();
     }
 
     public void OnSubmitButton()

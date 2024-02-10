@@ -254,7 +254,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &9096990802161613614
 RectTransform:
   m_ObjectHideFlags: 0
@@ -326,7 +326,7 @@ GameObject:
   - component: {fileID: 168647443574809298}
   - component: {fileID: 2714344401077656223}
   m_Layer: 5
-  m_Name: GamePlayed
+  m_Name: Level
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -348,10 +348,10 @@ RectTransform:
   - {fileID: 1421915003582623370}
   m_Father: {fileID: 3330061324997243182}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.03762532, y: 0.008908985}
-  m_AnchorMax: {x: 0.5103838, y: 1.0089177}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 1091.4119, y: 114.54901}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &168647443574809298
 CanvasRenderer:
@@ -383,7 +383,7 @@ MonoBehaviour:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: 30f647c29ebcfd84e8ffcf50b5a98aae, type: 3}
   m_Type: 0
-  m_PreserveAspect: 1
+  m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -408,7 +408,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &7971980856517439592
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3952,7 +3952,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Total Play
+  m_Text: Level
 --- !u!1 &4960071505893407510
 GameObject:
   m_ObjectHideFlags: 0
@@ -4331,9 +4331,9 @@ RectTransform:
   - {fileID: 3330061324997243182}
   m_Father: {fileID: 8395894788233817017}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.034014445, y: 0.11924852}
-  m_AnchorMax: {x: 0.96598554, y: 0.6142574}
-  m_AnchoredPosition: {x: -12, y: 0}
+  m_AnchorMin: {x: 0.034014445, y: 0.115847155}
+  m_AnchorMax: {x: 0.96598554, y: 0.610856}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &6796721537043644304
@@ -4486,10 +4486,10 @@ RectTransform:
   - {fileID: 5801664533575215770}
   m_Father: {fileID: 1141866156385459848}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.03762532, y: 0.008908985}
-  m_AnchorMax: {x: 0.5103838, y: 1.0089177}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 1091.4119, y: 114.54901}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8184475268430452653
 CanvasRenderer:
@@ -4521,7 +4521,7 @@ MonoBehaviour:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: 30f647c29ebcfd84e8ffcf50b5a98aae, type: 3}
   m_Type: 0
-  m_PreserveAspect: 1
+  m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -5084,7 +5084,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Total Play
+  m_Text: Total Winning
 --- !u!1 &7544748552197805762
 GameObject:
   m_ObjectHideFlags: 0
@@ -5378,6 +5378,12 @@ MonoBehaviour:
   email: {fileID: 3789513641794168028}
   password: {fileID: 3789513642291221775}
   submitBtn: {fileID: 3789513641040727109}
+  playerName: {fileID: 2217211376304730902}
+  country: {fileID: 4364648678582613034}
+  coins: {fileID: 1712947326769695415}
+  playedCount: {fileID: 5068917692731749602}
+  winCount: {fileID: 795903349963948118}
+  levelCount: {fileID: 5002660024518332816}
   pictureBtn: {fileID: 5513411425612741606}
   avatarPopup: {fileID: 8301372181592683136}
   profilePopup: {fileID: 3742823793784313664}
@@ -5472,7 +5478,7 @@ GameObject:
   - component: {fileID: 5050014774440381013}
   - component: {fileID: 7357250530415687183}
   m_Layer: 5
-  m_Name: GamePlayed
+  m_Name: TotalWinning
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5494,10 +5500,10 @@ RectTransform:
   - {fileID: 1323738556404499389}
   m_Father: {fileID: 4949927314195889283}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.03762532, y: 0.008908985}
-  m_AnchorMax: {x: 0.5103838, y: 1.0089177}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 1091.4119, y: 114.54898}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5050014774440381013
 CanvasRenderer:
@@ -5529,7 +5535,7 @@ MonoBehaviour:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: 30f647c29ebcfd84e8ffcf50b5a98aae, type: 3}
   m_Type: 0
-  m_PreserveAspect: 1
+  m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -5554,7 +5560,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1941477362004962112
 RectTransform:
   m_ObjectHideFlags: 0

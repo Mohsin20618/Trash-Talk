@@ -10,8 +10,9 @@ public class AdManager : MonoBehaviour
     // These ad units are configured to always serve test ads.
 #if UNITY_ANDROID
     private string _adUnitId = "ca-app-pub-3940256099942544/5224354917";
+    //private string _adUnitId = "ca-app-pub-3951308962114290/9279242535";
 #elif UNITY_IPHONE
-  private string _adUnitId = "ca-app-pub-3940256099942544/1712485313";
+  private string _adUnitId = "ca-app-pub-3951308962114290/2149097097";
 #else
   private string _adUnitId = "ca-app-pub-3940256099942544/5224354917";
 #endif
@@ -22,24 +23,36 @@ public class AdManager : MonoBehaviour
     }
     public void Start()
     {
+        Debug.Log("Initializing.");
+
         MobileAds.RaiseAdEventsOnUnityMainThread = true;
         // Initialize the Google Mobile Ads SDK.
         MobileAds.Initialize((InitializationStatus initStatus) =>
         {
             // This callback is called once the MobileAds SDK is initialized.
+          InitCalled();
         });
 
-        LoadRewardedAd();
     }
     private void OnDestroy()
     {
         rewardedAd.Destroy();
     }
+
+    private void InitCalled()
+    {
+        Debug.Log("SDK Initialized.");
+        LoadRewardedAd();
+    }
+
+
+     
     /// <summary>
     /// Loads the rewarded ad.
     /// </summary>
     public void LoadRewardedAd()
     {
+
         // Clean up the old ad before loading a new one.
         if (rewardedAd != null)
         {
@@ -71,18 +84,28 @@ public class AdManager : MonoBehaviour
                 RegisterEventHandlers(rewardedAd);
             });
     }
+
     public void ShowRewardedAd()
     {
-        const string rewardMsg =
-            "Rewarded ad rewarded the user. Type: {0}, amount: {1}.";
 
-        if (rewardedAd != null && rewardedAd.CanShowAd())
+        Debug.Log("ShowRewardedAd.");
+
+        const string rewardMsg = "Rewarded ad rewarded the user. Type: {0}, amount: {1}.";
+
+        if (rewardedAd != null)
         {
-            rewardedAd.Show((Reward reward) =>
+            if (rewardedAd.CanShowAd())
             {
-                // TODO: Reward the user.
-                Debug.Log("Rewarding user");
-            });
+                rewardedAd.Show((Reward reward) =>
+                {
+                    // TODO: Reward the user.
+                    Debug.Log("Rewarding user");
+                });
+            }
+            else
+            {
+                Debug.Log("rewardedAd.CanShowAd(): " + rewardedAd.CanShowAd());
+            }
         }
     }
     private void RegisterEventHandlers(RewardedAd ad)

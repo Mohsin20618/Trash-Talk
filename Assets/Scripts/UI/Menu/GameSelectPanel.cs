@@ -74,6 +74,8 @@ public class GameSelectPanel : UIPanel
     {
         if (Global.isAdAvailable)
         {
+
+
             AdManager.instance.ShowRewardedAd();
             adAvailableSprite.SetActive(false);
         }

@@ -12,6 +12,7 @@ public class BidManager : MonoBehaviour
 
     public void StartBid(int totalPlayers, int currentPlayerIndex)
     {
+        Debug.Log("StartBid");
         totalBidsPlaced = 0;
         this.totalPlayers = totalPlayers;
 
@@ -98,14 +99,17 @@ public class BidManager : MonoBehaviour
     {
 
         //string panel = "Panel1";
-      //  System.Action<object[]> callback = PlacePlayerBid;
+        //  System.Action<object[]> callback = PlacePlayerBid;
 
         //UpdateData(panel, callback, param1, param2, param3);
 
+        Debug.Log("currentPlayerIndex: " + currentPlayerIndex);
         currentPlayer = PlayerManager.instance.players[currentPlayerIndex];
 
         if (currentPlayerIndex == 0)//it is temproray later it will be decided by ID or other property
         {
+            Debug.Log("zero index player : "  + currentPlayer.name);
+
             UIEvents.UpdateData(Panel.PlayersUIPanel, PlacePlayerBid,  "ShowBidUI", currentPlayerIndex,-1);
         }
         else

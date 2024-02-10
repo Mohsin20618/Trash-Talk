@@ -476,6 +476,7 @@ public class GameplayManager : MonoBehaviour
     public void StartGame()
     {
         this.currentPlayerIndex = PlayerManager.instance.GetMasterIndex();
+        Debug.Log("this.currentPlayerIndex : "  + this.currentPlayerIndex);
         StartTricks();
     }
 

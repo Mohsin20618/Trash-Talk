@@ -199,6 +199,7 @@ public class PlayerUI : MonoBehaviour
 
    public void ShowBidUI(int bidCount = -1,System.Action<int> callBack=null)
    {
+        Debug.Log("ShowBidUI: " + bidCount , gameObject);
         this.callBack = callBack;
         this.bidUI.gameObject.SetActive(true);
         this.bidUI.UpdateUI(bidCount, SelectBid);

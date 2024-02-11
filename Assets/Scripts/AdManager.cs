@@ -85,11 +85,10 @@ public class AdManager : MonoBehaviour
             });
     }
 
-    public void ShowRewardedAd()
+    public void ShowRewardedAd(Action rewardRecieved)
     {
 
         Debug.Log("ShowRewardedAd.");
-
         const string rewardMsg = "Rewarded ad rewarded the user. Type: {0}, amount: {1}.";
 
         if (rewardedAd != null)
@@ -100,6 +99,7 @@ public class AdManager : MonoBehaviour
                 {
                     // TODO: Reward the user.
                     Debug.Log("Rewarding user");
+                    rewardRecieved?.Invoke();
                 });
             }
             else
@@ -144,4 +144,6 @@ public class AdManager : MonoBehaviour
                            "with error : " + error);
         };
     }
+
+
 }

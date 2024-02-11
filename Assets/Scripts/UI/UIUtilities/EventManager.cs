@@ -10,7 +10,8 @@ public class EventManager
     public static Action<string> UpdateUI = null;
     public static Action<Sprite> UpdateProfilePic = null;
 
-    public static Action<bool> OnAdorSpinAvailable;
+    public static Action<bool> OnAdOrSpinAvailable;
+
     //public static Action OnSpinAvailable;
 
 }

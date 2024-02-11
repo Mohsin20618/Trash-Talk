@@ -7,24 +7,24 @@ using UnityEngine.UI;
 
 public class SpinWheel : UIPanel
 {
-
+    public RewardPanel rewardPanel;
     public GameObject rotatingObject;
-    public GameObject bonousScreen;
-    public Text rewardText;
-    public Button taptocollectBtn;
+    //public GameObject bonousScreen;
+    //public Text rewardText;
+    //public Button taptocollectBtn;
     public Button backBtn;
 
     public Button spinBtn;
     public List<RotationReward> rotationRewards;
     public float spinDuration =1f;
     private bool isSpinning = false;
-
+    private string rewardCoin;
 
     private void Awake()
     {
         spinBtn.onClick.AddListener(() => { StartCoroutine(SpinWheelCoroutine()); });
         backBtn.onClick.AddListener(() => { OnBackCallback(); });
-        taptocollectBtn.onClick.AddListener(() => { OnRewardCollect(); });
+        //taptocollectBtn.onClick.AddListener(() => { OnRewardCollect(); });
     }
     private void OnEnable()
     {
@@ -49,12 +49,12 @@ public class SpinWheel : UIPanel
         UIEvents.ShowPanel(Panel.TabPanels);
         UIEvents.HidePanel(Panel.SpinWheel);
     }
-    public void OnRewardCollect()
-    {
-        bonousScreen.SetActive(false);
-        Hide();
-        UIEvents.ShowPanel(Panel.TabPanels);
-    }
+    //public void OnRewardCollect()
+    //{
+    //    bonousScreen.SetActive(false);
+    //    Hide();
+    //    UIEvents.ShowPanel(Panel.TabPanels);
+    //}
     IEnumerator SpinWheelCoroutine()
     {
         if (!isSpinning)
@@ -94,13 +94,14 @@ public class SpinWheel : UIPanel
         // This method will be called when the rotation is complete
         // Provide the reward to the user
         Debug.Log("Reward: " + reward);
-        rewardText.text = reward;
+        //rewardText.text = reward;
+        rewardCoin = reward;
         spinBtn.interactable = false;
         Invoke("ShowBonousScreen", 1f);
     }
     private void ShowBonousScreen()
     {
-        bonousScreen.SetActive(true);
+        rewardPanel.SetCoinText(rewardCoin);
     }
 }
 

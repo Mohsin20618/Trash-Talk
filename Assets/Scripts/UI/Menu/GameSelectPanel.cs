@@ -5,13 +5,14 @@ using UnityEngine;
 
 public class GameSelectPanel : UIPanel
 {
+    public RewardPanel rewardPanel;
     public GameObject spinAvailableSprite;
     public GameObject adAvailableSprite;
     public List<GameObject> BtnList;   
 
     private void Awake()
     {
-        EventManager.OnAdorSpinAvailable += OnAdorSpinAvailable;
+        EventManager.OnAdOrSpinAvailable += OnAdorSpinAvailable;
     }
 
     private void OnEnable()
@@ -21,7 +22,7 @@ public class GameSelectPanel : UIPanel
     }
     private void OnDestroy()
     {
-        EventManager.OnAdorSpinAvailable -= OnAdorSpinAvailable;
+        EventManager.OnAdOrSpinAvailable -= OnAdorSpinAvailable;
     }
     private void OnAdorSpinAvailable(bool isSpin)
     {
@@ -81,13 +82,17 @@ public class GameSelectPanel : UIPanel
         {
 
 
-            AdManager.instance.ShowRewardedAd();
+            AdManager.instance.ShowRewardedAd(RewardRecieved);
             adAvailableSprite.SetActive(false);
         }
         else
         {
             CountDownTimer.instance.ToggleTimerForSpinAndAds(false);
         }
+    }
+    public void RewardRecieved() 
+    {
+        rewardPanel.SetCoinText("20");
     }
     public void ShowLeaderBoard()
     {

@@ -107,7 +107,7 @@ public class CountDownTimer : MonoBehaviour
             {
                 Debug.Log("ended");
                 Global.isSpinAvailable = true;
-                EventManager.OnAdorSpinAvailable?.Invoke(true);
+                EventManager.OnAdOrSpinAvailable?.Invoke(true);
                 yield break;
             }
 
@@ -139,7 +139,7 @@ public class CountDownTimer : MonoBehaviour
             {
                 Debug.Log("ended");
                 Global.isAdAvailable =true;
-                EventManager.OnAdorSpinAvailable?.Invoke(false);
+                EventManager.OnAdOrSpinAvailable?.Invoke(false);
                 yield break;
             }
 

@@ -7,10 +7,7 @@ public class FriendRequestManager : Singleton<FriendRequestManager>
 {
     public List<PlayerUI> profiles = new();
 
-    private void OnEnable()
-    {
-        profiles = FindObjectsOfType<PlayerUI>(true).ToList();
-    }
+
     // Update is called once per frame
     public void RequestSentCallBack(string senderId, string recieverId)
     {

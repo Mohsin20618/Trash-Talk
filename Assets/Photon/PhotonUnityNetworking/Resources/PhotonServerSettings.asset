@@ -46,6 +46,9 @@ MonoBehaviour:
   - SpawnPlayers_Rpc
   - RPC_DisplayChatMessage
   - ResetTrick_RPC
+  - AcceptRequestRPC
+  - RejectRequestRPC
+  - SendFriendRequestRPC
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1

@@ -46,5 +46,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shouldPersistOnLoad: 1
   profiles: []
-  AddFriendBtns: []
-  friendRequestPopUp: {fileID: 0}

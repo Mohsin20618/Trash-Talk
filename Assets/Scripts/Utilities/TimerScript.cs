@@ -9,7 +9,7 @@ public class TimerScript : MonoBehaviour
     public Image countdownFillImage;
     private float totalTime;
     private float countdownTime;
-    private Color startColor = Color.green; // Start color (green)
+    private Color startColor = Color.white; // Start color (green)
     private Color endColor = Color.red;     // End color (red)
 
     // Start is called before the first frame update

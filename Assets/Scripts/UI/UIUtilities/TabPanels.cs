@@ -35,6 +35,7 @@ public class TabPanels : UIPanel
     private void OnEnable()
     {
         EventManager.UpdateUI += UpdateUI;
+        EventManager.UpdateProfilePic += UpdateProfilePic;
 
         UpdateUI("coins");
         SetLevelUI();
@@ -44,6 +45,12 @@ public class TabPanels : UIPanel
     void OnDisable()
     {
         EventManager.UpdateUI -= UpdateUI;
+        EventManager.UpdateProfilePic -= UpdateProfilePic;
+    }
+
+    private void UpdateProfilePic(Sprite sprite)
+    {
+        profileThumb.sprite = sprite;
     }
 
     //void UpdateUI(string type)

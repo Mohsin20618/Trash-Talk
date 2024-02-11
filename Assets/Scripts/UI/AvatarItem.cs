@@ -16,7 +16,8 @@ public class AvatarItem : MonoBehaviour
 
     private void OnSelectAvatar()
     {
-        Debug.Log("OnSelectAvatar: " + avatarImg.GetComponent<Image>().sprite.name);
+        AvatarUpdater.instance.UpdateAvatar(avatarImg.GetComponent<Image>().sprite.texture) ;
+        EventManager.UpdateProfilePic?.Invoke(avatarImg.GetComponent<Image>().sprite);
     }
 
     public void ToggleSelection(bool select)

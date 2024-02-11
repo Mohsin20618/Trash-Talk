@@ -14,13 +14,18 @@ public class AvatarUpdater : MonoBehaviour
     public GameObject avatarPickItem;
     public GameObject avatarItem;
     public List<Sprite> avatarList;
+    public List<AvatarItem> avatarItemsList;
 
     public int itemsPerRow = 4;
     public int numRows; 
 
+    public Texture2D texture = null;
+    internal static AvatarUpdater instance;
+
     // Start is called before the first frame update
     void Start()
     {
+        instance = this;
         Init();
     }
 
@@ -37,19 +42,23 @@ public class AvatarUpdater : MonoBehaviour
                 if (index < avatarList.Count + 1)
                 {
                     if (index == 0)
-                        Instantiate(avatarPickItem, row.transform);
+                    {
+                        var ai = Instantiate(avatarPickItem, row.transform);
+                        ai.GetComponentInChildren<Button>().onClick.AddListener(PickImage);
+                    }
                     else
                     {
                         var avatar = Instantiate(avatarItem, row.transform);
                         AvatarItem ai = avatar.GetComponent<AvatarItem>();
                         ai.avatarImg.GetComponent<Image>().sprite = avatarList[index - 1];
+                        avatarItemsList.Add(ai);
                     }
                 }
             }
         }
     }
 
-    private static Texture2D texture = null;
+
     public void PickImage()
     {
         Debug.Log("Image path: ");
@@ -60,6 +69,8 @@ public class AvatarUpdater : MonoBehaviour
                 Debug.Log("Image path: " + path);
                 // Create Texture from selected image
                 texture = NativeGallery.LoadImageAtPath(path, maxSize, false);
+                Sprite texSprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), new Vector2(0.5f, 0.5f));
+                EventManager.UpdateProfilePic?.Invoke(texSprite);
                 if (texture == null)
                 {
                     Debug.Log("Couldn't load texture from " + path);
@@ -74,5 +85,20 @@ public class AvatarUpdater : MonoBehaviour
 
         }
         Debug.Log("Permission result: " + permission);
+    }
+
+
+    public void UpdateAvatar(Texture2D texture2d)
+    {
+        //texture = texture2d;
+
+        foreach (AvatarItem item in avatarItemsList)
+        {
+            print("HELLO : " + texture2d.name + "==" + item.avatarImg.GetComponent<Image>().sprite.texture.name);
+            item.selectedImg.SetActive(texture2d.name == item.avatarImg.GetComponent<Image>().sprite.texture.name);
+        }
+
+        // TEMPERORY
+        
     }
 }

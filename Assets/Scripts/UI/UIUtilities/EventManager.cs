@@ -8,6 +8,7 @@ public class EventManager
     //public delegate void UpdateUIDelegate(string type);
     //public static event UpdateUIDelegate UpdateUI;
     public static Action<string> UpdateUI = null;
+    public static Action<Sprite> UpdateProfilePic = null;
 
     public static Action<bool> OnAdorSpinAvailable;
     //public static Action OnSpinAvailable;

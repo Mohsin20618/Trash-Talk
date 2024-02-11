@@ -43,7 +43,21 @@ public class ProfilePanel : UIPanel
         submitBtn.onClick.AddListener(()=> UpdateProfile());
         pictureBtn.onClick.AddListener(()=> ShowAvatarPopup());
     }
+    void OnEnable()
+    {
+        UpdateUI();
+        EventManager.UpdateProfilePic += UpdateProfilePic;
+    }
 
+    private void UpdateProfilePic(Sprite sprite)
+    {
+        pictureBtn.GetComponent<Image>().sprite = sprite;
+    }
+
+    void OnDisable()
+    {
+        EventManager.UpdateProfilePic -= UpdateProfilePic;
+    }
     private void ShowAvatarPopup()
     {
         avatarPopup.SetActive(true);
@@ -78,6 +92,18 @@ public class ProfilePanel : UIPanel
         WebServiceManager.instance.APIRequest(WebServiceManager.instance.updateProfileFunction, Method.POST, null, keyValuePairs, UpdateData, OnFail, CACHEABLE.NULL, true, null);
     }
 
+    public void UpdateProfilePicture()
+    {
+        //if (PlayerProfile.authProvider == ConstantVariables.Apple || PlayerProfile.authProvider == ConstantVariables.Facebook)
+        //{
+        //    MesgBar.instance.show("Can't Update Profile.");
+        //    return;
+        //}
+        Dictionary<string, object> keyValuePairs = new Dictionary<string, object>();
+        keyValuePairs.Add("FullName", PlayerProfile.Player_UserName);
+        WebServiceManager.instance.APIRequest(WebServiceManager.instance.updateProfileFunction, Method.POST, null, keyValuePairs, UpdateData, OnFail, CACHEABLE.NULL, true, null);
+    }
+
     private void UpdateData(JObject arg1, long arg2)
     {
         PlayerPrefs.SetString("FirstName", FirstName.text);
@@ -101,13 +127,6 @@ public class ProfilePanel : UIPanel
     {
 
     }
-
-    private void OnEnable()
-    {
-
-        UpdateUI();
-    }
-
     void UpdateUI()
     {
         FirstName.text = PlayerPrefs.GetString("FirstName", "");

@@ -270,6 +270,7 @@ public class FacebookManager : MonoBehaviour
 
         var playerData = PlayerData.FromJson(jObject.ToString());
         PlayerProfile.UpdatePlayerData(playerData.User);
+        CountDownTimer.instance.SetTimerData();
         PlayerProfile.SaveDataToPrefs();
         PlayerProfile.showPlayerDetails();
         PhotonConnectionController.Instance.ConnectingToPhoton();

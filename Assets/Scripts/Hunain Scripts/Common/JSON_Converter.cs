@@ -66,11 +66,11 @@ namespace TrashTalk
         [JsonProperty("GameID")]
         public string GameID;
 
-    //    [JsonProperty("UserIDs")]
-    //    public string UserIDs;
+        //    [JsonProperty("UserIDs")]
+        //    public string UserIDs;
 
-    //    [JsonProperty("CoinsToPlay")]
-    //    public int FullName;
+        //    [JsonProperty("CoinsToPlay")]
+        //    public int FullName;
     }
 
     [Serializable]
@@ -106,8 +106,29 @@ namespace TrashTalk
         [JsonProperty("AccessToken")]
         public string AccessToken;
 
-        [JsonProperty("WinCount")]
+        [JsonProperty ("WinCount")]
         public int winCount;
+    }
+    [Serializable]
+    public partial class TimerDataForSpinAndAdd
+    {
+        [JsonProperty("msg")]
+        public string Msg;
+
+        [JsonProperty("data")]
+        public TimerData Data;
+
+        [JsonProperty("server_time")]
+        public DateTimeOffset ServerTime;
+    }
+    [Serializable]
+    public partial class TimerData
+    {
+            [JsonProperty("RemainingAdTimer")]
+            public DateTimeOffset RemainingAdTimer;
+
+            [JsonProperty("RemainingSpinTimer")]
+            public DateTimeOffset RemainingSpinTimer;
     }
 
     public partial class PlayerData
@@ -131,6 +152,9 @@ namespace TrashTalk
     {
         public static readonly JsonSerializerSettings Settings = new JsonSerializerSettings
         {
+            NullValueHandling = NullValueHandling.Ignore,
+            MissingMemberHandling = MissingMemberHandling.Ignore,
+
             MetadataPropertyHandling = MetadataPropertyHandling.Ignore,
             DateParseHandling = DateParseHandling.None,
             Converters =

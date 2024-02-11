@@ -70,7 +70,7 @@ public class GuestLoginController : MonoBehaviour
         PlayerProfile.UpdatePlayerData(playerData.User);
         PlayerProfile.SaveDataToPrefs();
         PlayerProfile.showPlayerDetails();
-
+        CountDownTimer.instance.SetTimerData();
         PhotonConnectionController.Instance.ConnectingToPhoton();
 
 

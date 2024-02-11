@@ -308,6 +308,7 @@ public class AppleManager : MonoBehaviour
     private void OnLoginSuccess(JObject arg1, long arg2)
     {
         Debug.LogError("OnLoginSuccess: " + arg1.ToString());
+        CountDownTimer.instance.SetTimerData();
         UIEvents.ShowPanel(Panel.TabPanels);
         UIEvents.HidePanel(Panel.SignupPanel);
     }

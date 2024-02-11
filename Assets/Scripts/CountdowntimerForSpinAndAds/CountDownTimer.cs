@@ -1,6 +1,10 @@
+using GoogleMobileAds.Api;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
+using TrashTalk;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -19,6 +23,34 @@ public class CountDownTimer : MonoBehaviour
     {
         instance = this;
         okButton.onClick.AddListener(() => { hide(); });
+    }
+    private void Start()
+    {
+
+        //Debug.Log("GameRulesManager.matchDetails.timeDifference: " + GameRulesManager.matchDetails.matchDate);
+        //double spinTime = (Time.time * 1000f) + 120000f;
+        //double adsTime = (Time.time * 1000f) + 220000f;
+        //StartCountdown(spinTime, adsTime);
+        //hide();
+    }
+
+    public void SetTimerData()
+    {
+        Debug.Log("?? SetTimerData");
+        WebServiceManager.instance.APIRequest(WebServiceManager.instance.GetTimerForSpinAndAd, Method.GET, null, null, OnSuccess, OnFail, CACHEABLE.NULL, true, null);
+    }
+    void OnSuccess(JObject resp, long arg2)
+    {
+        TimerDataForSpinAndAdd timers = DeSerialize.FromJson<TimerDataForSpinAndAdd>(resp.ToString());
+        Debug.Log("??timer "+timers.Data.RemainingSpinTimer.ToUnixTimeMilliseconds());
+        Epoch.UpdateDiff(timers.ServerTime.ToUnixTimeMilliseconds()); //Server Current Time
+        double spinTime = timers.Data.RemainingSpinTimer.ToUnixTimeMilliseconds();
+        double adTime = timers.Data.RemainingAdTimer.ToUnixTimeMilliseconds();
+        StartCountdown(spinTime, adTime);
+    }
+    void OnFail(string msg)
+    {
+        print("Timer Api Fail Message: " + msg);
     }
 
     public void ToggleTimerForSpinAndAds(bool isSpin)
@@ -45,26 +77,14 @@ public class CountDownTimer : MonoBehaviour
     {
         popUp.SetActive(false);    
     }
-
-    private void Start()
-    {
-
-        //Debug.Log("GameRulesManager.matchDetails.timeDifference: " + GameRulesManager.matchDetails.matchDate);
-        double spinTime = (Time.time * 1000f)+ 120000f;
-        double adsTime = (Time.time * 1000f)+ 220000f;
-        StartCountdown(spinTime, adsTime);
-        hide();
-    }
     public void StartCountdown(double StartingTimeforSpin , double StartingTimeforAds)
     {
-        double servertime = (Time.time * 1000f);
-        Epoch.UpdateDiff(servertime); //Server Current Time
-        //Debug.Log("Server diff " + Epoch.instance.serverTimeDiff);
         StartCoroutine(CountdownTimerforSpin(StartingTimeforSpin)); //Watch Time
         StartCoroutine(CountdownTimerforAds(StartingTimeforAds)); //Watch Time
     }
     private IEnumerator CountdownTimerforSpin(double StartingTimeforSpin)
     {
+        Debug.Log("?? spin Timer Start");
         while (true)
         {
             double timeLeft = Epoch.SecondsLeft(StartingTimeforSpin);
@@ -96,6 +116,7 @@ public class CountDownTimer : MonoBehaviour
     }    
     private IEnumerator CountdownTimerforAds(double StartingTimeforAds)
     {
+        Debug.Log("?? ads Timer Start");
         while (true)
         {
             double timeLeft = Epoch.SecondsLeft(StartingTimeforAds);

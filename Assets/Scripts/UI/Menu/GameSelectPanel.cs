@@ -7,13 +7,18 @@ public class GameSelectPanel : UIPanel
 {
     public GameObject spinAvailableSprite;
     public GameObject adAvailableSprite;
+    public List<GameObject> BtnList;   
 
     private void Awake()
     {
         EventManager.OnAdorSpinAvailable += OnAdorSpinAvailable;
     }
 
-
+    private void OnEnable()
+    {
+        //StartCoroutine(MainButtonAnimation());
+    
+    }
     private void OnDestroy()
     {
         EventManager.OnAdorSpinAvailable -= OnAdorSpinAvailable;
@@ -94,9 +99,22 @@ public class GameSelectPanel : UIPanel
     }
     void OpenTabPanel()
     {
-     //   UIEvents.ShowPanel(Panel.TabPanels);
-     //   Hide();
+        //   UIEvents.ShowPanel(Panel.TabPanels);
+        //   Hide();
 
 
+    }
+    public IEnumerator MainButtonAnimation()
+    {
+        foreach (var item in BtnList)
+        {
+            item.transform.localScale = Vector3.zero;
+        }
+        yield return new WaitForSeconds(1f);
+        foreach (var item in BtnList)
+        {
+            yield return new WaitForSeconds(0.2f);
+            LeanTween.scale(item, Vector3.one, 0.1f).setEase(LeanTweenType.easeInOutQuad);
+        }
     }
 }

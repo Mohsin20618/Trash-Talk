@@ -17,7 +17,10 @@ public class GameplayPanel : UIPanel
     public List<Sprite> kingsTrashTalks;
     public List<Sprite> acesTrashTalks;
 
+    public Button settingsBtn;
+
     public static bool forceQuit = false; //To Handle Player Left Sce
+    public GameObject settingsPanel;
 
     public override void Show()
     {
@@ -69,7 +72,18 @@ public class GameplayPanel : UIPanel
     private void OnEnable()
     {
         forceQuit = false;
+        settingsBtn.onClick.AddListener(OpenSettings);
     }
+
+    public void OpenSettings()
+    {
+        settingsPanel.SetActive(true);
+    }
+    public void CloseSettings()
+    {
+        settingsPanel.SetActive(false);
+    }
+
     void ShowTrashTalk(string suit, string card)
     {
         Sprite sprite = null;
@@ -144,6 +158,7 @@ public class GameplayPanel : UIPanel
 
     public void OnHomeButton()
     {
+        CloseSettings();
         Time.timeScale = 0;
         UIEvents.ShowPanel(Panel.Popup);
         UIEvents.UpdateData(Panel.Popup, (obj) => {

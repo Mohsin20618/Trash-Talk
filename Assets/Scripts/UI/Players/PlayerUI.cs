@@ -9,6 +9,8 @@ using System.Linq;
 
 public class PlayerUI : MonoBehaviour
 {
+    public AddFriend addFriendBtn;
+    public FriendRequestPopUp friendRequestPopUp;
     public PlayerBidUI bidUI;
     public GameObject cardCountContainer;
     public Text myBids;

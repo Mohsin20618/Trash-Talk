@@ -118,4 +118,42 @@ public class PhotonRPCManager : MonoBehaviourPunCallbacks
 
         SendRPC("Anounce_Round_Winner", RpcTarget.All, playerId);
     }
+
+
+    #region Send and Recieve Friend Request
+    internal void SendFriendRequest(string senderId, string receiverId)
+    {
+        SendRPC(nameof(SendFriendRequestRPC), RpcTarget.All, senderId, receiverId);
+    }
+
+    [PunRPC]
+    void SendFriendRequestRPC(string senderId, string receiverId)
+    {
+        FriendRequestManager.instance.RequestSentCallBack(senderId, receiverId);
+        //GameplayManager.instance.SendFriendRequest(playerId);
+    }
+
+    [PunRPC]
+    void AcceptRequestRPC(string senderId, string receiverId)
+    {
+        FriendRequestManager.instance.RequestAcceptCallback(senderId, receiverId);
+    }
+
+    internal void AcceptRequest(string senderId, string receiverId)
+    {
+        SendRPC(nameof(AcceptRequestRPC), RpcTarget.All, senderId, receiverId);
+    }
+
+    [PunRPC]
+    void RejectRequestRPC(string senderId, string receiverId)
+    {
+        FriendRequestManager.instance.RequestRejectCallback(senderId, receiverId);
+    }
+
+    internal void RejectRequest(string senderId, string receiverId)
+    {
+        SendRPC(nameof(RejectRequestRPC), RpcTarget.All, senderId, receiverId);
+    }
+    #endregion
+
 }

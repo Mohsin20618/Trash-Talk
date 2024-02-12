@@ -35,6 +35,7 @@ public class InviteFriendsPanel : MonoBehaviour
     void ShowList()
     {
         List<User> users = PlayerProfile.instance.globalUsers;
+        print("users COUNT: " + users.Count);
 
         emptyDataText.SetActive(users.Count == 0);
 
@@ -58,7 +59,7 @@ public class InviteFriendsPanel : MonoBehaviour
         else
             selectedUsers.Remove(user);
 
-        inviteButton.interactable = (selectedUsers.Count > 0);
+        //inviteButton.interactable = (selectedUsers.Count > 0);
     }
 
     public void OnInviteButton()

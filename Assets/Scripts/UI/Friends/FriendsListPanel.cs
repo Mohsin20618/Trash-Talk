@@ -17,7 +17,7 @@ public class FriendsListPanel : MonoBehaviour
     {
         //    selectedList = new List<GameObject>();
         selectedUsers = new List<User>();
-        inviteButton.interactable = false;
+        //inviteButton.interactable = false;
         ShowList();
     }
 
@@ -26,6 +26,9 @@ public class FriendsListPanel : MonoBehaviour
         ClearContianer(container);
 
         List<FriendDetail> friends = PlayerProfile.instance.facebookFriends;
+
+        //print("FRIENDS COUNT: " + friends.Count);
+        print("FRIENDS COUNT: " + PlayerProfile.instance.facebookFriends);
 
         emptyDataText.SetActive(friends.Count == 0);
 
@@ -47,7 +50,7 @@ public class FriendsListPanel : MonoBehaviour
         else
             selectedUsers.Remove(user);
 
-        inviteButton.interactable = (selectedUsers.Count > 0);
+        //inviteButton.interactable = (selectedUsers.Count > 0);
     }
 
 

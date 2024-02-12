@@ -8,6 +8,10 @@ public class FriendsTabButton : MonoBehaviour
     public GameObject hoverBG;
     public Text titleText;
 
+    public Image bgImage;
+    public Sprite activeImage;
+    public Sprite inactiveImage;
+
     string activeColorCode = "#C88C06";
 
     public void SetActiveInactive(bool active)
@@ -19,5 +23,10 @@ public class FriendsTabButton : MonoBehaviour
             ColorUtility.TryParseHtmlString(activeColorCode, out newColor);
 
         titleText.color = newColor;
+    }
+
+    public void ToggleSelection(bool toggle)
+    {
+        bgImage.sprite = toggle ? activeImage : inactiveImage;
     }
 }

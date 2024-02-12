@@ -155,7 +155,7 @@ public class TabPanels : UIPanel
             {
             Hide();
             UIEvents.ShowPanel(Panel.FriendsPanel);
-            UIEvents.UpdateData(Panel.FriendsPanel, null, "SelectPanel", 1);
+            //UIEvents.UpdateData(Panel.FriendsPanel, null, "SelectPanel", 1);
             return;
         }
 

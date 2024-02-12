@@ -59,8 +59,10 @@ public class FriendsPanel : UIPanel
 
     void SetButtons(int index)
     {
-        tabButtons.GetChild(index).GetComponent<FriendsTabButton>().SetActiveInactive(true);
-        tabButtons.GetChild(lastActiveIndex).GetComponent<FriendsTabButton>().SetActiveInactive(false);
+        //tabButtons.GetChild(index).GetComponent<FriendsTabButton>().SetActiveInactive(true);
+        //tabButtons.GetChild(lastActiveIndex).GetComponent<FriendsTabButton>().SetActiveInactive(false);
+        tabButtons.GetChild(index).GetComponent<FriendsTabButton>().ToggleSelection(true);
+        tabButtons.GetChild(lastActiveIndex).GetComponent<FriendsTabButton>().ToggleSelection(false);
     }
 
     public void OnLeaderboardButton()

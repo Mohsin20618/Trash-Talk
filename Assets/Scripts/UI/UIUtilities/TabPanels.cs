@@ -39,7 +39,7 @@ public class TabPanels : UIPanel
 
         UpdateUI("coins");
         SetLevelUI();
-        SelectPanel(3);
+        //SelectPanel(3);
     }
 
     void OnDisable()
@@ -149,7 +149,8 @@ public class TabPanels : UIPanel
         //    return;
         //}
 
-        ToggleTabBar(index == 3);
+        //ToggleTabBar(true);
+        //ToggleTabBar(index == 3);
 
         if (index == 4)
             {

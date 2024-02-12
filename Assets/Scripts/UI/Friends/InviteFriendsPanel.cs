@@ -23,7 +23,7 @@ public class InviteFriendsPanel : MonoBehaviour
     {
         selectedUsers = new List<User>();
         inviteButton.interactable = false;
-        ShowList();
+        StartCoroutine(ShowList());
     }
 
     private void OnDisable()
@@ -32,8 +32,9 @@ public class InviteFriendsPanel : MonoBehaviour
         ClearContianer(container);
     }
 
-    void ShowList()
+    IEnumerator ShowList()
     {
+        yield return null;
         List<User> users = PlayerProfile.instance.globalUsers;
         print("users COUNT: " + users.Count);
 
@@ -41,9 +42,13 @@ public class InviteFriendsPanel : MonoBehaviour
 
         foreach (User user in users)
         {
+            yield return null;
+
             GameObject obj = Instantiate(friendItem, container, false);
             obj.GetComponent<FriendItem>().SetData(transform.GetSiblingIndex(), user, OnSelect);
         }
+
+        yield return null;
 
         //for (int i = 0; i < users.Count; i++)
         //{

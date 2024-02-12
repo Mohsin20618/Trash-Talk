@@ -75,6 +75,7 @@ public class GuestLoginController : MonoBehaviour
 
 
         UIEvents.ShowPanel(Panel.TabPanels);
+        UIEvents.ShowPanel(Panel.GameSelectPanel);
         UIEvents.HidePanel(Panel.SignupPanel);
 
     }

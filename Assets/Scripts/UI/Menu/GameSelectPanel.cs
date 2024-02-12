@@ -33,11 +33,13 @@ public class GameSelectPanel : UIPanel
     }
     public override void Show()
     {
+        Debug.Log("Show.............", this);
         gameObject.SetActive(true);
     }
 
     public override void Hide()
     {
+        Debug.Log("Hide.............", this);
         gameObject.SetActive(false);
     }
 

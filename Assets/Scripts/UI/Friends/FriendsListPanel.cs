@@ -21,19 +21,25 @@ public class FriendsListPanel : MonoBehaviour
         ShowList();
     }
 
-    void ShowList()
+    IEnumerator ShowList()
     {
+        yield return null;
+        WaitingLoader.instance.ShowHide(true);
+        yield return null;
         ClearContianer(container);
+        yield return null;
 
         List<FriendDetail> friends = PlayerProfile.instance.facebookFriends;
 
         //print("FRIENDS COUNT: " + friends.Count);
         print("FRIENDS COUNT: " + PlayerProfile.instance.facebookFriends);
 
-        emptyDataText.SetActive(friends.Count == 0);
+        emptyDataText.SetActive(true);
 
         foreach (FriendDetail friend in friends)
         {
+            yield return null;
+
             GameObject obj = Instantiate(friendItem, container, false);
             User user = new User();
             user.UserId = friend.friendUserID;
@@ -41,6 +47,11 @@ public class FriendsListPanel : MonoBehaviour
 
             obj.GetComponent<FriendItem>().SetData(transform.GetSiblingIndex(), user, OnSelect);
         }
+
+        yield return null;
+
+        WaitingLoader.instance.ShowHide(false);
+
     }
 
     void OnSelect(User user, bool isSelected)

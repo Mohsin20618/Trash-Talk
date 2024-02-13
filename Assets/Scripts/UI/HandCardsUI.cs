@@ -179,7 +179,7 @@ public class HandCardsUI : MonoBehaviour
         if (TrickManager.cards.Count > 0)
         {
             leadingSuit = TrickManager.cards[0].suit;
-            isFirstTurn = false;
+            isFirstTurn = true;
         }
 
         Debug.Log("######allActive:" + allActive + " isFirstTurn:" + isFirstTurn + " totalPlayerPlayed:" + GameplayManager.instance.totalPlayerPlayed + " cards.Count:" + TrickManager.cards.Count);

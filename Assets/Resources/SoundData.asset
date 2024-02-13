@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: SoundData
   m_EditorClassIdentifier: 
   sounds:
-  - {fileID: 8300000, guid: 11335588942bbd5449bd5e612908f09c, type: 3}
+  - {fileID: 8300000, guid: 024607ebde7fd42028c0dfba973d7369, type: 3}
   - {fileID: 8300000, guid: 4f04d64ef7fdf435ba5cc38007e010bc, type: 3}
-  - {fileID: 8300000, guid: c36257cf5ca33467d8626604edd60279, type: 3}
+  - {fileID: 8300000, guid: 93a91cadba0484c7dbeda486adfb50a5, type: 3}
   - {fileID: 8300000, guid: 04fcd84edabbc436a95c0c81bc66b2b9, type: 3}
   - {fileID: 8300000, guid: f57813d8f330a4c019053236a77dff87, type: 3}

@@ -4,9 +4,9 @@ using UnityEngine;
 
 public enum Sound
 {
-    Music,
-    Flip,
-    Click,
-    Hint,
+    Music, //Game BG
+    Place, //Place Card
+    Click, //Show Cards
+    Hint,  //Distribute
     StopWatch
 }

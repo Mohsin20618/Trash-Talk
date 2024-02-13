@@ -16,6 +16,8 @@ public static class TrickManager
 
     public static void AddCard(Card card)
     {
+        SoundManager.Instance.PlaySoundEffect(Sound.Place);
+
         if (cards.Count == 0)
         {
             leadingCard = card;

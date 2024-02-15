@@ -4,6 +4,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Runtime.CompilerServices;
 using TrashTalk;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -33,7 +34,7 @@ public class CountDownTimer : MonoBehaviour
         //StartCountdown(spinTime, adsTime);
         //hide();
     }
-
+    #region Set Timer of Admob and Spinwheel
     public void SetTimerData()
     {
         Debug.Log("?? SetTimerData");
@@ -42,7 +43,7 @@ public class CountDownTimer : MonoBehaviour
     void OnSuccess(JObject resp, long arg2)
     {
         TimerDataForSpinAndAdd timers = DeSerialize.FromJson<TimerDataForSpinAndAdd>(resp.ToString());
-        Debug.Log("??timer "+timers.Data.RemainingSpinTimer.ToUnixTimeMilliseconds());
+        Debug.Log("??timer " + timers.Data.RemainingSpinTimer.ToUnixTimeMilliseconds());
         Epoch.UpdateDiff(timers.ServerTime.ToUnixTimeMilliseconds()); //Server Current Time
         double spinTime = timers.Data.RemainingSpinTimer.ToUnixTimeMilliseconds();
         double adTime = timers.Data.RemainingAdTimer.ToUnixTimeMilliseconds();
@@ -52,6 +53,60 @@ public class CountDownTimer : MonoBehaviour
     {
         print("Timer Api Fail Message: " + msg);
     }
+    public void StartCountdown(double StartingTimeforSpin, double StartingTimeforAds)
+    {
+        StartCoroutine(CountdownTimerforSpin(StartingTimeforSpin)); //Watch Time
+        StartCoroutine(CountdownTimerforAds(StartingTimeforAds)); //Watch Time
+    }
+    #endregion
+
+    #region Upadte Ad Timer
+    public void UpdateAdTimer(string coins)
+    {
+        Dictionary<string, object> keyValuePairs = new Dictionary<string, object>();
+
+        keyValuePairs.Add("timerType", ConstantVariables.Ad);
+        keyValuePairs.Add("Coins", coins);
+
+        //Debug.LogError("&&&&&&&&&&: "+ email);
+        //Debug.LogError("&&&&&&&&&&: "+ password);
+
+        WebServiceManager.instance.APIRequest(WebServiceManager.instance.UpdateTimerForSpinOrAd, Method.POST, null, keyValuePairs, TimerUpdateSuccessAd, OnFail, CACHEABLE.NULL, true, null);
+
+    }
+    private void TimerUpdateSuccessAd(JObject resp, long arg2)
+    {
+        TimerDataForSpinAndAdd timers = DeSerialize.FromJson<TimerDataForSpinAndAdd>(resp.ToString());
+        Epoch.UpdateDiff(timers.ServerTime.ToUnixTimeMilliseconds()); //Server Current Time
+        double adTime = timers.Data.RemainingAdTimer.ToUnixTimeMilliseconds();
+        Global.isAdAvailable = false;
+        StartCoroutine(CountdownTimerforAds(adTime)); //Watch Time
+    }
+    #endregion
+
+    #region Update Spin Timer
+    public void UpdateSpinTimer(string coins)
+    {
+        Dictionary<string, object> keyValuePairs = new Dictionary<string, object>();
+
+        keyValuePairs.Add("timerType", ConstantVariables.Spin);
+        keyValuePairs.Add("Coins", coins);
+
+        //Debug.LogError("&&&&&&&&&&: "+ email);
+        //Debug.LogError("&&&&&&&&&&: "+ password);
+
+        WebServiceManager.instance.APIRequest(WebServiceManager.instance.UpdateTimerForSpinOrAd, Method.POST, null, keyValuePairs, TimerUpdateSuccessSpin, OnFail, CACHEABLE.NULL, true, null);
+
+    }
+    private void TimerUpdateSuccessSpin(JObject resp, long arg2)
+    {
+        TimerDataForSpinAndAdd timers = DeSerialize.FromJson<TimerDataForSpinAndAdd>(resp.ToString());
+        Epoch.UpdateDiff(timers.ServerTime.ToUnixTimeMilliseconds()); //Server Current Time
+        double spinTime = timers.Data.RemainingSpinTimer.ToUnixTimeMilliseconds();
+        Global.isSpinAvailable = false;
+        StartCoroutine(CountdownTimerforAds(spinTime)); //Watch Time
+    }
+    #endregion
 
     public void ToggleTimerForSpinAndAds(bool isSpin)
     {
@@ -77,11 +132,7 @@ public class CountDownTimer : MonoBehaviour
     {
         popUp.SetActive(false);    
     }
-    public void StartCountdown(double StartingTimeforSpin , double StartingTimeforAds)
-    {
-        StartCoroutine(CountdownTimerforSpin(StartingTimeforSpin)); //Watch Time
-        StartCoroutine(CountdownTimerforAds(StartingTimeforAds)); //Watch Time
-    }
+
     private IEnumerator CountdownTimerforSpin(double StartingTimeforSpin)
     {
         Debug.Log("?? spin Timer Start");

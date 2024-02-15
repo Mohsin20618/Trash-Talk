@@ -94,7 +94,8 @@ public class GameSelectPanel : UIPanel
     }
     public void RewardRecieved() 
     {
-        rewardPanel.SetCoinText("20");
+        CountDownTimer.instance.UpdateAdTimer("500");
+        rewardPanel.SetCoinText("500");
     }
     public void ShowLeaderBoard()
     {

@@ -102,6 +102,7 @@ public class SpinWheel : UIPanel
     private void ShowBonousScreen()
     {
         rewardPanel.SetCoinText(rewardCoin);
+        CountDownTimer.instance.UpdateSpinTimer(rewardCoin);
     }
 }
 

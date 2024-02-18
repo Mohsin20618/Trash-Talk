@@ -158,7 +158,7 @@ MonoBehaviour:
   OwnershipTransfer: 0
   observableSearch: 2
   ObservedComponents: []
-  sceneViewId: 0
+  sceneViewId: 1
   InstantiationId: 0
   isRuntimeInstantiated: 0
 --- !u!114 &7781151106619883082
@@ -271,6 +271,8 @@ MonoBehaviour:
   leaderboard: get-latest-twenty-winners
   GetTimerForSpinAndAd: get-timer
   UpdateTimerForSpinOrAd: update-timer
+  getLatestPlayedMembers: latest-game-played-members
+  getFriends: get-friends
   debug: 1
   SSLPinning: 0
   playerPersonalData: {fileID: 0}

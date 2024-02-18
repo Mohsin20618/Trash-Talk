@@ -1,5 +1,8 @@
+using Newtonsoft.Json.Linq;
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using TrashTalk;
 using UnityEngine;
 
 public class LobbyPanel : MonoBehaviour
@@ -12,7 +15,20 @@ public class LobbyPanel : MonoBehaviour
     private void Start()
     {
         selectedList = new List<GameObject>();
+        //WebServiceManager.instance.APIRequest(WebServiceManager.instance.getLatestPlayedMembers, Method.GET, null, null, OnSuccess, OnFail, CACHEABLE.NULL, true, null);
+        WebServiceManager.instance.APIRequest(WebServiceManager.instance.getFriends, Method.GET, null, null, OnSuccess, OnFail, CACHEABLE.NULL, true, null);
+
+    }
+
+    private void OnSuccess(JObject data, long arg2)
+    {
+        Debug.Log("RECENT FRIENDS" + data);
+
         ShowList();
+    }
+    private void OnFail(string obj)
+    {
+        Debug.Log("RECENT FRIENDS FAILED");
     }
 
     void ShowList()

@@ -26,4 +26,11 @@ public static class Global
     public static bool isSpadeActive = false;
 
     //    public static List<MutiplayerData> playerData;
+
+    //SoundManager 
+    public static bool isMusicOn = true;
+    public static bool isSoundOn = true;
+
+
+
 }

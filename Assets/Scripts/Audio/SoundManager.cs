@@ -12,13 +12,14 @@ public class SoundManager : MonoBehaviour, ISoundManager
     private Dictionary<string, AudioClip> soundEffect;
 
     public ButtonToggle musicToggle;
+    public ButtonToggle soundToggle;
     bool isMusicOn = true;
     private void Awake()
     {
         if (Instance == null)
         {
             Instance = this;
-         //   soundEffectSources = new List<AudioSource>();
+            //   soundEffectSources = new List<AudioSource>();
         }
         else
         {
@@ -26,11 +27,22 @@ public class SoundManager : MonoBehaviour, ISoundManager
         }
         soundEffect = new Dictionary<string, AudioClip>();
         backgroundMusicSource = gameObject.AddComponent<AudioSource>();
+
+        SetSoundsFunctionality();
     }
 
-    private void OnEnable()
+    private void SetSoundsFunctionality()
     {
-        musicToggle.SetToggle(isMusicOn);
+        if (PlayerPrefs.HasKey(ConstantVariables.m_Sound))
+        {
+            Global.isSoundOn = PlayerPrefs.GetInt(ConstantVariables.m_Sound) == 1 ? true : false;
+            soundToggle.SetToggle(Global.isSoundOn);
+        }
+        if (PlayerPrefs.HasKey(ConstantVariables.m_Music))
+        {
+            Global.isMusicOn = PlayerPrefs.GetInt(ConstantVariables.m_Music) == 1 ? true : false;
+            musicToggle.SetToggle(Global.isMusicOn);
+        }
     }
 
     public void AddSound(string name, AudioClip clip)
@@ -44,7 +56,7 @@ public class SoundManager : MonoBehaviour, ISoundManager
 
         SettingPanel.insideGamePlayScreen = true;
 
-        if (soundEffect.ContainsKey(name))
+        if (soundEffect.ContainsKey(name) && Global.isMusicOn)
         {
             AudioClip clip = soundEffect[name];
             backgroundMusicSource.clip = clip;
@@ -78,7 +90,7 @@ public class SoundManager : MonoBehaviour, ISoundManager
             return;
 
         string name = soundName.ToString();
-        if (soundEffect.ContainsKey(name))
+        if (soundEffect.ContainsKey(name) && Global.isSoundOn)
         {
             AudioClip clip = soundEffect[name];
             AudioSource source = gameObject.AddComponent<AudioSource>();

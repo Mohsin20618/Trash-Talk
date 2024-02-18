@@ -9,7 +9,7 @@ public class ButtonToggle : MonoBehaviour
 
     System.Action<bool> onToggle;
 
-    bool isOn = true;
+    public bool isOn = true;
 
     //public void SetToggle(bool on, System.Action<bool> onToggle)
      public void SetToggle(bool on)

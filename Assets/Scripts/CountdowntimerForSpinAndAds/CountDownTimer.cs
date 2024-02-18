@@ -67,12 +67,7 @@ public class CountDownTimer : MonoBehaviour
 
         keyValuePairs.Add("timerType", ConstantVariables.Ad);
         keyValuePairs.Add("Coins", coins);
-
-        //Debug.LogError("&&&&&&&&&&: "+ email);
-        //Debug.LogError("&&&&&&&&&&: "+ password);
-
         WebServiceManager.instance.APIRequest(WebServiceManager.instance.UpdateTimerForSpinOrAd, Method.POST, null, keyValuePairs, TimerUpdateSuccessAd, OnFail, CACHEABLE.NULL, true, null);
-
     }
     private void TimerUpdateSuccessAd(JObject resp, long arg2)
     {
@@ -80,7 +75,7 @@ public class CountDownTimer : MonoBehaviour
         Epoch.UpdateDiff(timers.ServerTime.ToUnixTimeMilliseconds()); //Server Current Time
         double adTime = timers.Data.RemainingAdTimer.ToUnixTimeMilliseconds();
         Global.isAdAvailable = false;
-        StartCoroutine(CountdownTimerforAds(adTime)); //Watch Time
+        StartCoroutine(CountdownTimerforAds(adTime));
     }
     #endregion
 
@@ -91,12 +86,7 @@ public class CountDownTimer : MonoBehaviour
 
         keyValuePairs.Add("timerType", ConstantVariables.Spin);
         keyValuePairs.Add("Coins", coins);
-
-        //Debug.LogError("&&&&&&&&&&: "+ email);
-        //Debug.LogError("&&&&&&&&&&: "+ password);
-
         WebServiceManager.instance.APIRequest(WebServiceManager.instance.UpdateTimerForSpinOrAd, Method.POST, null, keyValuePairs, TimerUpdateSuccessSpin, OnFail, CACHEABLE.NULL, true, null);
-
     }
     private void TimerUpdateSuccessSpin(JObject resp, long arg2)
     {
@@ -104,7 +94,7 @@ public class CountDownTimer : MonoBehaviour
         Epoch.UpdateDiff(timers.ServerTime.ToUnixTimeMilliseconds()); //Server Current Time
         double spinTime = timers.Data.RemainingSpinTimer.ToUnixTimeMilliseconds();
         Global.isSpinAvailable = false;
-        StartCoroutine(CountdownTimerforAds(spinTime)); //Watch Time
+        StartCoroutine(CountdownTimerforSpin(spinTime));
     }
     #endregion
 

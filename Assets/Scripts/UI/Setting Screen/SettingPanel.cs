@@ -13,12 +13,16 @@ public class SettingPanel : UIPanel
     public GameObject tcScreen;
 
     public Button soundButton;
+    public Button musicButton;
     public Button termsOfServices;
     public Button privacyPolicy;
     public Button rulesBtn;
 
     public Button logout;
     public static bool insideGamePlayScreen;
+
+    public ButtonToggle soundToggle;
+    public ButtonToggle musicToggle;
 
     public override void Hide()
     {
@@ -50,11 +54,23 @@ public class SettingPanel : UIPanel
         privacyPolicy.onClick.AddListener(()=> HTP_CallBack());
         rulesBtn.onClick.AddListener(()=> Rules_CallBack());
         soundButton.onClick.AddListener(()=> Sound_CallBack());
+        musicButton.onClick.AddListener(()=> Music_CallBack());
         
     }
 
     private void Sound_CallBack()
     {
+        soundToggle.OnPressToggle();
+
+        PlayerPrefs.SetInt(ConstantVariables.m_Sound, soundToggle.isOn ? 1 :0);
+        Global.isSoundOn = soundToggle.isOn;
+    } 
+    private void Music_CallBack()
+    {
+        musicToggle.OnPressToggle();
+
+        PlayerPrefs.SetInt(ConstantVariables.m_Music, musicToggle.isOn ? 1 :0);
+        Global.isMusicOn = musicToggle.isOn;
     }
 
     private void Rules_CallBack()

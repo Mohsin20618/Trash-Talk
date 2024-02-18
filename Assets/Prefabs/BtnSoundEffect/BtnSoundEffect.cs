@@ -12,7 +12,8 @@ public class BtnSoundEffect : MonoBehaviour
     }
    public void PlayBtnSoundEffect() 
     {
-        audioSource.Play();
+        if(Global.isSoundOn)
+           audioSource.Play();
     }
 
 }

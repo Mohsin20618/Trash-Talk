@@ -80,6 +80,8 @@ public class CompleteProfile : MonoBehaviour
         PlayerPrefs.Save();
 
         base64ImageString = TextureConverter.Texture2DToBase64(texture2D);
+
+        TextureConverter.Texture2DToBytes(texture2D);
         SaveBase64Image(base64ImageString);
         //apiController.PlayerRegistrationApiMethod(PlayerProfile.Player_UserName, PlayerProfile.Player_UserID, PlayerProfile.Player_Email, "Apple", base64ImageString);
         ShowSuccessMessage("Data Updated Successfully");

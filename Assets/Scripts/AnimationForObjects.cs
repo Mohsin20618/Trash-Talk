@@ -12,7 +12,19 @@ public class AnimationForObjects : MonoBehaviour
     {
         fromScale = transform.localScale;
         toScale = Vector3.one * 1.1f;
-        StartCoroutine(RepeatScaleTween());
+        //StartCoroutine(RepeatScaleTween());
+    }
+    private void OnEnable()
+    {
+        if (gameObject.activeInHierarchy)
+        {
+            StartCoroutine(RepeatScaleTween());
+        }
+    }
+
+    private void OnDisable()
+    {
+        StopAllCoroutines();
     }
 
     private IEnumerator RepeatScaleTween()
@@ -28,8 +40,8 @@ public class AnimationForObjects : MonoBehaviour
                  LeanTween.scale(gameObject, fromScale, duration)
             .setEase(LeanTweenType.easeInOutQuad)
             .setOnComplete(() =>
-                StartCoroutine(RepeatScaleTween())
-
-            ));
+                OnEnable()));
     }
+
+
 }

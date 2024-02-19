@@ -118,12 +118,29 @@ public class PlayerProfile : MonoBehaviour
         PlayerProfile.imageUrl = user.ImagePath + "/" + user.Image;
         Debug.Log("PlayerProfile.Player_Access_Token&&&&&&&&&&&&&&&& " + PlayerProfile.Player_Access_Token);
         string url = user.ImagePath + "/" + user.Image;
+
+        Debug.Log("user::::: " + user.ToJson());
+        Debug.Log("user:::Image:: " + user.Image);
+        Debug.Log("user:::ImagePath:: " + user.ImagePath);
+        Debug.Log("url: = " + url);
         ImageCacheManager.instance.CheckOrDownloadImage(url,null,GetImage);//TextureConverter.Base64ToTexture2D(user.Image);
     }
 
     private static void GetImage(Texture2D texture)
     {
         PlayerProfile.Player_rawImage_Texture2D = texture;
+
+
+        if (PlayerProfile.Player_rawImage_Texture2D == null)
+        {
+            Debug.Log("Image is null");
+            return;
+        }
+
+
+        Sprite sprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), Vector2.zero);
+
+        EventManager.UpdateProfilePic?.Invoke(sprite);
     }
 
     public static void SaveDataToPrefs()

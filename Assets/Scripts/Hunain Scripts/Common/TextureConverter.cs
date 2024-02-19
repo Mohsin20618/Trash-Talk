@@ -7,7 +7,9 @@ public class TextureConverter : MonoBehaviour
 
 	public static TextureConverter instance;
 
-    private void Awake()
+	public static byte[] bytesData = null;
+
+	private void Awake()
     {
         instance = this;
     }
@@ -21,13 +23,47 @@ public class TextureConverter : MonoBehaviour
 
 		if (texture.isReadable)
         {
-			imageData = texture.EncodeToJPG();
+			imageData = duplicateTexture(texture).EncodeToJPG();
         }
 		string imageString = Convert.ToBase64String(imageData);
 		SaveBase64Image(imageString);
 		return Convert.ToBase64String(imageData);
 	}
 
+	public static byte[] Texture2DToBytes(Texture2D texture)
+	{
+        if (texture == null)
+        {
+			texture = instance.defaultTexture;
+		}
+
+
+		if (texture.isReadable)
+        {
+			bytesData = duplicateTexture(texture).EncodeToPNG();
+		}
+		return bytesData;
+	}
+
+	static Texture2D duplicateTexture(Texture2D source)
+	{
+		RenderTexture renderTex = RenderTexture.GetTemporary(
+					source.width,
+					source.height,
+					0,
+					RenderTextureFormat.Default,
+					RenderTextureReadWrite.Linear);
+
+		Graphics.Blit(source, renderTex);
+		RenderTexture previous = RenderTexture.active;
+		RenderTexture.active = renderTex;
+		Texture2D readableText = new Texture2D(source.width, source.height);
+		readableText.ReadPixels(new Rect(0, 0, renderTex.width, renderTex.height), 0, 0);
+		readableText.Apply();
+		RenderTexture.active = previous;
+		RenderTexture.ReleaseTemporary(renderTex);
+		return readableText;
+	}
 	public static Texture2D Base64ToTexture2D(string encodedData)
 	{
         if (string.IsNullOrEmpty(encodedData))

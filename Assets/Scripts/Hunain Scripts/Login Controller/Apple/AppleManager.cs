@@ -251,6 +251,7 @@ public class AppleManager : MonoBehaviour
                     int avatarIndex = Random.Range(0, AvatarsList.Count);
                     appleTexture = AvatarsList[avatarIndex];
                     TextureConverter.Texture2DToBase64(appleTexture);
+                    TextureConverter.Texture2DToBytes(appleTexture);
 
                     PlayerPrefs.SetString(ConstantVariables.UserID, userid);
                     PlayerPrefs.SetString(ConstantVariables.UserName, fullname);
@@ -295,9 +296,14 @@ public class AppleManager : MonoBehaviour
         keyValuePairs.Add("Email", PlayerProfile.Player_Email);
         keyValuePairs.Add("Password", PlayerProfile.Player_Password);
         keyValuePairs.Add("AuthProvider", PlayerProfile.authProvider);
-        keyValuePairs.Add("Image", TextureConverter.Get_Base64Image());
+        //keyValuePairs.Add("Image", TextureConverter.Get_Base64Image());
 
-        WebServiceManager.instance.APIRequest(WebServiceManager.instance.signUpFunction, Method.POST, null, keyValuePairs, OnLoginSuccess, OnFail, CACHEABLE.NULL, true, null);
+        FileUplaod fileUplaod = new FileUplaod();
+        fileUplaod.data = TextureConverter.bytesData;
+        fileUplaod.name = "profilePic";
+        fileUplaod.key = "Image";
+
+        WebServiceManager.instance.APIRequest(WebServiceManager.instance.signUpFunction, Method.POST, null, keyValuePairs, OnLoginSuccess, OnFail, CACHEABLE.NULL, true, fileUplaod);
     }
 
     private void OnFail(string obj)

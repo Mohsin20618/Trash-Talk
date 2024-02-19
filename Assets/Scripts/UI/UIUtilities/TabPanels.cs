@@ -50,6 +50,7 @@ public class TabPanels : UIPanel
 
     private void UpdateProfilePic(Sprite sprite)
     {
+        Debug.Log("Thumb Update");
         profileThumb.sprite = sprite;
     }
 

@@ -534,7 +534,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: ae88f2fc2cbdc9947bcb778f357db609, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5e291ffaa3c42473cb77ac6b50353a86, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -587,7 +587,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 3694190193425893049}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: BtnSoundEffect, Assembly-CSharp
+        m_MethodName: PlayBtnSoundEffect
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &2718209439831590450
 GameObject:
   m_ObjectHideFlags: 0
@@ -1572,7 +1584,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 3789513641040727107}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: BtnSoundEffect, Assembly-CSharp
+        m_MethodName: PlayBtnSoundEffect
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &3789513641078445085
 GameObject:
   m_ObjectHideFlags: 0
@@ -4687,13 +4711,25 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: BtnSoundEffect, Assembly-CSharp
+        m_MethodName: PlayBtnSoundEffect
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: TabPanels, Assembly-CSharp
         m_MethodName: SelectPanel
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 3
+          m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -5298,7 +5334,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &7958148588017661173
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5385,8 +5421,15 @@ MonoBehaviour:
   winCount: {fileID: 795903349963948118}
   levelCount: {fileID: 5002660024518332816}
   pictureBtn: {fileID: 5513411425612741606}
+  flagImage: {fileID: 8513295023721621224}
   avatarPopup: {fileID: 8301372181592683136}
   profilePopup: {fileID: 3742823793784313664}
+  countries:
+  - countryCode: US
+    countryFlag: {fileID: 21300000, guid: cadfaef88779298449ff342df59ae2ef, type: 3}
+  - countryCode: PK
+    countryFlag: {fileID: 21300000, guid: c9a5106401b434f99b56cf65e58fc46f, type: 3}
+  oldTexture: {fileID: 0}
 --- !u!1 &8108717955969956998
 GameObject:
   m_ObjectHideFlags: 0
@@ -5629,9 +5672,45 @@ PrefabInstance:
     m_TransformParent: {fileID: 7958148588017661173}
     m_Modifications:
     - target: {fileID: 3748954541023337575, guid: 006ec54128963664db8dc559e170bd89, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3748954541023337575, guid: 006ec54128963664db8dc559e170bd89, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3748954541023337575, guid: 006ec54128963664db8dc559e170bd89, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3748954541023337575, guid: 006ec54128963664db8dc559e170bd89, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
       objectReference: {fileID: 1636197058734400067}
+    - target: {fileID: 3748954541023337575, guid: 006ec54128963664db8dc559e170bd89, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3748954541023337575, guid: 006ec54128963664db8dc559e170bd89, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PlayBtnSoundEffect
+      objectReference: {fileID: 0}
+    - target: {fileID: 3748954541023337575, guid: 006ec54128963664db8dc559e170bd89, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: BackFromAvatarPopup
+      objectReference: {fileID: 0}
+    - target: {fileID: 3748954541023337575, guid: 006ec54128963664db8dc559e170bd89, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: BtnSoundEffect, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3748954541023337575, guid: 006ec54128963664db8dc559e170bd89, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: ProfilePanel, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3748954541023337575, guid: 006ec54128963664db8dc559e170bd89, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 6556247772869083690, guid: 006ec54128963664db8dc559e170bd89, type: 3}
       propertyPath: m_Spacing
       value: 100

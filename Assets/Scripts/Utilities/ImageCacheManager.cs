@@ -34,16 +34,16 @@ public class ImageCacheManager : MonoBehaviour
     {
 
 
-        //Jugar
-        if (url.Contains("graph.facebook.com") || url.Contains("googleapis.com"))
-        {
-            StartCoroutine(DownloadImage(url, currentImage));
-            return;
-        }
-        else if (!url.Contains("http"))
-        {
-            //      url = GamePlayManager.instance.config.baseUrl + url;
-        }
+        ////Jugar
+        //if (url.Contains("graph.facebook.com") || url.Contains("googleapis.com"))
+        //{
+        //    StartCoroutine(DownloadImage(url, currentImage));
+        //    return;
+        //}
+        //else if (!url.Contains("http"))
+        //{
+        //    //      url = GamePlayManager.instance.config.baseUrl + url;
+        //}
 
         //--
           if (!IsCacheImageExist(url))
@@ -56,12 +56,17 @@ public class ImageCacheManager : MonoBehaviour
           }
           else
           {
-              //Debug.Log("Load Image " + url);
-              if(currentImage !=null)
+            //Debug.Log("Load Image " + url);
+            if (currentImage != null)
+            {
                 currentImage.sprite = SpriteReturnFromLink(url);
+            }
 
-              if(onCallBack!=null)
-                  onCallBack.Invoke(null);
+
+            if (onCallBack != null)
+            {
+                  onCallBack.Invoke((Texture2D)SpriteReturnFromLink(url).texture);
+            }
           }
         //to here
 

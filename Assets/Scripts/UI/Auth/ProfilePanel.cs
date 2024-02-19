@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using UnityEngine;
 using TrashTalk;
 using Newtonsoft.Json.Linq;
+using System.Globalization;
 
 public class ProfilePanel : UIPanel
 {
@@ -25,10 +26,15 @@ public class ProfilePanel : UIPanel
     public Text levelCount;
 
     public Button pictureBtn;
+    public Image flagImage;
     public GameObject avatarPopup;
     public GameObject profilePopup;
 
+    public List<Countries> countries = new();
+
     PlayerProfile profile;
+
+    public Texture2D oldTexture;
 
     public override void Show()
     {
@@ -45,17 +51,23 @@ public class ProfilePanel : UIPanel
     }
     void OnEnable()
     {
+        oldTexture = PlayerProfile.Player_rawImage_Texture2D;
         UpdateUI();
         EventManager.UpdateProfilePic += UpdateProfilePic;
+
     }
+
 
     private void UpdateProfilePic(Sprite sprite)
     {
+        Debug.Log("Thumb Update");
+        PlayerProfile.Player_rawImage_Texture2D = sprite.texture;
         pictureBtn.GetComponent<Image>().sprite = sprite;
     }
 
     void OnDisable()
     {
+        UpdateProfile();
         EventManager.UpdateProfilePic -= UpdateProfilePic;
     }
     private void ShowAvatarPopup()
@@ -78,31 +90,25 @@ public class ProfilePanel : UIPanel
             return;
         }
 
-        
-        //if (displayName.text == PlayerProfile.Player_UserName)
-        //{
-        //    MesgBar.instance.show("Nothing to update.");
-        //    return;
-        //}
+        if (PlayerProfile.Player_rawImage_Texture2D == oldTexture)
+        {
+            Debug.Log("Nothing to update.");
+            return;
+        }
+
+        FileUplaod fileUplaod = new FileUplaod();
+        fileUplaod.data = TextureConverter.Texture2DToBytes((Texture2D)pictureBtn.GetComponent<Image>().mainTexture);
+        fileUplaod.name = "profilePic";
+        fileUplaod.key = "Image";
 
         PlayerProfile.Player_UserName = displayName.text;
         Dictionary<string, object> keyValuePairs = new Dictionary<string, object>();
         keyValuePairs.Add("FullName", PlayerProfile.Player_UserName);
-
-        WebServiceManager.instance.APIRequest(WebServiceManager.instance.updateProfileFunction, Method.POST, null, keyValuePairs, UpdateData, OnFail, CACHEABLE.NULL, true, null);
+        
+        WebServiceManager.instance.APIRequest(WebServiceManager.instance.updateProfileFunction, Method.POST, null, keyValuePairs, UpdateData, OnFail, CACHEABLE.NULL, true, fileUplaod);
     }
 
-    public void UpdateProfilePicture()
-    {
-        //if (PlayerProfile.authProvider == ConstantVariables.Apple || PlayerProfile.authProvider == ConstantVariables.Facebook)
-        //{
-        //    MesgBar.instance.show("Can't Update Profile.");
-        //    return;
-        //}
-        Dictionary<string, object> keyValuePairs = new Dictionary<string, object>();
-        keyValuePairs.Add("FullName", PlayerProfile.Player_UserName);
-        WebServiceManager.instance.APIRequest(WebServiceManager.instance.updateProfileFunction, Method.POST, null, keyValuePairs, UpdateData, OnFail, CACHEABLE.NULL, true, null);
-    }
+
 
     private void UpdateData(JObject arg1, long arg2)
     {
@@ -135,6 +141,13 @@ public class ProfilePanel : UIPanel
         displayName.text = PlayerProfile.Player_UserName;
         email.text = PlayerProfile.Player_Email;
 
+        Sprite sprite = Sprite.Create(PlayerProfile.Player_rawImage_Texture2D, new Rect(0, 0, PlayerProfile.Player_rawImage_Texture2D.width, PlayerProfile.Player_rawImage_Texture2D.height), Vector2.zero);
+
+        pictureBtn.GetComponent<Image>().sprite = sprite;
+
+        Sprite flagSprite = GetFlag();
+        flagImage.sprite =  flagSprite != null ? flagSprite : countries[0].countryFlag;
+
 
         playerName.text = PlayerProfile.Player_UserName;
         country.text = PlayerProfile.PlayerCountry;
@@ -144,6 +157,20 @@ public class ProfilePanel : UIPanel
         levelCount.text = PlayerProfile.level.ToString();
     }
 
+    Sprite GetFlag()
+    {
+        foreach (var item in countries)
+        {
+            if (item.countryCode.ToLower().Trim() == CountryCode.code.ToLower().Trim())
+            {
+                Debug.Log("ss ");
+                return item.countryFlag;
+            }
+        }
+
+        return null;
+    }
+
     public void OnSubmitButton()
     {
         UIEvents.ShowPanel(Panel.Popup);
@@ -151,4 +178,13 @@ public class ProfilePanel : UIPanel
     }
 
 
+
+
+}
+
+[Serializable]
+public class Countries
+{
+    public string countryCode;
+    public Sprite countryFlag;
 }

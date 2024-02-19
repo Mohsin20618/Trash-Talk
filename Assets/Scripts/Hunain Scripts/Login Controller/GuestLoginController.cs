@@ -74,6 +74,7 @@ public class GuestLoginController : MonoBehaviour
         PhotonConnectionController.Instance.ConnectingToPhoton();
 
 
+
         UIEvents.ShowPanel(Panel.TabPanels);
         UIEvents.ShowPanel(Panel.GameSelectPanel);
         UIEvents.HidePanel(Panel.SignupPanel);
@@ -97,6 +98,7 @@ public class GuestLoginController : MonoBehaviour
         // Use the generated email and password for guest login
         if (!string.IsNullOrEmpty(guestEmail) && !string.IsNullOrEmpty(guestPassword) && !string.IsNullOrEmpty(guestUserID) && !string.IsNullOrEmpty(guestName))
         {
+            Debug.Log("guest UserID: "+ guestUserID);
             Dictionary<string, object> keyValuePairs = new Dictionary<string, object>();
             keyValuePairs.Add("UserID", guestUserID);
             keyValuePairs.Add("FullName", guestName);
@@ -132,7 +134,7 @@ public class GuestLoginGenerator
 
     public static string GenerateUniqueUserId()
     {
-        string userID = SystemInfo.deviceUniqueIdentifier;
+        string userID = SystemInfo.deviceUniqueIdentifier + uniqueId;
         return userID;
     }
 

@@ -23,6 +23,7 @@ public class SettingPanel : UIPanel
 
     public ButtonToggle soundToggle;
     public ButtonToggle musicToggle;
+    public ButtonToggle soundToggleInGameplay;
 
     public override void Hide()
     {
@@ -58,12 +59,22 @@ public class SettingPanel : UIPanel
         
     }
 
+    public void SoundCallBackForGameplay()
+    {
+        Sound_CallBack();
+        if (Global.isSoundOn)
+            SoundManager.Instance.PlayBackgroundMusic(Sound.Music);
+        else
+            SoundManager.Instance.StopBackgroundMusic();
+    }
+
     private void Sound_CallBack()
     {
         soundToggle.OnPressToggle();
-
+        soundToggleInGameplay.OnPressToggle();
         PlayerPrefs.SetInt(ConstantVariables.m_Sound, soundToggle.isOn ? 1 :0);
         Global.isSoundOn = soundToggle.isOn;
+
     } 
     private void Music_CallBack()
     {

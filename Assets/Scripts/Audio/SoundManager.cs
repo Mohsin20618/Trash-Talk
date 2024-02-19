@@ -13,6 +13,8 @@ public class SoundManager : MonoBehaviour, ISoundManager
 
     public ButtonToggle musicToggle;
     public ButtonToggle soundToggle;
+    public ButtonToggle soundToggleInGameplay;
+
     bool isMusicOn = true;
     private void Awake()
     {
@@ -37,6 +39,7 @@ public class SoundManager : MonoBehaviour, ISoundManager
         {
             Global.isSoundOn = PlayerPrefs.GetInt(ConstantVariables.m_Sound) == 1 ? true : false;
             soundToggle.SetToggle(Global.isSoundOn);
+            soundToggleInGameplay.SetToggle(Global.isSoundOn);
         }
         if (PlayerPrefs.HasKey(ConstantVariables.m_Music))
         {
@@ -56,7 +59,7 @@ public class SoundManager : MonoBehaviour, ISoundManager
 
         SettingPanel.insideGamePlayScreen = true;
 
-        if (soundEffect.ContainsKey(name) && Global.isMusicOn)
+        if (soundEffect.ContainsKey(name) && Global.isMusicOn && Global.isSoundOn)
         {
             AudioClip clip = soundEffect[name];
             backgroundMusicSource.clip = clip;

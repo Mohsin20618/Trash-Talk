@@ -8,6 +8,10 @@ public class GameSelectPanel : UIPanel
     public RewardPanel rewardPanel;
     public GameObject spinAvailableSprite;
     public GameObject adAvailableSprite;
+    public GameObject downPanel;
+    public GameObject gameModePanel;
+    public GameObject roomSelectionPanel;
+    public GameObject joinRoomPopup;
     public List<GameObject> BtnList;   
 
     private void Awake()
@@ -57,9 +61,33 @@ public class GameSelectPanel : UIPanel
         //Hunain
         VoiceManager.instance.EnableDisableVoiceManager();
         ChatHandler.instance.EnableDisableChatManager(false);
+    }
+    public void OnQuickMatchButtonPressed()
+    {
+        //    OpenTabPanel();
+        Global.isMultiplayer = true;
+        UIEvents.HidePanel(Panel.TabPanels);
+        UIEvents.ShowPanel(Panel.GameplayPanel);
 
+        //Hunain
+        //VoiceManager.instance.EnableDisableVoiceManager();
+        //ChatHandler.instance.EnableDisableChatManager(false);
     }
 
+    public void OnJoinRoomButtonPressed()
+    {
+        joinRoomPopup.SetActive(true);
+    }
+    public void JoinRoomCloseButtonPressed()
+    {
+        joinRoomPopup.SetActive(false);
+    }
+    public void ToggleCreateRoomButtonPressed(bool toggle)
+    {
+        downPanel.SetActive(!toggle);
+        gameModePanel.SetActive(!toggle);
+        roomSelectionPanel.SetActive(toggle);
+    }
     public void OnMultiplayer()
     {
         //   OpenTabPanel();

@@ -34,7 +34,6 @@ RectTransform:
   m_Children:
   - {fileID: 1391265108642485007}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -58,7 +57,9 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
+  m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 0
+  m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 2
   m_TargetDisplay: 0
@@ -118,8 +119,8 @@ MonoBehaviour:
   mesgBar: {fileID: 5439221760786287466}
   txt: {fileID: 8684119931845940759}
   holder: {fileID: 1576667283055821775}
-  errorColor: {r: 0.7607844, g: 0.18039216, b: 0.27058825, a: 1}
-  mesgColor: {r: 0.1260235, g: 0.4528302, b: 0.18049131, a: 1}
+  errorColor: {r: 1, g: 0.18396229, b: 0.1922069, a: 1}
+  mesgColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &5439221760786287466
 GameObject:
   m_ObjectHideFlags: 0
@@ -152,7 +153,6 @@ RectTransform:
   m_Children:
   - {fileID: 3157477918889604460}
   m_Father: {fileID: 2167957994922418637}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -228,7 +228,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3157477918889604460}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -264,7 +263,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 253eb4f81b3a5264099f294bfc0fbb8c, type: 3}
+    m_Font: {fileID: 12800000, guid: efb63573caebc614993bfa473be546a6, type: 3}
     m_FontSize: 14
     m_FontStyle: 0
     m_BestFit: 1
@@ -309,7 +308,6 @@ RectTransform:
   m_Children:
   - {fileID: 165455757362983199}
   m_Father: {fileID: 1391265108642485007}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.9076833}
   m_AnchorMax: {x: 1, y: 1}
@@ -344,8 +342,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 0
+  m_Sprite: {fileID: 21300000, guid: f691e0d330eb92840aadac091adbf512, type: 3}
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4

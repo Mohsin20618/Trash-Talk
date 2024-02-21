@@ -28,9 +28,9 @@ public class MesgBar : Singleton<MesgBar>
 		LeanTween.moveLocalY(mesgBar, 0, 1f).setEase(LeanTweenType.easeOutExpo);
 		//--
 		if (isError)
-			holder.color = errorColor;
+			txt.color = errorColor;
 		else
-			holder.color = mesgColor;
+			txt.color = mesgColor;
 		//--
 		txt.text = mesg;
 		//--

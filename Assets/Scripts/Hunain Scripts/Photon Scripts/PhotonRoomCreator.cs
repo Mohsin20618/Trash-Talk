@@ -347,9 +347,9 @@ public class PhotonRoomCreator : MonoBehaviourPunCallbacks
         }
     }
 
-    public void MasterListReceive(List<string> playerIds)
+    public void MasterListReceive(string[] playerIds)
     {
-        masterList = playerIds;
+        masterList = playerIds.ToList();
         UpdatePlayerList();
     }
 

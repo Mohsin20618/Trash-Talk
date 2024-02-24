@@ -161,11 +161,11 @@ public class PhotonRPCManager : MonoBehaviourPunCallbacks
     #region MasterList RPC
     internal void SendMaterList(List<string> userIds)
     {
-        SendRPC(nameof(SendMaterListRPC), RpcTarget.All, userIds);
+        SendRPC(nameof(SendMaterListRPC), RpcTarget.All, userIds.ToArray());
     }
 
     [PunRPC]
-    void SendMaterListRPC(List<string> userIds)
+    void SendMaterListRPC(string[] userIds)
     {
         PhotonRoomCreator.instance.MasterListReceive(userIds);
     }

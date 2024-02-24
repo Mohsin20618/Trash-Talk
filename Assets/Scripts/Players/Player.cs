@@ -39,6 +39,10 @@ public class Player : IPlayer
 
     public Player partner;
     public Player gameWinner;
+    public string wonCount;
+    public string level;
+    public string gamesPlayed;
+    public string country;
 
     public Player(string playerName, string id, string image, bool isOwn, bool isMaster, bool isBot, int tablePos)
     {

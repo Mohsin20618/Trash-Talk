@@ -7,6 +7,7 @@ using System.Collections;
 using Hashtable = ExitGames.Client.Photon.Hashtable;
 using UnityEngine.SceneManagement;
 using System.Collections.Generic;
+using static UnityEditor.Experimental.AssetDatabaseExperimental.AssetDatabaseCounters;
 
 public class PhotonRoomCreator : MonoBehaviourPunCallbacks
 {
@@ -299,6 +300,9 @@ public class PhotonRoomCreator : MonoBehaviourPunCallbacks
      //   hash["Picture"] = pic;
         hash["Url"] = imageUrl;
         hash["Email"] = email;
+        hash["WonCount"] = PlayerProfile.gamesWon;
+        hash["Level"] = PlayerProfile.level;
+        hash["GamesPlayed"] = PlayerProfile.gamesPlayed;
         hash["Country"] = country;
         PhotonNetwork.LocalPlayer.SetCustomProperties(hash);
     }
@@ -370,15 +374,52 @@ public class PhotonRoomCreator : MonoBehaviourPunCallbacks
             {
                 object imageUrl;
                 string url = "";
+                object objWonCount;
+                string WonCount = "";
+                object objLevel;
+                string Level = "";
+                object objGamesPlayed;
+                string GamesPlayed = ""; 
+                object objCountry;
+                string Country = "";
+
                 if (PhotonNetwork.PlayerList[i].CustomProperties.TryGetValue("Url", out imageUrl))
                 {
                     url = (string)imageUrl;
+                }
+
+                if (PhotonNetwork.PlayerList[i].CustomProperties.TryGetValue("WonCount", out objWonCount))
+                {
+                    WonCount = (string)objWonCount;
+                }
+
+
+                if (PhotonNetwork.PlayerList[i].CustomProperties.TryGetValue("Level", out objLevel))
+                {
+                    Level = (string)objLevel;
+                }
+
+
+                if (PhotonNetwork.PlayerList[i].CustomProperties.TryGetValue("GamesPlayed", out objGamesPlayed))
+                {
+                    GamesPlayed = (string)objGamesPlayed;
+                }
+
+
+                if (PhotonNetwork.PlayerList[i].CustomProperties.TryGetValue("Country", out objCountry))
+                {
+                    Country = (string)objCountry;
                 }
 
                 PlayerManager.instance.players[i].name = PhotonNetwork.PlayerList[i].NickName;
                 PlayerManager.instance.players[i].id = PhotonNetwork.PlayerList[i].UserId;
 
                 PlayerManager.instance.players[i].imageURL = url;
+
+                PlayerManager.instance.players[i].wonCount = WonCount;
+                PlayerManager.instance.players[i].level = Level;
+                PlayerManager.instance.players[i].gamesPlayed = GamesPlayed;
+                PlayerManager.instance.players[i].country = Country;
 
                 PlayerManager.instance.players[i].isOwn = PhotonNetwork.PlayerList[i].UserId.Equals(PhotonNetwork.LocalPlayer.UserId);
                 PlayerManager.instance.players[i].isMaster = PhotonNetwork.PlayerList[i].IsMasterClient;

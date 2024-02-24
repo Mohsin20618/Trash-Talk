@@ -66,14 +66,24 @@ public class GameSelectPanel : UIPanel
     {
         //    OpenTabPanel();
         Global.isMultiplayer = true;
-        UIEvents.HidePanel(Panel.TabPanels);
-        UIEvents.ShowPanel(Panel.GameplayPanel);
+        Global.isPrivate = false;
+        //UIEvents.HidePanel(Panel.TabPanels);
+        //UIEvents.ShowPanel(Panel.GameplayPanel);
+
+        ToggleRoomSelection(true);
 
         //Hunain
         //VoiceManager.instance.EnableDisableVoiceManager();
         //ChatHandler.instance.EnableDisableChatManager(false);
     }
+    public void OnCreateRoomButtonPressed()
+    {
+        //    OpenTabPanel();
+        Global.isMultiplayer = true;
+        Global.isPrivate = true;
 
+        ToggleRoomSelection(true);
+    }
     public void OnJoinRoomButtonPressed()
     {
         joinRoomPopup.SetActive(true);
@@ -82,9 +92,8 @@ public class GameSelectPanel : UIPanel
     {
         joinRoomPopup.SetActive(false);
     }
-    public void ToggleCreateRoomButtonPressed(bool toggle, bool isPrivate)
+    public void ToggleRoomSelection(bool toggle)
     {
-        Global.isPrivate = isPrivate;
         downPanel.SetActive(!toggle);
         gameModePanel.SetActive(!toggle);
         roomSelectionPanel.SetActive(toggle);

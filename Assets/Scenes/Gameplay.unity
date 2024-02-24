@@ -2865,10 +2865,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1662254602}
-    - target: {fileID: 7351175583029869562, guid: 24640a6568fbf4157936e2ed707a3157, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -44.5343
-      objectReference: {fileID: 0}
     - target: {fileID: 7579632250892440628, guid: 24640a6568fbf4157936e2ed707a3157, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -8050,8 +8046,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0.25}
+  m_SizeDelta: {x: 0, y: -0.50012}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1370600243
 MonoBehaviour:
@@ -8073,7 +8069,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: c75378c0d5346be4eb8dafbf9a02881d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e74d41916ac9e4b4abed8ca765e4ff1f, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -8990,6 +8986,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1583682517113472661}
     m_Modifications:
+    - target: {fileID: 2767817253549121181, guid: 16f47c3f73b34d04d97632423ad1300b, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.00061035156
+      objectReference: {fileID: 0}
     - target: {fileID: 3978850596735699280, guid: 16f47c3f73b34d04d97632423ad1300b, type: 3}
       propertyPath: m_Name
       value: RoomSelection
@@ -17619,7 +17619,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 250, y: 222}
+  m_SizeDelta: {x: 273.63, y: 242.983}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &5380669898849738255
 RectTransform:
@@ -17880,6 +17880,10 @@ PrefabInstance:
     - target: {fileID: 2606640029707537449, guid: 8bf64f18e91668d418cbbaabb82533e8, type: 3}
       propertyPath: m_Name
       value: CountdownTimerForSpinAndAdd
+      objectReference: {fileID: 0}
+    - target: {fileID: 2606640029707537449, guid: 8bf64f18e91668d418cbbaabb82533e8, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3883005858239981509, guid: 8bf64f18e91668d418cbbaabb82533e8, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -18345,10 +18349,10 @@ RectTransform:
   - {fileID: 5348261588047910221}
   m_Father: {fileID: 1583682517113472661}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 13.929, y: 473}
-  m_SizeDelta: {x: 455.71, y: 417.03}
+  m_AnchorMin: {x: 0.413276, y: 0.69760877}
+  m_AnchorMax: {x: 0.5987498, y: 1.037569}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &8575702215660766601
 GameObject:

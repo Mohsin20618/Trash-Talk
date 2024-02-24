@@ -9,6 +9,9 @@ using System.Linq;
 
 public class PlayerUI : MonoBehaviour
 {
+    public Button playerProfileBtn;
+    public GameObject inGameProfile;
+    public Player playerData;
     public AddFriend addFriendBtn;
     public FriendRequestPopUp friendRequestPopUp;
     public PlayerBidUI bidUI;
@@ -51,8 +54,11 @@ public class PlayerUI : MonoBehaviour
 
     private void Start()
     {
-       if(Global.isMultiplayer)
-            muteBtn.onClick.AddListener(()=> MicBtnListener());
+        if (Global.isMultiplayer) { }
+        {
+            muteBtn.onClick.AddListener(() => MicBtnListener());
+        }
+            playerProfileBtn.onClick.AddListener(() => OpenInGameProfile());
     }
 
 
@@ -92,8 +98,11 @@ public class PlayerUI : MonoBehaviour
         //muteIcon.color = color;
     }
 
-    public void SetUI(string name="Waiting...",string userId="",Sprite botSprite=null, int score=0, string imageUrl=null)
+    public void SetUI(string name="Waiting...",string userId="",Sprite botSprite=null, int score=0, string imageUrl=null, Player player = null)
     {
+        if(player != null)
+            playerData = player;
+
         //Hunain
         this.userId = userId;
         if (!string.IsNullOrEmpty(userId) && Global.isMultiplayer)
@@ -139,7 +148,11 @@ public class PlayerUI : MonoBehaviour
 
     }
 
-
+    public void OpenInGameProfile()
+    {
+        inGameProfile.SetActive(true);
+        inGameProfile.GetComponent<InGameProfile>().OpenProfile(playerData);
+    }
     public void DisplayChatMsg(string chatTypeStr, int index)
     {
         ChatType chatType;

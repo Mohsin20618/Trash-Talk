@@ -57,7 +57,7 @@ public class InviteFriendsPanel : MonoBehaviour
         //}
     }
 
-    void OnSelect(User user, bool isSelected)
+     public void OnSelect(User user, bool isSelected)
     {
         if (isSelected)
             selectedUsers.Add(user);
@@ -67,6 +67,7 @@ public class InviteFriendsPanel : MonoBehaviour
         //inviteButton.interactable = (selectedUsers.Count > 0);
     }
 
+    [ContextMenu("Test")]
     public void OnInviteButton()
     {
         if(PlayerProfile.Player_coins < Global.coinsRequired)

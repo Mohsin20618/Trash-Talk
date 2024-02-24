@@ -249,7 +249,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d04ab80bca186426bac3c097559f29ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  addButton: {fileID: 0}
+  addButton: {fileID: 6824103208763672878}
   inviteButton: {fileID: 0}
   nameText: {fileID: 3083236637475554378}
   wonText: {fileID: 0}
@@ -450,7 +450,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 8153369552186093370}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7412310720347564604}
+        m_TargetAssemblyTypeName: FriendItem, Assembly-CSharp
+        m_MethodName: SelectUnselect
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &8426155682323032267
 GameObject:
   m_ObjectHideFlags: 0

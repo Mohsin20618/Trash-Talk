@@ -7,7 +7,7 @@ public static class Global
     public static bool isMultiplayer = false;
     public static bool isAdAvailable = false;
     public static bool isSpinAvailable = false;
-    public static int coinsRequired = 100;  //It is temporary and will be changed after getting more screens
+    public static int coinsRequired = 0;  //It is temporary and will be changed after getting more screens
     public static string currentGameId = "";
     public static int scoreToWin = 500;
 

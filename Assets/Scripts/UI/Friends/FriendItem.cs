@@ -45,7 +45,6 @@ public class FriendItem : MonoBehaviour
             //imageLoader.SetActive(false);
     }
 
-
     void DownloadCallBack(Texture2D texture2D)
     {
         //imageLoader.SetActive(false);
@@ -53,7 +52,7 @@ public class FriendItem : MonoBehaviour
 
     public void SelectUnselect()
     {
-        //this.selectionCallBack(this.user, isSelected = !isSelected);
+        this.selectionCallBack(this.user, isSelected = !isSelected);
         //selectionBtton.GetChild(0).gameObject.SetActive(!isSelected);
         //selectionBtton.GetChild(1).gameObject.SetActive(isSelected);
 

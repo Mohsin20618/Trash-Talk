@@ -24,6 +24,7 @@ public class ShopItem : MonoBehaviour
 
     public void OnBuyButton()
     {
+        Debug.Log("totalCoins: " + totalCoins + "price: " + price + "productID: " + productID); 
         shop.OnBuyCoins(totalCoins, price, productID);
     }
 

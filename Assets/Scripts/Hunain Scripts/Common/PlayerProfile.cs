@@ -24,6 +24,8 @@ public class PlayerProfile : MonoBehaviour
     public static int gamesPlayed;
     public static int level = 1;
 
+    public List<User> friendsUsers;
+    public List<User> recentUsers;
     public List<User> globalUsers;
     public List<FriendDetail> facebookFriends;
 

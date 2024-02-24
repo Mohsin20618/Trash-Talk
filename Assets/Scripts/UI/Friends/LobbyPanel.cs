@@ -15,8 +15,6 @@ public class LobbyPanel : MonoBehaviour
     private void Start()
     {
         selectedList = new List<GameObject>();
-        //WebServiceManager.instance.APIRequest(WebServiceManager.instance.getLatestPlayedMembers, Method.GET, null, null, OnSuccess, OnFail, CACHEABLE.NULL, true, null);
-        WebServiceManager.instance.APIRequest(WebServiceManager.instance.getFriends, Method.GET, null, null, OnSuccess, OnFail, CACHEABLE.NULL, true, null);
 
     }
 

@@ -62,7 +62,7 @@ public class GameSelectPanel : UIPanel
         }
         if (value != -1)
         {
-            roomSelectionCard[value].LeanScale(Vector3.one*1.2f, 0.2f);
+            roomSelectionCard[value].LeanScale(Vector3.one * 1.2f, 0.2f);
             roomSelectionCard[value].GetComponent<Button>().interactable = true;
         }
     }

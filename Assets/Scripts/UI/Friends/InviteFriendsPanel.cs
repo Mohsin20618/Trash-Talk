@@ -11,7 +11,14 @@ public class InviteFriendsPanel : MonoBehaviour
     public GameObject friendItem;
     public Button inviteButton;
     public GameObject emptyDataText;
+    public ListType currentListType;
 
+    public enum ListType 
+    {
+        friends,
+        recent,
+        global
+    }
     //  List<GameObject> selectedList;
     [SerializeField] public List<User> selectedUsers;
 
@@ -35,8 +42,25 @@ public class InviteFriendsPanel : MonoBehaviour
 
     IEnumerator ShowList()
     {
+        List<User> users = new();
+
         yield return null;
-        List<User> users = PlayerProfile.instance.globalUsers;
+        switch (currentListType)
+        {
+            case ListType.friends:
+                users = PlayerProfile.instance.friendsUsers;
+                break;
+            case ListType.recent:
+                users = PlayerProfile.instance.recentUsers;
+                break;
+            case ListType.global:
+                users = PlayerProfile.instance.globalUsers;
+
+                break;
+            default:
+                break;
+        }
+
         print("users COUNT: " + users.Count);
 
         emptyDataText.SetActive(users.Count == 0);

@@ -72,9 +72,11 @@ public class PhotonConnectionController : MonoBehaviourPunCallbacks
         tabPanels.UpdateUI("coins");
         Dictionary<string, object> keyValuePairs = new Dictionary<string, object>();
         keyValuePairs.Add("PageNo", 1);
-        
+
         //  PageNo
         WebServiceManager.instance.APIRequest(WebServiceManager.instance.globalDatabaseUsers, Method.POST, null, keyValuePairs, OnGetGlobalUsers, OnFailGlobalUser, CACHEABLE.NULL, true, null);
+        WebServiceManager.instance.APIRequest(WebServiceManager.instance.getFriends, Method.POST, null, keyValuePairs, OnGetFriendsUsers, OnFailGlobalUser, CACHEABLE.NULL, true, null);
+        WebServiceManager.instance.APIRequest(WebServiceManager.instance.getLatestPlayedMembers, Method.POST, null, keyValuePairs, OnGetRecentUsers, OnFailGlobalUser, CACHEABLE.NULL, true, null);
 
         Debug.Log("ConnectingToPhoton. . .");
         string gameVersion = "0.0.1";
@@ -95,10 +97,26 @@ public class PhotonConnectionController : MonoBehaviourPunCallbacks
 
         Debug.Log("Total Global users: " + PlayerProfile.instance.globalUsers.Count);
     }
+    public void OnGetRecentUsers(JObject resp, long arg2)
+    {
+        var globalUsers = GlobalUsers.FromJson(resp.ToString());
+
+        PlayerProfile.instance.recentUsers = globalUsers.data.data;
+
+        Debug.Log("Total Global users: " + PlayerProfile.instance.globalUsers.Count);
+    }
+    public void OnGetFriendsUsers(JObject resp, long arg2)
+    {
+        var globalUsers = GlobalUsers.FromJson(resp.ToString());
+
+        PlayerProfile.instance.friendsUsers = globalUsers.data.data;
+
+        Debug.Log("Total Global users: " + PlayerProfile.instance.globalUsers.Count);
+    }
 
     void OnFailGlobalUser(string msg)
     {
-        Debug.Log("Fail Global Users:  " + msg);
+        Debug.Log("Fail Users:  " + msg);
     }
 
     // Start is called before the first frame update

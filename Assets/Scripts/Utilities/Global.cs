@@ -5,6 +5,7 @@ using UnityEngine;
 public static class Global
 {
     public static bool isMultiplayer = false;
+    public static bool isPrivate = false;
     public static bool isAdAvailable = false;
     public static bool isSpinAvailable = false;
     public static int coinsRequired = 0;  //It is temporary and will be changed after getting more screens

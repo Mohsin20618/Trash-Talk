@@ -82,8 +82,9 @@ public class GameSelectPanel : UIPanel
     {
         joinRoomPopup.SetActive(false);
     }
-    public void ToggleCreateRoomButtonPressed(bool toggle)
+    public void ToggleCreateRoomButtonPressed(bool toggle, bool isPrivate)
     {
+        Global.isPrivate = isPrivate;
         downPanel.SetActive(!toggle);
         gameModePanel.SetActive(!toggle);
         roomSelectionPanel.SetActive(toggle);

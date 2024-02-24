@@ -1,6 +1,7 @@
 using UnityEngine;
 using Photon.Pun;
 using System;
+using System.Collections.Generic;
 
 public class PhotonRPCManager : MonoBehaviourPunCallbacks
 {
@@ -156,4 +157,20 @@ public class PhotonRPCManager : MonoBehaviourPunCallbacks
     }
     #endregion
 
+
+    #region MasterList RPC
+    internal void SendMaterList(List<string> userIds)
+    {
+        SendRPC(nameof(SendMaterListRPC), RpcTarget.All, userIds);
+    }
+
+    [PunRPC]
+    void SendMaterListRPC(List<string> userIds)
+    {
+        PhotonRoomCreator.instance.MasterListReceive(userIds);
+    }
+
+
+
+    #endregion
 }

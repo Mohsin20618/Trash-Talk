@@ -7,7 +7,7 @@ using System.Collections;
 using Hashtable = ExitGames.Client.Photon.Hashtable;
 using UnityEngine.SceneManagement;
 using System.Collections.Generic;
-using static UnityEditor.Experimental.AssetDatabaseExperimental.AssetDatabaseCounters;
+using System.Linq;
 
 public class PhotonRoomCreator : MonoBehaviourPunCallbacks
 {
@@ -60,8 +60,8 @@ public class PhotonRoomCreator : MonoBehaviourPunCallbacks
 
     public override void OnPlayerLeftRoom(Photon.Realtime.Player otherPlayer)
     {
-        Debug.Log("OnPlayerLeftRoom() Player: "+ otherPlayer);
-        Debug.Log("Player Left Room, Id is:  "  + otherPlayer.UserId) ;
+        Debug.Log("OnPlayerLeftRoom() Player: " + otherPlayer);
+        Debug.Log("Player Left Room, Id is:  " + otherPlayer.UserId);
         GameplayManager.instance.ReplaceBotWithPlayer(otherPlayer.UserId);
         //  UpdatePlayerList();
         Debug.Log("IsMaster Left: " + otherPlayer.IsMasterClient);
@@ -166,12 +166,12 @@ public class PhotonRoomCreator : MonoBehaviourPunCallbacks
                 roomOptions.IsOpen = true;
                 //_myCustomProperties["Host"] = PhotonNetwork.LocalPlayer.UserId;
                 _myCustomProperties["Coins"] = Global.coinsRequired.ToString();
-                roomOptions.CustomRoomPropertiesForLobby = new string[1] { "Coins"};
+                roomOptions.CustomRoomPropertiesForLobby = new string[1] { "Coins" };
                 roomOptions.CustomRoomProperties = _myCustomProperties;
                 //roomName = string.IsNullOrEmpty(roomName) ?"SAND_"+ randomNo:roomName;
                 //RoomID = roomName.ToUpper();
 
-                PhotonNetwork.JoinRandomOrCreateRoom(_myCustomProperties,0,MatchmakingMode.FillRoom,TypedLobby.Default,null,null,roomOptions,null);
+                PhotonNetwork.JoinRandomOrCreateRoom(_myCustomProperties, 0, MatchmakingMode.FillRoom, TypedLobby.Default, null, null, roomOptions, null);
             }
         }
         //else
@@ -184,7 +184,7 @@ public class PhotonRoomCreator : MonoBehaviourPunCallbacks
     {
         if (PhotonNetwork.IsConnectedAndReady)
         {
-            CreateNewRoom(publicRoom , roomName);
+            CreateNewRoom(publicRoom, roomName);
         }
         else
         {
@@ -266,7 +266,8 @@ public class PhotonRoomCreator : MonoBehaviourPunCallbacks
         }
         PlayerManager.instance.ClearPlayers();
         UpdateVoicePlayers();
-        UpdatePlayerList();
+        //UpdatePlayerList();
+        MasterList();
 
 
 
@@ -291,13 +292,13 @@ public class PhotonRoomCreator : MonoBehaviourPunCallbacks
     public void setPhotonProps()
     {
         string name = PlayerProfile.Player_UserName;
-       // string pic = TextureConverter.Texture2DToBase64(PlayerProfile.Player_rawImage_Texture2D);
+        // string pic = TextureConverter.Texture2DToBase64(PlayerProfile.Player_rawImage_Texture2D);
         string imageUrl = PlayerProfile.imageUrl;
         string email = PlayerProfile.Player_Email;
         string country = PlayerProfile.PlayerCountry;
         Hashtable hash = new Hashtable();
         hash["Name"] = name;
-     //   hash["Picture"] = pic;
+        //   hash["Picture"] = pic;
         hash["Url"] = imageUrl;
         hash["Email"] = email;
         hash["WonCount"] = PlayerProfile.gamesWon;
@@ -331,15 +332,37 @@ public class PhotonRoomCreator : MonoBehaviourPunCallbacks
         //}
     }
 
+
+    public static List<string> masterList = new();
+
+    public void MasterList()
+    {
+        if (PhotonNetwork.IsConnected)
+        {
+            if (PhotonNetwork.LocalPlayer.IsMasterClient)
+            {
+                //Generate List and Show
+                GameplayManager.instance.partnerPanel.SetData(PhotonNetwork.PlayerList.ToList());
+            }
+        }
+    }
+
+    public void MasterListReceive(List<string> playerIds)
+    {
+        masterList = playerIds;
+        UpdatePlayerList();
+    }
+
+
     public override void OnPlayerEnteredRoom(Photon.Realtime.Player newPlayer)
     {
         Debug.LogError("OnPlayerEnteredRoom playerName: " + newPlayer.NickName);
 
         PlayerManager.instance.ClearPlayers();
         UpdateVoicePlayers();
-        UpdatePlayerList();
-
-        if(PhotonNetwork.IsMasterClient && PhotonNetwork.CurrentRoom.PlayerCount >= 2)
+        //UpdatePlayerList();
+        MasterList();
+        if (PhotonNetwork.IsMasterClient && PhotonNetwork.CurrentRoom.PlayerCount >= 2)
         {
             GameplayManager.instance.ShowMultiplayerMessage(false);
             GameplayManager.instance.SetPlayButton(true);
@@ -356,21 +379,25 @@ public class PhotonRoomCreator : MonoBehaviourPunCallbacks
         //  Global.playerData = new System.Collections.Generic.List<MutiplayerData>();
         //   PlayerManager.instance.AddPlayer("Player 1", false, true, 0);
 
-        for(int i = 0; i < 4; i++)
+        for (int i = 0; i < 4; i++)
         {
             PlayerManager.instance.AddPlayer($"Waiting..", null, null, false, false, true, 0);
             PlayerManager.instance.players[i].photonIndex = i;
         }
 
 
-        for (int i = 0; i < PhotonNetwork.PlayerList.Length; i++)
+        for (int i = 0; i < masterList.Count; i++)
         {
-            if(i >= PhotonNetwork.PlayerList.Length)
+            if (i >= masterList.Count)
             {
                 break;
             }
+            if (masterList[i] == null)
+            {
+                continue; 
+            }
 
-            if(PlayerManager.instance.players[i].id == null)
+            if (PlayerManager.instance.players[i].id == null)
             {
                 object imageUrl;
                 string url = "";
@@ -379,40 +406,42 @@ public class PhotonRoomCreator : MonoBehaviourPunCallbacks
                 object objLevel;
                 string Level = "";
                 object objGamesPlayed;
-                string GamesPlayed = ""; 
+                string GamesPlayed = "";
                 object objCountry;
                 string Country = "";
 
-                if (PhotonNetwork.PlayerList[i].CustomProperties.TryGetValue("Url", out imageUrl))
+                Photon.Realtime.Player player = PhotonNetwork.PlayerList.ToList().Find(x => x.UserId.Equals(masterList[i]));
+                if (player.CustomProperties.TryGetValue("Url", out imageUrl))
                 {
                     url = (string)imageUrl;
                 }
 
-                if (PhotonNetwork.PlayerList[i].CustomProperties.TryGetValue("WonCount", out objWonCount))
+                if (player.CustomProperties.TryGetValue("WonCount", out objWonCount))
                 {
                     WonCount = (string)objWonCount;
                 }
 
 
-                if (PhotonNetwork.PlayerList[i].CustomProperties.TryGetValue("Level", out objLevel))
+                if (player.CustomProperties.TryGetValue("Level", out objLevel))
                 {
                     Level = (string)objLevel;
                 }
 
 
-                if (PhotonNetwork.PlayerList[i].CustomProperties.TryGetValue("GamesPlayed", out objGamesPlayed))
+                if (player.CustomProperties.TryGetValue("GamesPlayed", out objGamesPlayed))
                 {
                     GamesPlayed = (string)objGamesPlayed;
                 }
 
 
-                if (PhotonNetwork.PlayerList[i].CustomProperties.TryGetValue("Country", out objCountry))
+                if (player.CustomProperties.TryGetValue("Country", out objCountry))
                 {
                     Country = (string)objCountry;
                 }
 
-                PlayerManager.instance.players[i].name = PhotonNetwork.PlayerList[i].NickName;
-                PlayerManager.instance.players[i].id = PhotonNetwork.PlayerList[i].UserId;
+
+                PlayerManager.instance.players[i].name = player.NickName;
+                PlayerManager.instance.players[i].id = player.UserId;
 
                 PlayerManager.instance.players[i].imageURL = url;
 
@@ -421,16 +450,16 @@ public class PhotonRoomCreator : MonoBehaviourPunCallbacks
                 PlayerManager.instance.players[i].gamesPlayed = GamesPlayed;
                 PlayerManager.instance.players[i].country = Country;
 
-                PlayerManager.instance.players[i].isOwn = PhotonNetwork.PlayerList[i].UserId.Equals(PhotonNetwork.LocalPlayer.UserId);
-                PlayerManager.instance.players[i].isMaster = PhotonNetwork.PlayerList[i].IsMasterClient;
+                PlayerManager.instance.players[i].isOwn = player.UserId.Equals(PhotonNetwork.LocalPlayer.UserId);
+                PlayerManager.instance.players[i].isMaster = player.IsMasterClient;
                 PlayerManager.instance.players[i].isBot = false;
                 //PlayerManager.instance.players[i].tablePosition = 0;
                 PlayerManager.instance.players[i].photonIndex = i;
-                
+
 
             }
 
-         //   PlayerManager.instance.AddPlayer($"Waiting..", null, null, false, false, true, 0);
+            //   PlayerManager.instance.AddPlayer($"Waiting..", null, null, false, false, true, 0);
         }
 
         //foreach (var item in PhotonNetwork.PlayerList)
@@ -460,7 +489,7 @@ public class PhotonRoomCreator : MonoBehaviourPunCallbacks
 
         UIEvents.UpdateData(Panel.PlayersUIPanel, null, "SetPlayersData");
 
-     //   Invoke("ttt", 0.5f);
+        //   Invoke("ttt", 0.5f);
     }
 
     private void UpdateVoicePlayers()
@@ -511,7 +540,7 @@ public class PhotonRoomCreator : MonoBehaviourPunCallbacks
             Global.currentGameId = propertiesThatChanged["GameId"].ToString();
             print("Global.currentGameId is " + Global.currentGameId);
         }
-      //  print("propertiesThatChanged: " + propertiesThatChanged);
+        //  print("propertiesThatChanged: " + propertiesThatChanged);
         // propertiesThatChanged["GameId"].ToString();
     }
 }

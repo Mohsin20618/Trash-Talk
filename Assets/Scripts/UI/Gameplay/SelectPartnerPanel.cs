@@ -5,48 +5,40 @@ using UnityEngine;
 public class SelectPartnerPanel : MonoBehaviour
 {
     public Transform container;
-    System.Action<string> onSelect;
+    public List<PartnerObject> partnerObjects;
 
     private void OnEnable()
     {
-        DisableAll();
-       // SetData(2);
     }
 
-    public void SetData(List<Player> players, System.Action<string> onSelect)
+    public void EnableDisablePanel(bool state) { gameObject.SetActive(state); }
+
+    public void SetData(List<Photon.Realtime.Player> players)
     {
-        this.onSelect = onSelect;
+        EnableDisablePanel(true);
+        object imageUrl;
+        string url = "";
+
+        foreach (var item in partnerObjects)
+        {
+            item.gameObject.SetActive(false);
+        }
+
 
         for (int i = 0; i < players.Count; i++)
         {
-            if (players[i].isBot || players[i].id == PlayerProfile.Player_UserID)
-                continue;
-
-            if (i <= container.childCount)
+            if (players[i].IsMasterClient)
             {
-                container.GetChild(i).gameObject.SetActive(true);
-                container.GetChild(i).GetComponent<PartnerObject>().SetData(OnSelect, players[i].name, players[i].id, players[i].imageURL);
+                continue;
             }
+
+            if (players[i].CustomProperties.TryGetValue("Url", out imageUrl))
+            {
+                url = (string)imageUrl;
+            }
+            partnerObjects[i].SetData(players[i].NickName, players[i].UserId, url);
+
+            partnerObjects[i].gameObject.SetActive(true);
         }
     }
-
-    void DisableAll()
-    {
-        foreach(Transform child in container)
-        {
-            child.gameObject.SetActive(false);
-        }
-    }
-
-    void OnSelect(string id)
-    {
-        this.onSelect(id);
-        this.gameObject.SetActive(false);
-    }
-
-    public void OnSkipButton()
-    {
-        OnSelect("");
-    }
-
 }

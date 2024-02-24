@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine.UI;
 using UnityEngine;
+using Photon.Pun;
+using System.Linq;
 
 public class PartnerObject : MonoBehaviour
 {
@@ -11,13 +13,11 @@ public class PartnerObject : MonoBehaviour
     public Image profileImage;
     public GameObject imageLoader;
 
-    System.Action<string> onSelect;
     string userId;
 
-    public void SetData(System.Action<string> onSelect, string name = "", string userId = "", string imageUrl = null)
+    public void SetData(string name = "", string userId = "", string imageUrl = null)
     {
         this.userId = userId;
-        this.onSelect = onSelect;
 
         nameText.text = name;
      //   gameScore.text = score.ToString();
@@ -40,9 +40,35 @@ public class PartnerObject : MonoBehaviour
 
     public void OnClick()
     {
-      //  print("Selected Partner");
-     //   this.onSelect(userId);
+        print("Selected Partner");
+        List<string> temp = new();
+        List<string> opponents = GetOpponents();
+
+        temp.Add(PhotonNetwork.LocalPlayer.UserId);
+        temp.Add(opponents.Count > 0 ? opponents[0] : null);
+        temp.Add(this.userId);
+        temp.Add(opponents.Count > 1 ? opponents[1] : null);
+
+        PhotonRPCManager.Instance.SendMaterList(temp);
+
+        GameplayManager.instance.partnerPanel.EnableDisablePanel(false);
+
+
     }
 
+    List<string> GetOpponents() 
+    {
+        List<string> players = new();
 
+        foreach (var item in PhotonNetwork.PlayerList)
+        {
+            if (item.UserId != PhotonNetwork.LocalPlayer.UserId && item.UserId != this.userId)
+            {
+                players.Add(item.UserId);
+            }
+
+        }
+
+        return players;
+    }
 }

@@ -301,9 +301,9 @@ public class PhotonRoomCreator : MonoBehaviourPunCallbacks
         //   hash["Picture"] = pic;
         hash["Url"] = imageUrl;
         hash["Email"] = email;
-        hash["WonCount"] = PlayerProfile.gamesWon;
-        hash["Level"] = PlayerProfile.level;
-        hash["GamesPlayed"] = PlayerProfile.gamesPlayed;
+        hash["WonCount"] = PlayerProfile.gamesWon.ToString();
+        hash["Level"] = PlayerProfile.level.ToString();
+        hash["GamesPlayed"] = PlayerProfile.gamesPlayed.ToString();
         hash["Country"] = country;
         PhotonNetwork.LocalPlayer.SetCustomProperties(hash);
     }

@@ -100,7 +100,7 @@ public class PhotonRoomCreator : MonoBehaviourPunCallbacks
     /// <param name="isPublicRoom"> Room Category </param>
     private void CreateNewRoom(bool isPublicRoom = true, string roomName = "")
     {
-        if (PhotonNetwork.InLobby)
+        //if (PhotonNetwork.InLobby)
         {
             if (isPublicRoom == false)
             {
@@ -154,6 +154,8 @@ public class PhotonRoomCreator : MonoBehaviourPunCallbacks
                 {
                     PhotonNetwork.LocalPlayer.NickName = PlayerProfile.Player_UserName;
                 }
+
+                Debug.Log("Global.coinsRequired: " + Global.coinsRequired);
                 string gameVersion = "0.0.1";
                 PhotonNetwork.GameVersion = gameVersion;//MasterManager.GameSettings.GameVersion;
                 RoomOptions roomOptions = new RoomOptions();
@@ -161,9 +163,9 @@ public class PhotonRoomCreator : MonoBehaviourPunCallbacks
                 roomOptions.PublishUserId = true;
                 roomOptions.IsVisible = isPublicRoom;
                 roomOptions.IsOpen = true;
-                _myCustomProperties["Host"] = PhotonNetwork.LocalPlayer.UserId;
+                //_myCustomProperties["Host"] = PhotonNetwork.LocalPlayer.UserId;
                 _myCustomProperties["Coins"] = Global.coinsRequired.ToString();
-                roomOptions.CustomRoomPropertiesForLobby = new string[2] { "Host" , "Coins"};
+                roomOptions.CustomRoomPropertiesForLobby = new string[1] { "Coins"};
                 roomOptions.CustomRoomProperties = _myCustomProperties;
                 //roomName = string.IsNullOrEmpty(roomName) ?"SAND_"+ randomNo:roomName;
                 //RoomID = roomName.ToUpper();
@@ -171,10 +173,10 @@ public class PhotonRoomCreator : MonoBehaviourPunCallbacks
                 PhotonNetwork.JoinRandomOrCreateRoom(_myCustomProperties,0,MatchmakingMode.FillRoom,TypedLobby.Default,null,null,roomOptions,null);
             }
         }
-        else
-        {
-            Debug.LogError("Player Not in Lobby");
-        }
+        //else
+        //{
+        //    Debug.LogError("Player Not in Lobby");
+        //}
     }
 
     public void CreateRoomOnPhoton(bool publicRoom = true, string roomName = "")

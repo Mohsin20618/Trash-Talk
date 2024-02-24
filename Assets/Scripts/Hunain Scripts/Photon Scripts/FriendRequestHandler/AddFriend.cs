@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class AddFriend : MonoBehaviour
 {
     public Button addFriendBtn;
+    public GameObject addImage;
+    public GameObject sentImage;
 
     private void Awake()
     {
@@ -25,5 +27,8 @@ public class AddFriend : MonoBehaviour
     public void ChangeInteractable(bool state) 
     {
         addFriendBtn.interactable = state;
+
+        addImage.SetActive(state);
+        sentImage.SetActive(!state);
     }
 }

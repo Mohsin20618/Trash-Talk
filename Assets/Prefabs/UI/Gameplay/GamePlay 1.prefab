@@ -18185,6 +18185,7 @@ GameObject:
   - component: {fileID: 642745878611069212}
   - component: {fileID: 1524876219792123320}
   - component: {fileID: 7850278935328690930}
+  - component: {fileID: 1777834067979447213}
   m_Layer: 5
   m_Name: Player3
   m_TagString: Untagged
@@ -18241,6 +18242,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 388a7335b10144226832f92ff9b62e41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerProfileBtn: {fileID: 1777834067979447213}
+  inGameProfile: {fileID: 7177127914496194963}
+  playerData:
+    name: 
+    hand: []
+    score: 0
+    tablePosition: 0
+    bidPlaced: 0
+    bidWon: 0
+    isBot: 0
+    isOwn: 0
+    winningCards: []
+    photonIndex: 0
+    id: 
+    isMaster: 0
+    imageURL: 
+    roundBonus: 0
+    teamBidPlaced: 0
+    teamBidWon: 0
+    roundBags: 0
+    roundBounus: 0
+    roundPoints: 0
+    roundTotalBags: 0
+    roundGabPenalty: 0
+    roundTotalPoints: 0
+    bostonWon: 0
+    wonCount: 
+    level: 
+    gamesPlayed: 
+    country: 
   addFriendBtn: {fileID: 0}
   friendRequestPopUp: {fileID: 636990761776721057}
   bidUI: {fileID: 8434244306831470289}
@@ -18259,6 +18290,50 @@ MonoBehaviour:
   muteBtn: {fileID: 4083408479673456424}
   bonusImage: {fileID: 412352944673256221}
   timerObj: {fileID: 2391046990849206769}
+--- !u!114 &1777834067979447213
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4460505487173378170}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 0}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &4584774995654499230
 GameObject:
   m_ObjectHideFlags: 0
@@ -19440,6 +19515,7 @@ GameObject:
   - component: {fileID: 7564759782855331355}
   - component: {fileID: 4961263929351343981}
   - component: {fileID: 3629188018876667648}
+  - component: {fileID: 2205602929879100309}
   m_Layer: 5
   m_Name: Player4
   m_TagString: Untagged
@@ -19496,6 +19572,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 388a7335b10144226832f92ff9b62e41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerProfileBtn: {fileID: 2205602929879100309}
+  inGameProfile: {fileID: 7177127914496194963}
+  playerData:
+    name: 
+    hand: []
+    score: 0
+    tablePosition: 0
+    bidPlaced: 0
+    bidWon: 0
+    isBot: 0
+    isOwn: 0
+    winningCards: []
+    photonIndex: 0
+    id: 
+    isMaster: 0
+    imageURL: 
+    roundBonus: 0
+    teamBidPlaced: 0
+    teamBidWon: 0
+    roundBags: 0
+    roundBounus: 0
+    roundPoints: 0
+    roundTotalBags: 0
+    roundGabPenalty: 0
+    roundTotalPoints: 0
+    bostonWon: 0
+    wonCount: 
+    level: 
+    gamesPlayed: 
+    country: 
   addFriendBtn: {fileID: 0}
   friendRequestPopUp: {fileID: 8841367985566402354}
   bidUI: {fileID: 5367097891565382243}
@@ -19514,6 +19620,50 @@ MonoBehaviour:
   muteBtn: {fileID: 5194229280061602705}
   bonusImage: {fileID: 4745262048706899026}
   timerObj: {fileID: 2535335603912366847}
+--- !u!114 &2205602929879100309
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5096604111491557934}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 0}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &5104212441175327431
 GameObject:
   m_ObjectHideFlags: 0
@@ -30908,6 +31058,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 388a7335b10144226832f92ff9b62e41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerProfileBtn: {fileID: 0}
+  inGameProfile: {fileID: 0}
+  playerData:
+    name: 
+    hand: []
+    score: 0
+    tablePosition: 0
+    bidPlaced: 0
+    bidWon: 0
+    isBot: 0
+    isOwn: 0
+    winningCards: []
+    photonIndex: 0
+    id: 
+    isMaster: 0
+    imageURL: 
+    roundBonus: 0
+    teamBidPlaced: 0
+    teamBidWon: 0
+    roundBags: 0
+    roundBounus: 0
+    roundPoints: 0
+    roundTotalBags: 0
+    roundGabPenalty: 0
+    roundTotalPoints: 0
+    bostonWon: 0
+    wonCount: 
+    level: 
+    gamesPlayed: 
+    country: 
   addFriendBtn: {fileID: 0}
   friendRequestPopUp: {fileID: 0}
   bidUI: {fileID: 6616981682439664095}
@@ -32170,6 +32350,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 388a7335b10144226832f92ff9b62e41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerProfileBtn: {fileID: 0}
+  inGameProfile: {fileID: 0}
+  playerData:
+    name: 
+    hand: []
+    score: 0
+    tablePosition: 0
+    bidPlaced: 0
+    bidWon: 0
+    isBot: 0
+    isOwn: 0
+    winningCards: []
+    photonIndex: 0
+    id: 
+    isMaster: 0
+    imageURL: 
+    roundBonus: 0
+    teamBidPlaced: 0
+    teamBidWon: 0
+    roundBags: 0
+    roundBounus: 0
+    roundPoints: 0
+    roundTotalBags: 0
+    roundGabPenalty: 0
+    roundTotalPoints: 0
+    bostonWon: 0
+    wonCount: 
+    level: 
+    gamesPlayed: 
+    country: 
   addFriendBtn: {fileID: 0}
   friendRequestPopUp: {fileID: 0}
   bidUI: {fileID: 9215373207003905600}
@@ -32254,6 +32464,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 388a7335b10144226832f92ff9b62e41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerProfileBtn: {fileID: 0}
+  inGameProfile: {fileID: 0}
+  playerData:
+    name: 
+    hand: []
+    score: 0
+    tablePosition: 0
+    bidPlaced: 0
+    bidWon: 0
+    isBot: 0
+    isOwn: 0
+    winningCards: []
+    photonIndex: 0
+    id: 
+    isMaster: 0
+    imageURL: 
+    roundBonus: 0
+    teamBidPlaced: 0
+    teamBidWon: 0
+    roundBags: 0
+    roundBounus: 0
+    roundPoints: 0
+    roundTotalBags: 0
+    roundGabPenalty: 0
+    roundTotalPoints: 0
+    bostonWon: 0
+    wonCount: 
+    level: 
+    gamesPlayed: 
+    country: 
   addFriendBtn: {fileID: 0}
   friendRequestPopUp: {fileID: 0}
   bidUI: {fileID: 3120188484023411472}
@@ -33261,6 +33501,7 @@ RectTransform:
   - {fileID: 6701202943231475463}
   - {fileID: 1762658661073256108}
   - {fileID: 3844302454328699083}
+  - {fileID: 7177127914496194962}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -33319,6 +33560,35 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cardIntroPanel: {fileID: 3120188484006109032}
+  currentPlayerProfile:
+    name: 
+    hand: []
+    score: 0
+    tablePosition: 0
+    bidPlaced: 0
+    bidWon: 0
+    isBot: 0
+    isOwn: 0
+    winningCards: []
+    photonIndex: 0
+    id: 
+    isMaster: 0
+    imageURL: 
+    roundBonus: 0
+    teamBidPlaced: 0
+    teamBidWon: 0
+    roundBags: 0
+    roundBounus: 0
+    roundPoints: 0
+    roundTotalBags: 0
+    roundGabPenalty: 0
+    roundTotalPoints: 0
+    bostonWon: 0
+    wonCount: 
+    level: 
+    gamesPlayed: 
+    country: 
+  inGameProfile: {fileID: 0}
   messageText: {fileID: 5491783945865064746}
   trashTalk: {fileID: 2068572436978137661}
   jokerTrashTalks:
@@ -33581,6 +33851,7 @@ GameObject:
   - component: {fileID: 9215373207432706728}
   - component: {fileID: 9215373207432706730}
   - component: {fileID: 9215373207432706731}
+  - component: {fileID: 1899307900036214565}
   m_Layer: 5
   m_Name: Player2
   m_TagString: Untagged
@@ -33637,6 +33908,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 388a7335b10144226832f92ff9b62e41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerProfileBtn: {fileID: 1899307900036214565}
+  inGameProfile: {fileID: 7177127914496194963}
+  playerData:
+    name: 
+    hand: []
+    score: 0
+    tablePosition: 0
+    bidPlaced: 0
+    bidWon: 0
+    isBot: 0
+    isOwn: 0
+    winningCards: []
+    photonIndex: 0
+    id: 
+    isMaster: 0
+    imageURL: 
+    roundBonus: 0
+    teamBidPlaced: 0
+    teamBidWon: 0
+    roundBags: 0
+    roundBounus: 0
+    roundPoints: 0
+    roundTotalBags: 0
+    roundGabPenalty: 0
+    roundTotalPoints: 0
+    bostonWon: 0
+    wonCount: 
+    level: 
+    gamesPlayed: 
+    country: 
   addFriendBtn: {fileID: 0}
   friendRequestPopUp: {fileID: 842225513816525600}
   bidUI: {fileID: 3120188484942176140}
@@ -33655,6 +33956,50 @@ MonoBehaviour:
   muteBtn: {fileID: 1962332358}
   bonusImage: {fileID: 6272744406243408293}
   timerObj: {fileID: 3828932973128504515}
+--- !u!114 &1899307900036214565
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9215373207432706743}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 0}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &9215373207448606227
 GameObject:
   m_ObjectHideFlags: 0
@@ -33919,6 +34264,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 388a7335b10144226832f92ff9b62e41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerProfileBtn: {fileID: 0}
+  inGameProfile: {fileID: 0}
+  playerData:
+    name: 
+    hand: []
+    score: 0
+    tablePosition: 0
+    bidPlaced: 0
+    bidWon: 0
+    isBot: 0
+    isOwn: 0
+    winningCards: []
+    photonIndex: 0
+    id: 
+    isMaster: 0
+    imageURL: 
+    roundBonus: 0
+    teamBidPlaced: 0
+    teamBidWon: 0
+    roundBags: 0
+    roundBounus: 0
+    roundPoints: 0
+    roundTotalBags: 0
+    roundGabPenalty: 0
+    roundTotalPoints: 0
+    bostonWon: 0
+    wonCount: 
+    level: 
+    gamesPlayed: 
+    country: 
   addFriendBtn: {fileID: 0}
   friendRequestPopUp: {fileID: 0}
   bidUI: {fileID: 3120188485051118976}
@@ -34227,6 +34602,113 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!1001 &1002968141204311399
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 9215373207374992252}
+    m_Modifications:
+    - target: {fileID: 7958148588017661172, guid: 70e41f2499af3cf47b2d61e0eed49b83, type: 3}
+      propertyPath: m_Name
+      value: InGameProfile
+      objectReference: {fileID: 0}
+    - target: {fileID: 7958148588017661173, guid: 70e41f2499af3cf47b2d61e0eed49b83, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7958148588017661173, guid: 70e41f2499af3cf47b2d61e0eed49b83, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7958148588017661173, guid: 70e41f2499af3cf47b2d61e0eed49b83, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7958148588017661173, guid: 70e41f2499af3cf47b2d61e0eed49b83, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7958148588017661173, guid: 70e41f2499af3cf47b2d61e0eed49b83, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7958148588017661173, guid: 70e41f2499af3cf47b2d61e0eed49b83, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7958148588017661173, guid: 70e41f2499af3cf47b2d61e0eed49b83, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 2556
+      objectReference: {fileID: 0}
+    - target: {fileID: 7958148588017661173, guid: 70e41f2499af3cf47b2d61e0eed49b83, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 1179
+      objectReference: {fileID: 0}
+    - target: {fileID: 7958148588017661173, guid: 70e41f2499af3cf47b2d61e0eed49b83, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7958148588017661173, guid: 70e41f2499af3cf47b2d61e0eed49b83, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7958148588017661173, guid: 70e41f2499af3cf47b2d61e0eed49b83, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7958148588017661173, guid: 70e41f2499af3cf47b2d61e0eed49b83, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7958148588017661173, guid: 70e41f2499af3cf47b2d61e0eed49b83, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7958148588017661173, guid: 70e41f2499af3cf47b2d61e0eed49b83, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7958148588017661173, guid: 70e41f2499af3cf47b2d61e0eed49b83, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7958148588017661173, guid: 70e41f2499af3cf47b2d61e0eed49b83, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.0024414
+      objectReference: {fileID: 0}
+    - target: {fileID: 7958148588017661173, guid: 70e41f2499af3cf47b2d61e0eed49b83, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.07382
+      objectReference: {fileID: 0}
+    - target: {fileID: 7958148588017661173, guid: 70e41f2499af3cf47b2d61e0eed49b83, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7958148588017661173, guid: 70e41f2499af3cf47b2d61e0eed49b83, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7958148588017661173, guid: 70e41f2499af3cf47b2d61e0eed49b83, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 70e41f2499af3cf47b2d61e0eed49b83, type: 3}
+--- !u!224 &7177127914496194962 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 7958148588017661173, guid: 70e41f2499af3cf47b2d61e0eed49b83, type: 3}
+  m_PrefabInstance: {fileID: 1002968141204311399}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7177127914496194963 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7958148588017661172, guid: 70e41f2499af3cf47b2d61e0eed49b83, type: 3}
+  m_PrefabInstance: {fileID: 1002968141204311399}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1335271030914741168
 PrefabInstance:
   m_ObjectHideFlags: 0

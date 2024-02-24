@@ -119,7 +119,7 @@ public class PlayersUIPanel : UIPanel
                 Player player = PlayerManager.instance.players[i];
                 print("playerUi: " + playerUI);
                 print("players[i].name: " + player.name);
-                playerUI[i].SetUI(player.name,player.id, player.isBot? botImages[i]:null, player.roundTotalPoints, player.imageURL);
+                playerUI[i].SetUI(player.name,player.id, player.isBot? botImages[i]:null, player.roundTotalPoints, player.imageURL, player);
             }
     //    }
     }

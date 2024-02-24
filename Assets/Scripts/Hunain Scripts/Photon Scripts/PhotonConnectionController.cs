@@ -64,6 +64,13 @@ public class PhotonConnectionController : MonoBehaviourPunCallbacks
         {
             PhotonChat.Instance.Connect();
         }
+
+        if (WaitingLoader.instance.gameObject.activeInHierarchy)
+        {
+            WaitingLoader.instance.ShowHide(false);
+        }
+
+
     }
 
 

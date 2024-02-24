@@ -167,6 +167,7 @@ public class PhotonRoomCreator : MonoBehaviourPunCallbacks
                 roomOptions.CustomRoomProperties = _myCustomProperties;
                 //roomName = string.IsNullOrEmpty(roomName) ?"SAND_"+ randomNo:roomName;
                 //RoomID = roomName.ToUpper();
+
                 PhotonNetwork.JoinRandomOrCreateRoom(_myCustomProperties,0,MatchmakingMode.FillRoom,TypedLobby.Default,null,null,roomOptions,null);
             }
         }

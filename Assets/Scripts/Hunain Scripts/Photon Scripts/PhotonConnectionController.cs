@@ -46,16 +46,16 @@ public class PhotonConnectionController : MonoBehaviourPunCallbacks
         if (PhotonNetwork.InRoom)
         {
             PhotonNetwork.LeaveRoom();
-            TypedLobby Default = new TypedLobby("US", LobbyType.Default);
-            //Debug.LogError("OnConnectedToMaster Region: " + PhotonNetwork.CloudRegion);
-            PhotonNetwork.JoinLobby(Default);
+            //TypedLobby Default = new TypedLobby("US", LobbyType.Default);
+            ////Debug.LogError("OnConnectedToMaster Region: " + PhotonNetwork.CloudRegion);
+            //PhotonNetwork.JoinLobby(Default);
 
         }
         if (!PhotonNetwork.InLobby)
         {
-            TypedLobby Default = new TypedLobby("US", LobbyType.Default);
-            Debug.Log("OnConnectedToMaster Region: " + PhotonNetwork.CloudRegion);
-            PhotonNetwork.JoinLobby(Default);
+            //TypedLobby Default = new TypedLobby("US", LobbyType.Default);
+            //Debug.Log("OnConnectedToMaster Region: " + PhotonNetwork.CloudRegion);
+            //PhotonNetwork.JoinLobby(Default);
             //invitationPanel.ChatSetting();
         }
 

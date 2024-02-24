@@ -130,15 +130,16 @@ public class PhotonRoomCreator : MonoBehaviourPunCallbacks
                 WaitingLoader.instance.ShowHide(true);
 
 
-                //PhotonNetwork.GameVersion = "0.0.1";//MasterManager.GameSettings.GameVersion;
+                string gameVersion = "0.0.1";
+                PhotonNetwork.GameVersion = gameVersion;//MasterManager.GameSettings.GameVersion;
                 RoomOptions roomOptions = new RoomOptions();
                 roomOptions.MaxPlayers = 4;//byte.Parse(roomLimit_InputField.text);
                 roomOptions.PublishUserId = true;
                 roomOptions.IsVisible = isPublicRoom;
+                roomOptions.IsOpen = true;
                 _myCustomProperties["Host"] = PhotonNetwork.LocalPlayer.UserId;
                 roomOptions.CustomRoomPropertiesForLobby = new string[1] { "Host" };
                 roomOptions.CustomRoomProperties = _myCustomProperties;
-                IsPublicRoom = false;
                 RoomID = roomName.ToUpper();
 
                 Debug.Log("RoomID: " + RoomID);
@@ -149,7 +150,6 @@ public class PhotonRoomCreator : MonoBehaviourPunCallbacks
             {
                 WaitingLoader.instance.ShowHide(true);
 
-                IsPublicRoom = isPublicRoom;
                 if (string.IsNullOrEmpty(PhotonNetwork.LocalPlayer.NickName))
                 {
                     PhotonNetwork.LocalPlayer.NickName = PlayerProfile.Player_UserName;
@@ -160,6 +160,7 @@ public class PhotonRoomCreator : MonoBehaviourPunCallbacks
                 roomOptions.MaxPlayers = 4;//byte.Parse(roomLimit_InputField.text);
                 roomOptions.PublishUserId = true;
                 roomOptions.IsVisible = isPublicRoom;
+                roomOptions.IsOpen = true;
                  _myCustomProperties["Host"] = PhotonNetwork.LocalPlayer.UserId;
                 roomOptions.CustomRoomPropertiesForLobby = new string[1] { "Host" };
                 roomOptions.CustomRoomProperties = _myCustomProperties;
@@ -175,7 +176,7 @@ public class PhotonRoomCreator : MonoBehaviourPunCallbacks
         }
     }
 
-    public void CreateRoomOnPhoton(bool publicRoom = true,string roomName = "")
+    public void CreateRoomOnPhoton(bool publicRoom = true, string roomName = "")
     {
         if (PhotonNetwork.IsConnectedAndReady && PhotonNetwork.InLobby)
         {

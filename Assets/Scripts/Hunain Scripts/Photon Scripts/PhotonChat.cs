@@ -150,7 +150,7 @@ public class PhotonChat : MonoBehaviourPunCallbacks, IChatClientListener
 
     internal IEnumerator RequestAndSendMessage_Co(string targetUserID, string roomID)
     {
-        string messagetoSend = "requested," + targetUserID + "," + roomID + "," + PlayerProfile.GameId;
+        string messagetoSend = "requested," + targetUserID + "," + roomID + "," + PlayerProfile.GameId + "," + Global.coinsRequired;
         print("Gameid is" + PlayerProfile.GameId);
         yield return new WaitUntil(()=> PhotonNetwork.InRoom);
         if (PhotonNetwork.InRoom)
@@ -222,7 +222,7 @@ public class PhotonChat : MonoBehaviourPunCallbacks, IChatClientListener
             Debug.Log("Game Request recieved");
            // if (message.ToString() == "requested")
            // {
-                OnGetGameRequest(sender, msg[2]);
+                OnGetGameRequest(sender, msg[2], int.Parse(msg[4]));
                 Debug.Log("Request received from " + sender.ToString()); 
 
           //  }
@@ -255,7 +255,7 @@ public class PhotonChat : MonoBehaviourPunCallbacks, IChatClientListener
         WebServiceManager.instance.APIRequest(WebServiceManager.instance.getProfileFunction, Method.GET, null, keyValuePairs, null, null, CACHEABLE.NULL, true, null);
     }
 
-    public void OnGetGameRequest(string senderId, string roomId)
+    public void OnGetGameRequest(string senderId, string roomId, int coinsRequired)
     {
         print("Got Invitation from: " + senderId);
         print("Invitation for Room Id: " + roomId);
@@ -266,9 +266,10 @@ public class PhotonChat : MonoBehaviourPunCallbacks, IChatClientListener
 
             if ((int)data[0] == 2)//on yes
             {
-
-                if (PlayerProfile.Player_coins < Global.coinsRequired)
+                Debug.Log("coinsRequired: " + coinsRequired);
+                if (PlayerProfile.Player_coins < coinsRequired)
                 {
+                    Global.coinsRequired = coinsRequired;
                     Invoke("OnLessCoins", 0.05f);
                     return;
                 }

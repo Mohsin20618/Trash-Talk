@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System;
 using UnityEngine;
+using DanielLochner.Assets.SimpleScrollSnap;
+using UnityEngine.UI;
 
 public class GameSelectPanel : UIPanel
 {
@@ -12,17 +14,57 @@ public class GameSelectPanel : UIPanel
     public GameObject gameModePanel;
     public GameObject roomSelectionPanel;
     public GameObject joinRoomPopup;
-    public List<GameObject> BtnList;   
+    public List<GameObject> BtnList;
+    public List<RectTransform> roomSelectionCard;
 
     private void Awake()
     {
         EventManager.OnAdOrSpinAvailable += OnAdorSpinAvailable;
+        OnPanelCentered(2,2);
     }
 
     private void OnEnable()
     {
         //StartCoroutine(MainButtonAnimation());
-    
+        scriptWithUnityEvent.OnPanelCentered.AddListener(OnPanelCentered);
+
+    }
+
+    // Reference to the script containing the UnityEvent
+    public SimpleScrollSnap scriptWithUnityEvent;
+
+
+    private void OnDisable()
+    {
+        // Unregister the listener function from the UnityEvent
+        scriptWithUnityEvent.OnPanelCentered.RemoveListener(OnPanelCentered);
+    }
+
+    // Listener function that matches the signature of the UnityEvent
+    private void OnPanelCentered(int value1, int value2)
+    {
+        Debug.Log("Panel Centered Event Raised: " + value1 + ", " + value2);
+
+        // Handle the event here
+
+        ScaleTheCard(value1);
+
+
+    }
+
+    void ScaleTheCard(int value = -1) 
+    {
+        foreach (var item in roomSelectionCard)
+        {
+            item.LeanScale(Vector3.one,0);
+
+            item.GetComponent<Button>().interactable = false;
+        }
+        if (value != -1)
+        {
+            roomSelectionCard[value].LeanScale(Vector3.one*1.2f, 0.2f);
+            roomSelectionCard[value].GetComponent<Button>().interactable = true;
+        }
     }
     private void OnDestroy()
     {

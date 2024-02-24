@@ -8,7 +8,7 @@ public class SplashPanel : UIPanel
     public RectTransform progressBar;
     public List<GameObject> fillersObjects = new List<GameObject>();   
     private float maxWidth;
-    private float loadingTime = 3f;
+    private float loadingTime = 10f;
 
     private void Start()
     {

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
 using TrashTalk;
+using Photon.Pun;
 
 public class InviteFriendsPanel : MonoBehaviour
 {
@@ -63,7 +64,8 @@ public class InviteFriendsPanel : MonoBehaviour
             selectedUsers.Add(user);
         else
             selectedUsers.Remove(user);
-
+       
+        OnInviteButton();
         //inviteButton.interactable = (selectedUsers.Count > 0);
     }
 
@@ -73,19 +75,7 @@ public class InviteFriendsPanel : MonoBehaviour
         if(PlayerProfile.Player_coins < Global.coinsRequired)
         {
             UIEvents.ShowPanel(Panel.Popup);
-            UIEvents.UpdateData(Panel.Popup, (data) => {
-
-                //if ((int)data[0] == 2)//on yes
-                //{
-                //    print("Go To Shop");
-                //}
-                //else
-                //{
-                //    print("Cancel");
-
-                //}
-
-            }, "SetData", $"You need at least {Global.coinsRequired} Coins!", "", "OK");
+            UIEvents.UpdateData(Panel.Popup, (data) => {}, "SetData", $"You need at least {Global.coinsRequired} Coins!", "", "OK");
 
             return;
         }
@@ -93,16 +83,22 @@ public class InviteFriendsPanel : MonoBehaviour
         //UIEvents.ShowPanel(Panel.Popup);
         //UIEvents.UpdateData(Panel.Popup, null, "SetData", "Invite sent to your selected friends", "","OK");
 
-        string roomName = "SAND_" + Random.Range(99, 9999);
+        string roomName = Global.roomName;
 
-       // SendGameRequest(roomName, PlayerProfile.Player_UserName, PlayerProfile.Player_UserID, "guest_7041971c4761418da8bd264305cf1d1a_userID");
-
+        // SendGameRequest(roomName, PlayerProfile.Player_UserName, PlayerProfile.Player_UserID, "guest_7041971c4761418da8bd264305cf1d1a_userID");
+        if (!PhotonNetwork.InRoom)
+        {
+            Debug.LogError("Player is not in room.");
+            return;
+        }
         foreach (var item in selectedUsers)
         {
             SendGameRequest(roomName, PlayerProfile.Player_UserName, PlayerProfile.Player_UserID, item.UserId);
         }
 
+        
         PhotonRoomCreator.instance.CreateRoomOnPhoton(true, roomName);
+
     }
 
 

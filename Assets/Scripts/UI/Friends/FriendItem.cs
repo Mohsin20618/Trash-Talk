@@ -8,7 +8,6 @@ using TrashTalk;
 public class FriendItem : MonoBehaviour
 {
     public GameObject addButton;
-    public GameObject inviteButton;
     private Transform selectionBtton;
 
     public Text nameText;
@@ -26,6 +25,8 @@ public class FriendItem : MonoBehaviour
 
     public void SetData(int type, User user, Action<User, bool> selectCallBack)
     {
+        addButton.GetComponent<Button>().interactable = true;
+
         this.user = user;
         this.selectionCallBack = selectCallBack;
         this.imageURL = user.ImagePath + "/" + user.Image;
@@ -53,6 +54,7 @@ public class FriendItem : MonoBehaviour
     public void SelectUnselect()
     {
         this.selectionCallBack(this.user, isSelected = !isSelected);
+        addButton.GetComponent<Button>().interactable = false;
         //selectionBtton.GetChild(0).gameObject.SetActive(!isSelected);
         //selectionBtton.GetChild(1).gameObject.SetActive(isSelected);
 

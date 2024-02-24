@@ -14,6 +14,9 @@ public class RoomSelectionCard : MonoBehaviour
         }
         Global.coinsRequired = entryCoins;
 
+
+        PhotonRoomCreator.instance.CreateRoomOnPhoton(true, "");
+
         print("ROOM SELECTED WITH COINS: " + Global.coinsRequired);
 
         UIEvents.HidePanel(Panel.TabPanels);

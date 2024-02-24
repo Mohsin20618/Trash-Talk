@@ -161,13 +161,13 @@ public class PhotonRoomCreator : MonoBehaviourPunCallbacks
                 roomOptions.PublishUserId = true;
                 roomOptions.IsVisible = isPublicRoom;
                 roomOptions.IsOpen = true;
-                 _myCustomProperties["Host"] = PhotonNetwork.LocalPlayer.UserId;
-                roomOptions.CustomRoomPropertiesForLobby = new string[1] { "Host" };
+                _myCustomProperties["Host"] = PhotonNetwork.LocalPlayer.UserId;
+                _myCustomProperties["Coins"] = Global.coinsRequired.ToString();
+                roomOptions.CustomRoomPropertiesForLobby = new string[2] { "Host" , "Coins"};
                 roomOptions.CustomRoomProperties = _myCustomProperties;
-                int randomNo = UnityEngine.Random.Range(99, 9999);
-                roomName = string.IsNullOrEmpty(roomName) ?"SAND_"+ randomNo:roomName;
-                RoomID = roomName.ToUpper();
-                PhotonNetwork.CreateRoom(RoomID , roomOptions , TypedLobby.Default);
+                //roomName = string.IsNullOrEmpty(roomName) ?"SAND_"+ randomNo:roomName;
+                //RoomID = roomName.ToUpper();
+                PhotonNetwork.JoinRandomOrCreateRoom(_myCustomProperties,0,MatchmakingMode.FillRoom,TypedLobby.Default,null,null,roomOptions,null);
             }
         }
         else

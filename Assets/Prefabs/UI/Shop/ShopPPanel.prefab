@@ -5108,7 +5108,15 @@ PrefabInstance:
     m_TransformParent: {fileID: 5264543801298470159}
     m_Modifications:
     - target: {fileID: 4387725848713650469, guid: 2f5d1a5f0b2414dc5b592f8e773e8279, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4387725848713650469, guid: 2f5d1a5f0b2414dc5b592f8e773e8279, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4387725848713650469, guid: 2f5d1a5f0b2414dc5b592f8e773e8279, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4387725848713650469, guid: 2f5d1a5f0b2414dc5b592f8e773e8279, type: 3}
@@ -5117,7 +5125,35 @@ PrefabInstance:
       objectReference: {fileID: 3528639153978129284}
     - target: {fileID: 4387725848713650469, guid: 2f5d1a5f0b2414dc5b592f8e773e8279, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4387725848713650469, guid: 2f5d1a5f0b2414dc5b592f8e773e8279, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4387725848713650469, guid: 2f5d1a5f0b2414dc5b592f8e773e8279, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PlayBtnSoundEffect
+      objectReference: {fileID: 0}
+    - target: {fileID: 4387725848713650469, guid: 2f5d1a5f0b2414dc5b592f8e773e8279, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: OnBuyButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 4387725848713650469, guid: 2f5d1a5f0b2414dc5b592f8e773e8279, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: BtnSoundEffect, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4387725848713650469, guid: 2f5d1a5f0b2414dc5b592f8e773e8279, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: ShopItem, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4387725848713650469, guid: 2f5d1a5f0b2414dc5b592f8e773e8279, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 4387725848713650469, guid: 2f5d1a5f0b2414dc5b592f8e773e8279, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 4387725848737768515, guid: 2f5d1a5f0b2414dc5b592f8e773e8279, type: 3}
       propertyPath: m_Pivot.x

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44402185, g: 0.49316466, b: 0.57223153, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3197,6 +3197,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 78294416636001569}
+    - target: {fileID: 3176435881427329819, guid: 0b7f5f7dab4a472409efdc52324afaaf, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1662254602}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -8986,10 +8990,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1583682517113472661}
     m_Modifications:
-    - target: {fileID: 2767817253549121181, guid: 16f47c3f73b34d04d97632423ad1300b, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -0.00061035156
-      objectReference: {fileID: 0}
     - target: {fileID: 3978850596735699280, guid: 16f47c3f73b34d04d97632423ad1300b, type: 3}
       propertyPath: m_Name
       value: RoomSelection

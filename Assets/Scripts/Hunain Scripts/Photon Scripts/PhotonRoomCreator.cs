@@ -179,7 +179,7 @@ public class PhotonRoomCreator : MonoBehaviourPunCallbacks
 
     public void CreateRoomOnPhoton(bool publicRoom = true, string roomName = "")
     {
-        if (PhotonNetwork.IsConnectedAndReady && PhotonNetwork.InLobby)
+        if (PhotonNetwork.IsConnectedAndReady)
         {
             CreateNewRoom(publicRoom , roomName);
         }

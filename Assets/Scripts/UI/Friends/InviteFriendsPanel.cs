@@ -39,12 +39,10 @@ public class InviteFriendsPanel : MonoBehaviour
         selectedUsers = new List<User>();
         ClearContianer(container);
     }
-
-    IEnumerator ShowList()
+    public List<User> GetUsers()
     {
         List<User> users = new();
 
-        yield return null;
         switch (currentListType)
         {
             case ListType.friends:
@@ -60,6 +58,13 @@ public class InviteFriendsPanel : MonoBehaviour
             default:
                 break;
         }
+        return users;   
+    }
+
+    IEnumerator ShowList()
+    {
+        yield return null;
+        List<User> users = GetUsers();
 
         print("users COUNT: " + users.Count);
 
@@ -121,7 +126,7 @@ public class InviteFriendsPanel : MonoBehaviour
         }
 
         
-        PhotonRoomCreator.instance.CreateRoomOnPhoton(true, roomName);
+        PhotonRoomCreator.instance.CreateRoomOnPhoton(false, roomName);
 
     }
 

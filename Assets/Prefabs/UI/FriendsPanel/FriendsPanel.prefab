@@ -1202,6 +1202,7 @@ GameObject:
   - component: {fileID: 541162771050380148}
   - component: {fileID: 2995328589471686760}
   - component: {fileID: 5295849937220648533}
+  - component: {fileID: 7877804163150488721}
   m_Layer: 5
   m_Name: Recent
   m_TagString: Untagged
@@ -1276,13 +1277,31 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2410773029235331039}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 17d77e1654ab44e549c2ac614d27d235, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   container: {fileID: 2469112951209225508}
   friendItem: {fileID: 5127007861641911573, guid: 05be65532c92fe349a0024d8d3557832, type: 3}
+--- !u!114 &7877804163150488721
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2410773029235331039}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1232147e1b64f41c5a4ea98f86063a29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  container: {fileID: 2469112951209225508}
+  friendItem: {fileID: 5127007861641911573, guid: 05be65532c92fe349a0024d8d3557832, type: 3}
+  inviteButton: {fileID: 7950387982878504370}
+  emptyDataText: {fileID: 7168060508836701193}
+  currentListType: 1
+  selectedUsers: []
 --- !u!1 &2494225797792808511
 GameObject:
   m_ObjectHideFlags: 0
@@ -1468,10 +1487,10 @@ RectTransform:
   - {fileID: 3797781084280407588}
   m_Father: {fileID: 7502729984355085060}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1656.538, y: -70.31}
-  m_SizeDelta: {x: 661.8152, y: 140.62}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 1794.9967, y: 0}
+  m_SizeDelta: {x: 717.19867, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5179923047274111432
 CanvasRenderer:
@@ -1852,10 +1871,10 @@ RectTransform:
   - {fileID: 4248242486711416626}
   m_Father: {fileID: 7502729984355085060}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 993.7228, y: -70.31}
-  m_SizeDelta: {x: 661.8152, y: 140.62}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 1076.798, y: 0}
+  m_SizeDelta: {x: 717.19867, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4462733092353675297
 CanvasRenderer:
@@ -2676,7 +2695,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1945528517689559247}
         m_TargetAssemblyTypeName: InviteFriendsPanel, Assembly-CSharp
         m_MethodName: OnInviteButton
         m_Mode: 1
@@ -3780,6 +3799,7 @@ MonoBehaviour:
   friendItem: {fileID: 5127007861641911573, guid: 05be65532c92fe349a0024d8d3557832, type: 3}
   inviteButton: {fileID: 7950387982878504370}
   emptyDataText: {fileID: 7582549786944330832}
+  currentListType: 2
   selectedUsers: []
 --- !u!1 &7502729983197425651
 GameObject:
@@ -5397,6 +5417,7 @@ GameObject:
   - component: {fileID: 7502729984121887379}
   - component: {fileID: 7502729984121887378}
   - component: {fileID: 934281864689304048}
+  - component: {fileID: 4208876791824362318}
   m_Layer: 5
   m_Name: Friends
   m_TagString: Untagged
@@ -5471,7 +5492,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7502729984121887340}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0d68e8e2fcaba4f2e8408ec1cfd9d7e4, type: 3}
   m_Name: 
@@ -5480,6 +5501,24 @@ MonoBehaviour:
   friendItem: {fileID: 5127007861641911573, guid: 05be65532c92fe349a0024d8d3557832, type: 3}
   inviteButton: {fileID: 0}
   emptyDataText: {fileID: 7168060508836701193}
+  selectedUsers: []
+--- !u!114 &4208876791824362318
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7502729984121887340}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1232147e1b64f41c5a4ea98f86063a29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  container: {fileID: 7502729984237171215}
+  friendItem: {fileID: 5127007861641911573, guid: 05be65532c92fe349a0024d8d3557832, type: 3}
+  inviteButton: {fileID: 7950387982878504370}
+  emptyDataText: {fileID: 7168060508836701193}
+  currentListType: 0
   selectedUsers: []
 --- !u!1 &7502729984235874859
 GameObject:
@@ -5516,10 +5555,10 @@ RectTransform:
   - {fileID: 7502729982732679753}
   m_Father: {fileID: 7502729984355085060}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 330.90723, y: -70.31}
-  m_SizeDelta: {x: 661.8152, y: 140.62}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 358.59933, y: 0}
+  m_SizeDelta: {x: 717.19867, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7502729984235874862
 CanvasRenderer:
@@ -5679,7 +5718,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: -366.82556}
+  m_SizeDelta: {x: 0, y: -690.5065}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &7502729984237171213
 MonoBehaviour:
@@ -6414,7 +6453,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.9589844, y: -78.00012}
+  m_AnchoredPosition: {x: 0.9589844, y: -78}
   m_SizeDelta: {x: -157.741, y: -298.95}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7502729984626355120
@@ -6510,7 +6549,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7502729984639885878}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 17d77e1654ab44e549c2ac614d27d235, type: 3}
   m_Name: 
@@ -6708,7 +6747,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.037056603, y: 0.03879271}
   m_AnchorMax: {x: 0.9629434, y: 0.79359895}
-  m_AnchoredPosition: {x: 0, y: -9.118286}
+  m_AnchoredPosition: {x: 0, y: -9.118164}
   m_SizeDelta: {x: 0, y: -18.2366}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &965927429772821594

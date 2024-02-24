@@ -38,6 +38,7 @@ namespace TrashTalk
     public partial class GlobalUsers
     {
         public GlobalUsersData data;
+        public GlobalUsersData friends;
     }
 
     public partial class GlobalUsers

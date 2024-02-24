@@ -392,7 +392,7 @@ public class PhotonRoomCreator : MonoBehaviourPunCallbacks
             {
                 break;
             }
-            if (masterList[i] == null)
+            if (string.IsNullOrEmpty(masterList[i]))
             {
                 continue; 
             }

@@ -294,7 +294,7 @@ public class GameplayManager : MonoBehaviour
         int bp = 0;
         for (int i = 0; i < 4; i++)
         {
-            if (PlayerManager.instance.player[i].id == null)
+            if (string.IsNullOrEmpty(PlayerManager.instance.player[i].id))
             {
                 bp++;
                 PlayerManager.instance.players[i].name = $"Bot Player {bp}";

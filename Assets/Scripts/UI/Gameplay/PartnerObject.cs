@@ -45,9 +45,9 @@ public class PartnerObject : MonoBehaviour
         List<string> opponents = GetOpponents();
 
         temp.Add(PhotonNetwork.LocalPlayer.UserId);
-        temp.Add(opponents.Count > 0 ? opponents[0] : null);
+        temp.Add(opponents.Count > 0 ? opponents[0] : "");
         temp.Add(this.userId);
-        temp.Add(opponents.Count > 1 ? opponents[1] : null);
+        temp.Add(opponents.Count > 1 ? opponents[1] : "");
 
         PhotonRPCManager.Instance.SendMaterList(temp);
 

@@ -35,7 +35,8 @@ public class WebServiceManager : MonoBehaviour
     [SerializeField] internal string GetTimerForSpinAndAd             = "";
     [SerializeField] internal string UpdateTimerForSpinOrAd             = "";
     [SerializeField] internal string getLatestPlayedMembers             = "";
-    [SerializeField] internal string getFriends             = "";
+    [SerializeField] internal string getFriends = "";
+    [SerializeField] internal string addFriends = "";
 
 
     public static WebServiceManager instance;

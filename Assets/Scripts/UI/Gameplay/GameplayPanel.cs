@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System;
 using UnityEngine;
 using UnityEngine.UI;
-
+using UnityEngine.SceneManagement;
 
 public class GameplayPanel : UIPanel
 {
@@ -173,8 +173,9 @@ public class GameplayPanel : UIPanel
                     PhotonRoomCreator.instance.LeavePhotonRoom();
                 }
                 SoundManager.Instance.StopBackgroundMusic();
-                Hide();
-                UIEvents.ShowPanel(Panel.TabPanels);
+                //Hide();
+                //UIEvents.ShowPanel(Panel.TabPanels);
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
                 //   UIEvents.ShowPanel(Panel.GameSelectPanel);
             }
         }, "SetData", "Are you sure you want to leave game?", "NO", "YES");

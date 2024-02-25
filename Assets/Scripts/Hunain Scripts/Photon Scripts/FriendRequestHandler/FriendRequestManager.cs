@@ -1,3 +1,4 @@
+using Newtonsoft.Json.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -44,7 +45,26 @@ public class FriendRequestManager : Singleton<FriendRequestManager>
             PlayerUI senderUI = ReturnUiPlayerObj(senderId);
 
             Debug.Log(senderUI.nameText.text + " accept my friend Request");
+       
+            Dictionary<string, object> keyValuePairs = new Dictionary<string, object>();
+
+            string userId1 = recieverId;
+            string userId2 = senderId;
+            keyValuePairs.Add("user_id1", userId1);
+            keyValuePairs.Add("user_id2", userId2);
+
+            WebServiceManager.instance.APIRequest(WebServiceManager.instance.addFriends, Method.POST, null, keyValuePairs, OnLoginSuccess, OnFail, CACHEABLE.NULL, false, null);
         }
+    }
+
+    private void OnLoginSuccess(JObject arg1, long arg2)
+    {
+        Debug.Log(arg1.ToString());
+    }
+
+    private void OnFail(string obj)
+    {
+        Debug.LogError(obj);
     }
 
     public void RequestRejectCallback(string senderId, string recieverId)

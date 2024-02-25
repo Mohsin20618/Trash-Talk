@@ -15034,6 +15034,10 @@ PrefabInstance:
       value: Controllers
       objectReference: {fileID: 0}
     - target: {fileID: 7476394074645284941, guid: 016be68e56d2a4b18b839029b0b5b406, type: 3}
+      propertyPath: addFriends
+      value: make-friend
+      objectReference: {fileID: 0}
+    - target: {fileID: 7476394074645284941, guid: 016be68e56d2a4b18b839029b0b5b406, type: 3}
       propertyPath: playerPersonalData
       value: 
       objectReference: {fileID: 1554312025}

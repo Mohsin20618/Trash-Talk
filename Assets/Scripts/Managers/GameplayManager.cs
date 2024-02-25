@@ -210,6 +210,14 @@ public class GameplayManager : MonoBehaviour
              */
 
             #endregion Comments
+            //Dictionary<string, object> keyValuePairs = new Dictionary<string, object>();
+
+            //string userId1 = recieverId;
+            //string userId2 = senderId;
+            //keyValuePairs.Add("user_id1", userId1);
+            //keyValuePairs.Add("user_id2", userId2);
+
+            //WebServiceManager.instance.APIRequest(WebServiceManager.instance.addFriends, Method.POST, null, keyValuePairs, OnLoginSuccess, OnFail, CACHEABLE.NULL, false, null);
 
             CreateBotPlayerForMultiplayer();
             string sortedIds = string.Join(",", PlayerManager.instance.player.ConvertAll(x => x.id.ToString()).ToArray());

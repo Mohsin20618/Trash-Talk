@@ -295,7 +295,7 @@ public class PhotonRoomCreator : MonoBehaviourPunCallbacks
         // string pic = TextureConverter.Texture2DToBase64(PlayerProfile.Player_rawImage_Texture2D);
         string imageUrl = PlayerProfile.imageUrl;
         string email = PlayerProfile.Player_Email;
-        string country = PlayerProfile.PlayerCountry;
+        string country = CountryCode.code;
         Hashtable hash = new Hashtable();
         hash["Name"] = name;
         //   hash["Picture"] = pic;

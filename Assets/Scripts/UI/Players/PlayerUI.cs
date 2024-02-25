@@ -58,7 +58,7 @@ public class PlayerUI : MonoBehaviour
         {
             muteBtn.onClick.AddListener(() => MicBtnListener());
         }
-        if (playerProfileBtn)
+        if (playerProfileBtn && !playerData.isBot)
         {
             playerProfileBtn.onClick.AddListener(() => OpenInGameProfile());
         }   

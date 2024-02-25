@@ -21,7 +21,7 @@ public class AddFriend : MonoBehaviour
     void SendFriendRequest() 
     {
         ChangeInteractable(false);
-        PhotonRPCManager.Instance.SendFriendRequest(PlayerProfile.Player_UserID, GetComponent<PlayerUI>().userId);
+        PhotonRPCManager.Instance.SendFriendRequest(PlayerProfile.Player_UserID,  GetComponentInParent<InGameProfile>().userId);
     }
 
     public void ChangeInteractable(bool state) 

@@ -15,6 +15,8 @@ public class InGameProfile : MonoBehaviour
     public Button closeButton;
     public string userId;
 
+    public List<Countries> countries = new();
+
     private void Start()
     {
         closeButton.onClick.AddListener(ClosePopup);    
@@ -28,9 +30,25 @@ public class InGameProfile : MonoBehaviour
         playerWins.text = player.wonCount;
         playerLevel.text = player.level;
         this.userId = player.id;
-        ImageCacheManager.instance.CheckOrDownloadImage(player.imageURL, countryPicture);
+        ImageCacheManager.instance.CheckOrDownloadImage(player.imageURL, playerPicture);
+
+        Sprite flagSprite = GetFlag();
+        countryPicture.sprite = flagSprite != null ? flagSprite : countries[0].countryFlag;
     }
 
+    Sprite GetFlag()
+    {
+        foreach (var item in countries)
+        {
+            if (item.countryCode.ToLower().Trim() == CountryCode.code.ToLower().Trim())
+            {
+                Debug.Log("ss ");
+                return item.countryFlag;
+            }
+        }
+
+        return null;
+    }
     public void ClosePopup()
     {
         this.gameObject.SetActive(false);

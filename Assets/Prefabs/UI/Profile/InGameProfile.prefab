@@ -168,6 +168,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   addFriendBtn: {fileID: 3753988872532854457}
+  addImage: {fileID: 0}
+  sentImage: {fileID: 0}
 --- !u!1 &875691571760329639
 GameObject:
   m_ObjectHideFlags: 0
@@ -1858,6 +1860,12 @@ MonoBehaviour:
   playerWins: {fileID: 795903349963948118}
   playerLevel: {fileID: 5002660024518332816}
   closeButton: {fileID: 5155262896794377802}
+  userId: 
+  countries:
+  - countryCode: US
+    countryFlag: {fileID: 21300000, guid: cadfaef88779298449ff342df59ae2ef, type: 3}
+  - countryCode: PK
+    countryFlag: {fileID: 21300000, guid: c9a5106401b434f99b56cf65e58fc46f, type: 3}
 --- !u!1 &8108717955969956998
 GameObject:
   m_ObjectHideFlags: 0

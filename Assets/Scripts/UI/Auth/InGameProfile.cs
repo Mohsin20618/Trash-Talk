@@ -13,6 +13,7 @@ public class InGameProfile : MonoBehaviour
     public Text playerWins;
     public Text playerLevel;
     public Button closeButton;
+    public string userId;
 
     private void Start()
     {
@@ -26,6 +27,7 @@ public class InGameProfile : MonoBehaviour
         playerTotalGames.text = player.gamesPlayed;
         playerWins.text = player.wonCount;
         playerLevel.text = player.level;
+        this.userId = player.id;
         ImageCacheManager.instance.CheckOrDownloadImage(player.imageURL, countryPicture);
     }
 

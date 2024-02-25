@@ -32,7 +32,7 @@ public class FriendRequestManager : Singleton<FriendRequestManager>
         PlayerUI senderUI = ReturnUiPlayerObj(senderId);
         senderUI.friendRequestPopUp.SetData(senderId);
        
-        senderUI.addFriendBtn.ChangeInteractable(false);
+        //senderUI.addFriendBtn.ChangeInteractable(false);
     }
 
 

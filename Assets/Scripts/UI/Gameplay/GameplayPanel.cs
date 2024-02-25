@@ -8,6 +8,7 @@ public class GameplayPanel : UIPanel
 {
     public GameObject cardIntroPanel;
     public Text messageText;
+    public Text coinsText;
     public Image trashTalk;
     private Action<object[]> callBack;
 
@@ -73,6 +74,7 @@ public class GameplayPanel : UIPanel
     {
         forceQuit = false;
         settingsBtn.onClick.AddListener(OpenSettings);
+        coinsText.text = PlayerProfile.Player_coins.ToString();
     }
 
     public void OpenSettings()

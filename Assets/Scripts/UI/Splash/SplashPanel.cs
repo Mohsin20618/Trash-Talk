@@ -36,7 +36,7 @@ public class SplashPanel : UIPanel
                 break;
             elapsedTime += Time.deltaTime;
             i++;
-            yield return null;
+            yield return new WaitForSeconds(.5f);
         }
 
         progressBar.sizeDelta = new Vector2(targetWidth, progressBar.rect.height);

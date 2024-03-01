@@ -14,6 +14,8 @@ public class TabPanels : UIPanel
 
     //public RectTransform levelBar;
     public Image levelBarProgreess;
+    public Text ProgreesCount;
+    public Text ProgreesTotal;
     public Text levelText;
 
     public Text playerName;
@@ -93,10 +95,21 @@ public class TabPanels : UIPanel
 
     void SetLevelUI()
     {
-        float progress = 20f;
-        Debug.Log("Level " + progress);
-        levelText.text = (progress).ToString();
-        float fillAmount = progress / 100;
+        List<int>  Leveldata = Utility.CalculateUserLevel(PlayerProfile.gamesWon);
+
+
+        Debug.Log("Level " + Leveldata[0]);
+        Debug.Log("winnings " + Leveldata[1]);
+        Debug.Log("WinningsThreshhold " + Leveldata[2]);
+
+        PlayerProfile.level = Leveldata[0];
+        levelText.text = Leveldata[0].ToString();
+
+        ProgreesCount.text = (Leveldata[1].ToString());
+        ProgreesTotal.text = "/" + (Leveldata[2].ToString());
+
+        float fillAmount = (float) Leveldata[1] / (float) Leveldata[2];
+        Debug.Log("fillamount " + fillAmount);
         levelBarProgreess.fillAmount = fillAmount;  
         //Vector2 newSizeDelta = new Vector2(fillAmount * levelBar.sizeDelta.x, levelBar.sizeDelta.y);
         //levelBar.sizeDelta = new Vector2(((progress/100) * levelBarWidth), levelBar.sizeDelta.y);

@@ -40,7 +40,7 @@ public static class Utility
     {
         return Random.Range(min, max);
     }
-    public static int CalculateUserLevel(int winnings)
+    public static List<int> CalculateUserLevel(int winnings)
     {
         int level = 1;
         int winningsThreshold = 5; // Initial threshold for level 1
@@ -53,6 +53,11 @@ public static class Utility
             winningsThreshold += 5 + (level - 1) * 2;
         }
 
-        return level;
+        List<int> result = new List<int>();
+        result.Add(level);
+        result.Add(winnings);
+        result.Add(winningsThreshold);
+
+        return result;
     }
 }

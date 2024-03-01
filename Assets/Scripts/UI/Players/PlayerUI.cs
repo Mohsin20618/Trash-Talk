@@ -209,7 +209,7 @@ public class PlayerUI : MonoBehaviour
     public void UpdateCardCount(int cardCount)
     {
 
-        print(name);
+        //print(name);
         //cardCountContainer.SetActive(cardCount > 0);
 
         cardsCountText.text = $"{cardCount}";

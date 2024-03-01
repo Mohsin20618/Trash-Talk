@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class BotTrick
@@ -20,16 +22,6 @@ public class BotTrick
 
         bool hasNormalCards = HasNormalCards(cardsInHand);
         bool hasLeadingSuit = HasLeadingSuit(cardsInHand, leadingSuit);
-
-        //Debug.Log("isFirstTurn: " + isFirstTurn);
-        //Debug.Log("Has leading suit: " + hasLeadingSuit);
-        //Debug.Log("Has normal cards: " + hasNormalCards);
-
-
-        //foreach (Card card in cardsInHand)
-        //{
-        //    Debug.Log("bot has: " + card.name);
-        //}
 
         foreach (Card card in cardsInHand)
         {
@@ -63,9 +55,35 @@ public class BotTrick
                     }
                 }
             }
+        }
 
+
+        //Hunain Logic 1
+        if (!isFirstTurn && hasLeadingSuit)
+        {
+            bool canBotPlayBestCard = true;
+
+            foreach (var item in TrickManager.cards)
+            {
+                if (bestCard.data.score < item.data.score)
+                {
+                    canBotPlayBestCard = false;
+                    break;
+                }
             }
-            return bestCard;
+
+            if (!canBotPlayBestCard)
+                bestCard = FindLowestCard(leadingSuit, cardsInHand);
+        }
+
+        return bestCard;
+    }
+
+    private Card FindLowestCard(Card.Suit leadingSuit , List<Card> cardsInHand)
+    {
+        Debug.Log("Main Logic Done. Hurraaaaah");
+        
+        return cardsInHand.FindAll(card => card.suit.Equals(leadingSuit)).OrderBy(obj => obj.data.score).First();         
     }
 
     bool HasNormalCards(List<Card> cardsInHand)

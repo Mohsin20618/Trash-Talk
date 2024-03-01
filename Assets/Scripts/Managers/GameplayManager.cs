@@ -628,6 +628,8 @@ public class GameplayManager : MonoBehaviour
         player.hand.Remove(playedCard);
         cardHand.OnUseHandCard(playedCard);
         TrickManager.AddCard(playedCard);
+        UIEvents.UpdateData(Panel.PlayersUIPanel, null, "UpdateCardCount", this.currentPlayerIndex, player.hand.Count);
+
         DecideNext();
     }
 

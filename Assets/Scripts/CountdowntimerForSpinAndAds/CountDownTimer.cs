@@ -71,6 +71,7 @@ public class CountDownTimer : MonoBehaviour
     }
     private void TimerUpdateSuccessAd(JObject resp, long arg2)
     {
+        OnRewardSuccess(500);
         TimerDataForSpinAndAdd timers = DeSerialize.FromJson<TimerDataForSpinAndAdd>(resp.ToString());
         Epoch.UpdateDiff(timers.ServerTime.ToUnixTimeMilliseconds()); //Server Current Time
         double adTime = timers.Data.RemainingAdTimer.ToUnixTimeMilliseconds();
@@ -79,6 +80,16 @@ public class CountDownTimer : MonoBehaviour
     }
     #endregion
 
+    #region Reward Coins
+    void OnRewardSuccess(int coins)
+    {
+        PlayerProfile.Player_coins += coins;
+
+        if (EventManager.UpdateUI != null)
+            EventManager.UpdateUI.Invoke("UpdateCoins");
+    }
+
+    #endregion
     #region Update Spin Timer
     public void UpdateSpinTimer(string coins)
     {
@@ -90,6 +101,7 @@ public class CountDownTimer : MonoBehaviour
     }
     private void TimerUpdateSuccessSpin(JObject resp, long arg2)
     {
+        OnRewardSuccess(500);
         TimerDataForSpinAndAdd timers = DeSerialize.FromJson<TimerDataForSpinAndAdd>(resp.ToString());
         Epoch.UpdateDiff(timers.ServerTime.ToUnixTimeMilliseconds()); //Server Current Time
         double spinTime = timers.Data.RemainingSpinTimer.ToUnixTimeMilliseconds();

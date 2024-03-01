@@ -15,7 +15,6 @@ public class PlayerUI : MonoBehaviour
     public AddFriend addFriendBtn;
     public FriendRequestPopUp friendRequestPopUp;
     public PlayerBidUI bidUI;
-    public GameObject cardCountContainer;
     public Text myBids;
     public Text cardsCountText;
     public Text bidCount;
@@ -209,8 +208,9 @@ public class PlayerUI : MonoBehaviour
 
     public void UpdateCardCount(int cardCount)
     {
-//        print(name);
-        cardCountContainer.SetActive(cardCount > 0);
+
+        print(name);
+        //cardCountContainer.SetActive(cardCount > 0);
 
         cardsCountText.text = $"{cardCount}";
     }
@@ -249,8 +249,8 @@ public class PlayerUI : MonoBehaviour
         if (myBids != null)
             myBids.text = "0";
 
-        if(cardCountContainer)
-            cardCountContainer.SetActive(false);
+        //if(cardCountContainer)
+        //    cardCountContainer.SetActive(false);
 
         bonusImage.gameObject.SetActive(false);
         HideBidUI();

@@ -10,17 +10,27 @@ public class RoomSelectionCard : MonoBehaviour
     {
         if (entryCoins == -1)
         {
-            entryCoins = (int)PlayerProfile.Player_coins;
+            entryCoins = (int)PlayerProfile.Player_coins; //All in
         }
         Global.coinsRequired = entryCoins;
 
-
-        PhotonRoomCreator.instance.CreateRoomOnPhoton(true, "");
+        if (Global.isPublicRoom)
+        {
+           PhotonRoomCreator.instance.CreateRoomOnPhoton(Global.isPublicRoom, "");
+        }
 
         print("ROOM SELECTED WITH COINS: " + Global.coinsRequired);
 
         UIEvents.HidePanel(Panel.TabPanels);
-        UIEvents.ShowPanel(Panel.GameplayPanel);
+
+        if (Global.isPublicRoom)
+        {
+            UIEvents.ShowPanel(Panel.GameplayPanel);
+        }
+        else
+        {
+            UIEvents.ShowPanel(Panel.FriendsPanel);
+        }
 
         //Hunain
         VoiceManager.instance.EnableDisableVoiceManager();

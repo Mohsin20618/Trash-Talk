@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TrashTalk;
+using System.IO;
 
 public class LeaderboardItem : MonoBehaviour
 {
@@ -29,12 +30,13 @@ public class LeaderboardItem : MonoBehaviour
         this.user = user;
 
         SetRank(index);
-        nameText.text = this.user.FullName;
-        wonText.text = this.user.winCount.ToString();
-        levelText.text = Utility.CalculateUserLevel(this.user.winCount).ToString();
-        //this.imageURL = this.user.ImagePath;
-        if (this.imageURL != null && this.imageURL != "")
+        nameText.text = user.FullName;
+        wonText.text = user.winCount.ToString();
+        levelText.text = Utility.CalculateUserLevel(user.winCount)[0].ToString();
+        this.imageURL = user.ImagePath +"/"+ user.Image;
+        if (!string.IsNullOrEmpty(this.imageURL))
         {
+            Debug.Log("imageURL: " + this.imageURL);
             ImageCacheManager.instance.CheckOrDownloadImage(this.imageURL, this.thumb,DownloadCallBack);
         }
         else

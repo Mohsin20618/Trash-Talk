@@ -99,37 +99,17 @@ public class PhotonRoomCreator : MonoBehaviourPunCallbacks
     /// Main Method for creating Rooms
     /// </summary>
     /// <param name="isPublicRoom"> Room Category </param>
-    private void CreateNewRoom(bool isPublicRoom = true, string roomName = "")
+    private void CreateNewRoom(bool isPublicRoom = true , string roomName = "")
     {
         //if (PhotonNetwork.InLobby)
         {
             if (isPublicRoom == false)
             {
-                if (roomName == "" || string.IsNullOrEmpty(roomName))
-                {
-                    Debug.LogError("Please Provide Room Name");
-                    return;
-                }
-                foreach (var item in RoomListCaching.cachedRoomList)
-                {
-                    if (item.Value.Name.Equals(roomName))
-                    {
-                        if (item.Value.PlayerCount == item.Value.MaxPlayers)
-                        {
-                            Debug.LogError("Game already exist, but the room is full");
-                            roomFullPanel.SetActive(true);
-                            return;
-                            //Open screen (Room is full)
-                        }
-                        else
-                        {
-                            Debug.LogError("Room already Exist, Joining to the room");
-                            break;
-                        }
-                    }
-                }
                 WaitingLoader.instance.ShowHide(true);
-
+                if (string.IsNullOrEmpty(PhotonNetwork.LocalPlayer.NickName))
+                {
+                    PhotonNetwork.LocalPlayer.NickName = PlayerProfile.Player_UserName;
+                }
 
                 string gameVersion = "0.0.1";
                 PhotonNetwork.GameVersion = gameVersion;//MasterManager.GameSettings.GameVersion;
@@ -138,8 +118,11 @@ public class PhotonRoomCreator : MonoBehaviourPunCallbacks
                 roomOptions.PublishUserId = true;
                 roomOptions.IsVisible = isPublicRoom;
                 roomOptions.IsOpen = true;
+                _myCustomProperties["Coins"] = Global.coinsRequired.ToString();
                 _myCustomProperties["Host"] = PhotonNetwork.LocalPlayer.UserId;
-                roomOptions.CustomRoomPropertiesForLobby = new string[1] { "Host" };
+
+                roomOptions.CustomRoomPropertiesForLobby = new string[2] { "Host", "Coins" };
+
                 roomOptions.CustomRoomProperties = _myCustomProperties;
                 RoomID = roomName.ToUpper();
 
@@ -184,7 +167,7 @@ public class PhotonRoomCreator : MonoBehaviourPunCallbacks
     {
         if (PhotonNetwork.IsConnectedAndReady)
         {
-            CreateNewRoom(publicRoom, roomName);
+            CreateNewRoom(publicRoom , roomName);
         }
         else
         {

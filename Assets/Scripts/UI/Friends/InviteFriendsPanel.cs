@@ -9,7 +9,7 @@ public class InviteFriendsPanel : MonoBehaviour
 {
     public Transform container;
     public GameObject friendItem;
-    public Button inviteButton;
+    public Button sendRequestBtn;
     public GameObject emptyDataText;
     public ListType currentListType;
 
@@ -30,7 +30,7 @@ public class InviteFriendsPanel : MonoBehaviour
     private void OnEnable()
     {
         selectedUsers = new List<User>();
-        inviteButton.interactable = false;
+        sendRequestBtn.interactable = false;
         StartCoroutine(ShowList());
     }
 
@@ -94,11 +94,9 @@ public class InviteFriendsPanel : MonoBehaviour
         else
             selectedUsers.Remove(user);
        
-        OnInviteButton();
-        //inviteButton.interactable = (selectedUsers.Count > 0);
+        sendRequestBtn.interactable = (selectedUsers.Count > 0);
     }
 
-    [ContextMenu("Test")]
     public void OnInviteButton()
     {
         if(PlayerProfile.Player_coins < Global.coinsRequired)
@@ -114,22 +112,21 @@ public class InviteFriendsPanel : MonoBehaviour
 
         string roomName = Global.roomName;
 
-        // SendGameRequest(roomName, PlayerProfile.Player_UserName, PlayerProfile.Player_UserID, "guest_7041971c4761418da8bd264305cf1d1a_userID");
-        if (!PhotonNetwork.InRoom)
-        {
-            Debug.LogError("Player is not in room.");
-            return;
-        }
-        foreach (var item in selectedUsers)
-        {
-            SendGameRequest(roomName, PlayerProfile.Player_UserName, PlayerProfile.Player_UserID, item.UserId);
-        }
-
-        
+        Debug.Log("roomName : "  +roomName);
         PhotonRoomCreator.instance.CreateRoomOnPhoton(false, roomName);
 
-    }
+        foreach (var friendsScreen in transform.parent.GetComponentsInChildren<InviteFriendsPanel>())
+        {
+            foreach (var selectedUser in friendsScreen.selectedUsers)
+            {
+                SendGameRequest(roomName, PlayerProfile.Player_UserName, PlayerProfile.Player_UserID, selectedUser.UserId);
+            }
+        }
 
+        UIEvents.HidePanel(Panel.FriendsPanel);
+        UIEvents.ShowPanel(Panel.GameplayPanel);
+
+    }
 
     void SendGameRequest(string roomName, string playerName, string playerUserID, string friendUserID)
     {

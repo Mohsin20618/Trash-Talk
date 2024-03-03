@@ -108,7 +108,7 @@ public class GameSelectPanel : UIPanel
     {
         //    OpenTabPanel();
         Global.isMultiplayer = true;
-        Global.isPrivate = false;
+        Global.isPublicRoom = true;
         //UIEvents.HidePanel(Panel.TabPanels);
         //UIEvents.ShowPanel(Panel.GameplayPanel);
 
@@ -122,7 +122,7 @@ public class GameSelectPanel : UIPanel
     {
         //    OpenTabPanel();
         Global.isMultiplayer = true;
-        Global.isPrivate = true;
+        Global.isPublicRoom = false;
 
         ToggleRoomSelection(true);
     }

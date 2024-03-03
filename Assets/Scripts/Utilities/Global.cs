@@ -5,11 +5,11 @@ using UnityEngine;
 public static class Global
 {
     public static bool isMultiplayer = false;
-    public static bool isPrivate = false;
+    public static bool isPublicRoom = true;
     public static bool isAdAvailable = false;
     public static bool isSpinAvailable = false;
     public static int coinsRequired = 0;  //It is temporary and will be changed after getting more screens
-    public static string roomName = "SAND_" + Random.Range(99, 9999);  //It is temporary and will be changed after getting more screens
+    public static string roomName = "TT_" + Random.Range(99, 9999);  //It is temporary and will be changed after getting more screens
     public static string currentGameId = "";
     public static int scoreToWin = 500;
 

@@ -106,9 +106,9 @@ public class PhotonConnectionController : MonoBehaviourPunCallbacks
     }
     public void OnGetRecentUsers(JObject resp, long arg2)
     {
-        var globalUsers = DeSerialize.FromJson<GlobalUsersData>(resp.ToString());
+        var globalUsers = DeSerialize.FromJson<GlobalUsers>(resp.ToString());
 
-        PlayerProfile.instance.recentUsers = globalUsers.data;
+        PlayerProfile.instance.recentUsers = globalUsers.data.data;
 
         Debug.Log("Total Global users: " + PlayerProfile.instance.globalUsers.Count);
     }

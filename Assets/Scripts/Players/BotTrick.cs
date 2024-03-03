@@ -57,33 +57,49 @@ public class BotTrick
             }
         }
 
-
-        //Hunain Logic 1
-        if (!isFirstTurn && hasLeadingSuit)
+        if (!isFirstTurn)
         {
-            bool canBotPlayBestCard = true;
-
-            foreach (var item in TrickManager.cards)
+            //Hunain Logic 1
+            if (hasLeadingSuit)
             {
-                if (bestCard.data.score < item.data.score)
+                bool canBotPlayBestCard = true;
+
+                foreach (var item in TrickManager.cards)
                 {
-                    canBotPlayBestCard = false;
-                    break;
+                    if (bestCard.data.score < item.data.score)
+                    {
+                        canBotPlayBestCard = false;
+                        break;
+                    }
                 }
+
+                if (!canBotPlayBestCard)
+                    bestCard = FindLowestCard(leadingSuit, cardsInHand);
+                else
+                    Debug.Log("Bot has leading card of the current suit.");
+            }
+            else
+            {
+                bestCard = FindLowestCard(cardsInHand);
             }
 
-            if (!canBotPlayBestCard)
-                bestCard = FindLowestCard(leadingSuit, cardsInHand);
+
         }
 
         return bestCard;
     }
 
-    private Card FindLowestCard(Card.Suit leadingSuit , List<Card> cardsInHand)
+    private Card FindLowestCard(Card.Suit leadingSuit, List<Card> cardsInHand)
     {
-        Debug.Log("Main Logic Done. Hurraaaaah");
-        
-        return cardsInHand.FindAll(card => card.suit.Equals(leadingSuit)).OrderBy(obj => obj.data.score).First();         
+        Debug.Log("FindLowestCard of " + leadingSuit.ToString());
+
+        return cardsInHand.FindAll(card => card.suit.Equals(leadingSuit)).OrderBy(obj => obj.data.score).First();
+    }
+
+    private Card FindLowestCard(List<Card> cardsInHand)
+    {
+        Debug.Log("Just FindLowestCard of any suit");
+        return cardsInHand.OrderBy(obj => obj.data.score).First();
     }
 
     bool HasNormalCards(List<Card> cardsInHand)

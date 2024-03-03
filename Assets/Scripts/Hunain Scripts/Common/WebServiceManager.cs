@@ -80,7 +80,7 @@ public class WebServiceManager : MonoBehaviour
     }
 
 
-    public void APIRequest(string getFunction, Method getMethod, string rawData = null, Dictionary<string, object> getParameters = null, Action<JObject, long> OnSuccess = null, Action<string> OnFail = null, CACHEABLE cacheable = 0, bool showLoader = true, FileUplaod fileUplaod = null)
+    public void APIRequest(string getFunction, Method getMethod, string rawData = null, Dictionary<string, object> getParameters = null, Action<JObject, long> OnSuccess = null, Action<string> OnFail = null, CACHEABLE cacheable = 0, bool showLoader = true, FileUplaod fileUplaod = null, WWWForm wWWForm = null)
     {
         if (showLoader)
             WaitingLoader.instance.ShowHide(showLoader);
@@ -90,10 +90,10 @@ public class WebServiceManager : MonoBehaviour
             print("API Request "+ getMethod.ToString() + " " + baseURL + getFunction);
 
         //--
-        StartCoroutine(WaitForRequest(baseURL, getFunction, getMethod, rawData, getParameters, OnSuccess, OnFail, cacheable, showLoader , fileUplaod));
+        StartCoroutine(WaitForRequest(baseURL, getFunction, getMethod, rawData, getParameters, OnSuccess, OnFail, cacheable, showLoader , fileUplaod , wWWForm));
     }
 
-    IEnumerator WaitForRequest(string baseURL, string getFunction, Method getMethod, string rawData = null, Dictionary<string, object> getParameters = null, Action<JObject, long> OnSuccess = null, Action<string> OnFail = null, CACHEABLE cacheable = 0, bool showLoader = true, FileUplaod fileUplaod = null)
+    IEnumerator WaitForRequest(string baseURL, string getFunction, Method getMethod, string rawData = null, Dictionary<string, object> getParameters = null, Action<JObject, long> OnSuccess = null, Action<string> OnFail = null, CACHEABLE cacheable = 0, bool showLoader = true, FileUplaod fileUplaod = null, WWWForm wWWForm = null)
     {
         UnityWebRequest www;
 
@@ -124,6 +124,11 @@ public class WebServiceManager : MonoBehaviour
                     //--
                     form.AddField(item.Key, item.Value.ToString());
                 }
+            }
+
+            if (wWWForm != null)
+            {
+                form = wWWForm;
             }
 
             if (rawData != null)

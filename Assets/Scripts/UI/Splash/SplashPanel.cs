@@ -10,9 +10,17 @@ public class SplashPanel : UIPanel
     private float maxWidth;
     private float loadingTime = 10f;
 
+    
     private void Start()
     {
-        StartCoroutine(LoadGame());
+        if (GameplayPanel.forceQuit)
+        {
+            ChangeScreen();
+        }
+        else
+        {
+            StartCoroutine(LoadGame());
+        }
     }
 
     private IEnumerator LoadGame()
@@ -42,6 +50,12 @@ public class SplashPanel : UIPanel
         progressBar.sizeDelta = new Vector2(targetWidth, progressBar.rect.height);
 
         yield return new WaitForSeconds(1f);
+        ChangeScreen();
+    }
+
+
+    void ChangeScreen() 
+    {
         if (PlayerPrefs.HasKey(ConstantVariables.AuthProvider) && (PlayerPrefs.GetString(ConstantVariables.AuthProvider).Equals(ConstantVariables.Guest) || PlayerPrefs.GetString(ConstantVariables.AuthProvider).Equals(ConstantVariables.Custom)))
         {
             Debug.Log("%%%%%%%%%%%" + gameObject.name);

@@ -210,14 +210,8 @@ public class GameplayManager : MonoBehaviour
              */
 
             #endregion Comments
-            //Dictionary<string, object> keyValuePairs = new Dictionary<string, object>();
 
-            //string userId1 = recieverId;
-            //string userId2 = senderId;
-            //keyValuePairs.Add("user_id1", userId1);
-            //keyValuePairs.Add("user_id2", userId2);
-
-            //WebServiceManager.instance.APIRequest(WebServiceManager.instance.addFriends, Method.POST, null, keyValuePairs, OnLoginSuccess, OnFail, CACHEABLE.NULL, false, null);
+            HitStartGameApi();
 
             CreateBotPlayerForMultiplayer();
             string sortedIds = string.Join(",", PlayerManager.instance.player.ConvertAll(x => x.id.ToString()).ToArray());
@@ -228,15 +222,43 @@ public class GameplayManager : MonoBehaviour
         {
             AnimateCardsScreen();
         }
-        //if (Photon.Pun.PhotonNetwork.InRoom && Photon.Pun.PhotonNetwork.IsMasterClient)
-        //{
-        //    cardDeck.CreateInitialDeck();
-        //    cardDeck.ShowHideCardContainer(false);
-        //}
+    }
+
+    private void HitStartGameApi()
+    {
+        WWWForm wWWForm = new WWWForm();
+
+        wWWForm.AddField("MatchType", "Multiplayer");
+        wWWForm.AddField("CoinsToPlay", Global.coinsRequired);
+        if (PhotonNetwork.InRoom)
+        {
+            foreach (var item in PhotonNetwork.CurrentRoom.Players)
+            {
+                wWWForm.AddField("UserIDs[]", item.Value.UserId);
+            }
+        }
+        else
+        {
+            //Testing
+            wWWForm.AddField("UserIDs[]", PlayerProfile.Player_UserID);
+        }
+        WebServiceManager.instance.APIRequest(WebServiceManager.instance.startGameFunction, Method.POST, null, null, OnGameStartSuccessfully, OnFail, CACHEABLE.NULL, false,null,wWWForm );
+    }
+
+    private void OnFail(string error)
+    {
+        Debug.LogError("OnFail: " + error);
+    }
+
+    private void OnGameStartSuccessfully(JObject obj, long code)
+    {
+        Debug.Log("OnGameStartSuccessfully: " + obj.ToString());
+    }
 
 
-        //  playButton.SetActive(false);
-        //  UIEvents.UpdateData(Panel.GameplayPanel, OnCardsCoverScreen, "ShowCardIntro");
+    private void OnGameEndedSuccessfully(JObject obj, long code)
+    {
+        Debug.Log("OnGameEndedSuccessfully: " + obj.ToString());
     }
 
     string multiplayerCards = null;
@@ -861,28 +883,19 @@ public class GameplayManager : MonoBehaviour
 
             string[] winners = GetWinnerIds(winner);
 
+            WWWForm wWWForm = new WWWForm();
+
             Dictionary<string, object> keyValuePairs = new Dictionary<string, object>();
-            keyValuePairs.Add("GameID", Global.currentGameId);
-
-
-             for (int i = 0; i < winners.Length; i++)
+            wWWForm.AddField("GameID", Global.currentGameId);
+             
+            for (int i = 0; i < winners.Length; i++)
             {
-                keyValuePairs.Add($"UserIDs[{i}]", winners[i]);
+                wWWForm.AddField("UserIDs[]", winners[i]);
             }
 
-            keyValuePairs.Add("winCoins", coins);
+            wWWForm.AddField("winCoins", coins);
 
-            WebServiceManager.instance.APIRequest(WebServiceManager.instance.endGameFunction, Method.POST, null, keyValuePairs,
-
-            (JObject resp, long arg2) =>
-            {
-
-
-            }
-            , (msg) =>
-            {
-                print(msg);
-            }, CACHEABLE.NULL, false, null);
+            WebServiceManager.instance.APIRequest(WebServiceManager.instance.endGameFunction, Method.POST, null, keyValuePairs, OnGameEndedSuccessfully, OnFail, CACHEABLE.NULL, false, null, wWWForm);
         }
     }
 

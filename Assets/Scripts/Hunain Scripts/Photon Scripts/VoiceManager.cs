@@ -7,6 +7,7 @@ public class VoiceManager : MonoBehaviourPun
 {
 
     public Recorder recorder;
+    public Image micImage;
 
 
     public static VoiceManager instance;
@@ -29,13 +30,12 @@ public class VoiceManager : MonoBehaviourPun
         }
     }
 
-    public Image micImage;
-    public Sprite micOnImage;
-    public Sprite micOffImage;
 
     public void ResetMicIcon()
     {
-        micImage.sprite =  micOnImage;
+        Color color = micImage.color;
+        color.a = 1;
+        micImage.color =  color;
     }
 
     public bool EnableDisableAudioTransmition()
@@ -45,7 +45,9 @@ public class VoiceManager : MonoBehaviourPun
             recorder.TransmitEnabled = !recorder.TransmitEnabled;
         }
 
-        micImage.sprite = recorder.TransmitEnabled ? micOnImage: micOffImage;
+        Color color = micImage.color;
+        color.a = recorder.TransmitEnabled ? 1: .3f;
+        micImage.color = color;
         return recorder.TransmitEnabled;
     }
 }

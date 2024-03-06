@@ -186,6 +186,11 @@ public class PhotonRoomCreator : MonoBehaviourPunCallbacks
         }
     }
 
+    public void JoinPrivateRoom(string roomId) 
+    {
+        PhotonNetwork.JoinRoom(roomId);
+    }
+
     public void ReConnectingToPhoton()
     {
         Debug.Log("ConnectingToPhoton. . .");

@@ -92,9 +92,12 @@ public class PlayerUI : MonoBehaviour
                 Debug.Log("Voice Player not found: " + userId);
             }
             enableOrDisable = voicePlayer.audioSource.enabled;
+           
+            Color color = muteIcon.color;
+            color.a = enableOrDisable ? 1 : .3f;
+            muteIcon.color = color;
         }
-        
-        
+
         //Color color = muteIcon.color;
         //color.a = enableOrDisable ? 1 : 0.5f;
         //muteIcon.color = color;
@@ -107,17 +110,20 @@ public class PlayerUI : MonoBehaviour
 
         //Hunain
         this.userId = userId;
-        if (!string.IsNullOrEmpty(userId) && Global.isMultiplayer)
+        if (!Global.isMultiplayer)
         {
-            if (userId.Equals(PhotonNetwork.LocalPlayer.UserId))
-            {
-                VoiceManager.instance.ResetMicIcon();
-                muteIcon.gameObject.SetActive(true);
-            }
+            muteIcon.gameObject.SetActive(false);
         }
         else
         {
-            muteIcon.gameObject.SetActive(false);
+            if (!string.IsNullOrEmpty(userId))
+            {
+                if (userId.Equals(PhotonNetwork.LocalPlayer.UserId))
+                {
+                    VoiceManager.instance.ResetMicIcon();
+                }
+                muteIcon.gameObject.SetActive(true);
+            }
         }
         //Hunain End
 

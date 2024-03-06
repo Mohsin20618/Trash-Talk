@@ -9,7 +9,7 @@ public static class Global
     public static bool isAdAvailable = false;
     public static bool isSpinAvailable = false;
     public static int coinsRequired = 0;  //It is temporary and will be changed after getting more screens
-    public static string roomName = "TT_" + Random.Range(99, 9999);  //It is temporary and will be changed after getting more screens
+    public static string roomName = "TT" + Random.Range(99, 999999);  //It is temporary and will be changed after getting more screens
     public static string currentGameId = "";
     public static int scoreToWin = 500;
 

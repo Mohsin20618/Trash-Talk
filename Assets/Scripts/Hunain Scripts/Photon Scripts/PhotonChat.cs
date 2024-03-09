@@ -115,7 +115,7 @@ public class PhotonChat : MonoBehaviourPunCallbacks, IChatClientListener
     [ContextMenu("Connect")]
     internal void Connect()
     {
-
+        if (chatClient != null) return;
         chatClient = new ChatClient(this);
         chatClient.AuthValues = new AuthenticationValues();
         chatAppSettings.AppIdChat = PhotonNetwork.PhotonServerSettings.AppSettings.AppIdChat;

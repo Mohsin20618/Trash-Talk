@@ -20,6 +20,8 @@ public class FriendRequestManager : Singleton<FriendRequestManager>
 
         if (recieverId == PlayerProfile.Player_UserID) //Someone send me a friend Request
         {
+            Debug.Log(senderId +   " send me a friend request.");
+
             ShowRequestPopUp(senderId);
             return;
         }
@@ -31,6 +33,7 @@ public class FriendRequestManager : Singleton<FriendRequestManager>
     public void ShowRequestPopUp(string senderId) 
     {
         PlayerUI senderUI = ReturnUiPlayerObj(senderId);
+        Debug.Log("Sender Name: " + senderUI.playerData.name , senderUI.gameObject);
         senderUI.friendRequestPopUp.SetData(senderId);
        
         //senderUI.addFriendBtn.ChangeInteractable(false);

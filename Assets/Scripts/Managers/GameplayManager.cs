@@ -869,7 +869,7 @@ public class GameplayManager : MonoBehaviour
         if (!Global.isMultiplayer)
             return;
 
-        int coins = (this.totalPlayers / 2) * Global.coinsRequired;
+        int coins = Global.coinsRequired * 2; //100 * 2 = 200
         print("2 Winner is: " + winner.name);
 
         if (winner.isOwn || winner.partner.isOwn)

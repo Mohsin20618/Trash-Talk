@@ -99,26 +99,33 @@ public class PhotonConnectionController : MonoBehaviourPunCallbacks
     public void OnGetGlobalUsers(JObject resp, long arg2)
     {
         var globalUsers = GlobalUsers.FromJson(resp.ToString());
+        if (globalUsers != null && globalUsers.data != null)
+        {
+            PlayerProfile.instance.globalUsers = globalUsers.data.data;
+        }
 
-        PlayerProfile.instance.globalUsers = globalUsers.data.data;
-
-        Debug.Log("Total Global users: " + PlayerProfile.instance.globalUsers.Count);
+        Debug.Log("Total globalUsers: " + PlayerProfile.instance.globalUsers.Count);
     }
     public void OnGetRecentUsers(JObject resp, long arg2)
     {
         var globalUsers = DeSerialize.FromJson<GlobalUsers>(resp.ToString());
+        if (globalUsers != null && globalUsers.data != null)
+        {
+            PlayerProfile.instance.recentUsers = globalUsers.data.data;
+        }
 
-        PlayerProfile.instance.recentUsers = globalUsers.data.data;
-
-        Debug.Log("Total Global users: " + PlayerProfile.instance.globalUsers.Count);
+        Debug.Log("Total recentUsers: " + PlayerProfile.instance.recentUsers.Count);
     }
     public void OnGetFriendsUsers(JObject resp, long arg2)
     {
         var globalUsers = GlobalUsers.FromJson(resp.ToString());
 
-        PlayerProfile.instance.friendsUsers = globalUsers.friends.data;
+        if (globalUsers != null && globalUsers.friends != null)
+        {
+            PlayerProfile.instance.friendsUsers = globalUsers.friends.data;
+        }
 
-        Debug.Log("Total Global users: " + PlayerProfile.instance.globalUsers.Count);
+        Debug.Log("Total friendsUsers: " + PlayerProfile.instance.friendsUsers.Count);
     }
 
     void OnFailGlobalUser(string msg)

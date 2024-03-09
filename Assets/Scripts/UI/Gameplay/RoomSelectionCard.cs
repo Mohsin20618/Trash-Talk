@@ -6,12 +6,36 @@ using UnityEngine.UI;
 
 public class RoomSelectionCard : MonoBehaviour
 {   public int entryCoins;
-    public void OnSelectRoom()
+    public Text entryFees;
+
+    private void OnEnable()
     {
         if (entryCoins == -1)
         {
+            entryFees.text = PlayerProfile.Player_coins.ToString(); //All In
+        }
+    }
+    public void OnSelectRoom()
+    {
+        if (entryCoins == -1) //All in
+        {
+            if (PlayerProfile.Player_coins < 1)
+            {
+                MesgBar.instance.show("You don't have enough coins.", true);
+                return;
+            }
             entryCoins = (int)PlayerProfile.Player_coins; //All in
         }
+        else
+        {
+            if (PlayerProfile.Player_coins < entryCoins)
+            {
+                MesgBar.instance.show("You don't have enough coins.", true);
+                return;
+            }
+        }
+
+
         Global.coinsRequired = entryCoins;
 
         if (Global.isPublicRoom)

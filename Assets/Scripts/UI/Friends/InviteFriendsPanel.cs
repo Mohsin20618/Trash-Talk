@@ -110,7 +110,7 @@ public class InviteFriendsPanel : MonoBehaviour
         //UIEvents.ShowPanel(Panel.Popup);
         //UIEvents.UpdateData(Panel.Popup, null, "SetData", "Invite sent to your selected friends", "","OK");
 
-        string roomName = Global.roomName;
+        string roomName = Global.roomName = "TT" + Random.Range(99, 999999);
 
         Debug.Log("roomName : "  +roomName);
 

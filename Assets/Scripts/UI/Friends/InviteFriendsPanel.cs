@@ -113,7 +113,6 @@ public class InviteFriendsPanel : MonoBehaviour
         string roomName = Global.roomName;
 
         Debug.Log("roomName : "  +roomName);
-        PhotonRoomCreator.instance.CreateRoomOnPhoton(false, roomName);
 
         foreach (var friendsScreen in transform.parent.GetComponentsInChildren<InviteFriendsPanel>())
         {
@@ -157,6 +156,9 @@ public class InviteFriendsPanel : MonoBehaviour
 
             //}, "SetData", "Invite sent to your selected friends", "", "OK");
         });
+
+        PhotonRoomCreator.instance.CreateRoomOnPhoton(false, roomName);
+
     }
 
 

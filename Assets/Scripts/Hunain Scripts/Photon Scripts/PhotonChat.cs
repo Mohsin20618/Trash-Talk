@@ -136,7 +136,7 @@ public class PhotonChat : MonoBehaviourPunCallbacks, IChatClientListener
     internal void RequestAndSendMessage(string targetUserID, string roomID, System.Action callBack=null)
     {
         PUNCallBack = callBack;
-        StartCoroutine(RequestAndSendMessage_Co(targetUserID, roomID));
+        RequestAndSendMessage_Co(targetUserID, roomID);
     }
 
     internal IEnumerator SendSeatNumber(string targetUserID, string seatNum)
@@ -148,16 +148,14 @@ public class PhotonChat : MonoBehaviourPunCallbacks, IChatClientListener
         }
     }
 
-    internal IEnumerator RequestAndSendMessage_Co(string targetUserID, string roomID)
+    internal void RequestAndSendMessage_Co(string targetUserID, string roomID)
     {
         string messagetoSend = "requested," + targetUserID + "," + roomID + "," + PlayerProfile.GameId + "," + Global.coinsRequired;
         print("Gameid is" + PlayerProfile.GameId);
-        yield return new WaitUntil(()=> PhotonNetwork.InRoom);
-        if (PhotonNetwork.InRoom)
+        //if (PhotonNetwork.InRoom)
         {
             Debug.Log("RequestAndSendMessage_Co: targetUserID: "  + targetUserID);
             chatClient.SendPrivateMessage(targetUserID, messagetoSend);
-            yield return null;
         }
     }
 

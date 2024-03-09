@@ -128,7 +128,7 @@ public class PhotonRoomCreator : MonoBehaviourPunCallbacks
 
                 Debug.Log("RoomID: " + RoomID);
 
-                PhotonNetwork.JoinOrCreateRoom(RoomID, roomOptions, TypedLobby.Default);
+                PhotonNetwork.CreateRoom(RoomID, roomOptions, TypedLobby.Default);
             }
             else
             {

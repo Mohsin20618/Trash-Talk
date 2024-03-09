@@ -14,7 +14,16 @@ public class VoiceManager : MonoBehaviourPun
 
     private void Awake()
     {
-        instance = this;
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+
     }
     public void EnableDisableVoiceManager()
     {

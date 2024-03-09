@@ -62,8 +62,8 @@ public class PhotonConnectionController : MonoBehaviourPunCallbacks
         PhotonRoomCreator.instance.setPhotonProps();
         if (isChatConnected == false)
         {
-            PhotonChat.Instance.Connect();
         }
+        PhotonChat.Instance.Connect();
 
         if (WaitingLoader.instance.gameObject.activeInHierarchy)
         {

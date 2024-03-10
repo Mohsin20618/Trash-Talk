@@ -83,10 +83,13 @@ public class PlayerUI : MonoBehaviour
 
             VoicePlayer voicePlayer = PhotonRoomCreator.instance.voicePlayers.Find(x => x.userId.Equals(this.userId));
 
-            
-            if(voicePlayer == null)
-                voicePlayer = FindObjectsOfType<VoicePlayer>().ToList().Find(x => x.userId.Equals(this.userId));
 
+            if (voicePlayer == null)
+                voicePlayer = FindObjectsOfType<VoicePlayer>().ToList().Find(x => x.userId.Equals(this.userId));
+            foreach (var item in FindObjectsOfType<VoicePlayer>())
+            {
+                item.EnableDisableAudioSource();
+            }
             if (voicePlayer)
             {
                 Debug.Log("Disable voice for: " + voicePlayer.userId);

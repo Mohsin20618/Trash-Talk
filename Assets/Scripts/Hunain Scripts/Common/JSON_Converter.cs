@@ -25,6 +25,14 @@ namespace TrashTalk
         public User User { get; set; }
     }
 
+    public partial class GameCreateData
+    {
+        public string GameID;//{ get; set; }
+        public string MatchType;// { get; set; }
+        public long CoinsToPlay;// { get; set; }
+        public string Status;// { get; set; }
+    }
+
     public partial class LeaderboardUsers
     {
         public List<User> data;
@@ -51,28 +59,6 @@ namespace TrashTalk
         public List<User> data;
     }
 
-    public partial class GameResponse
-    {
-        public GameResponseData data;
-    }
-
-    public partial class GameResponse
-    {
-        public static GameResponse FromJson(string json) => JsonConvert.DeserializeObject<GameResponse>(json, TrashTalk.Converter.Settings);
-    }
-
-    [Serializable]
-    public partial class GameResponseData
-    {
-        [JsonProperty("GameID")]
-        public string GameID;
-
-        //    [JsonProperty("UserIDs")]
-        //    public string UserIDs;
-
-        //    [JsonProperty("CoinsToPlay")]
-        //    public int FullName;
-    }
 
     [Serializable]
     public partial class User

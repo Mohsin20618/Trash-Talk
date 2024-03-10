@@ -253,6 +253,20 @@ public class GameplayManager : MonoBehaviour
     private void OnGameStartSuccessfully(JObject obj, long code)
     {
         Debug.Log("OnGameStartSuccessfully: " + obj.ToString());
+        var gameCreateData = DeSerialize.FromJson<GameCreateData>(obj.ToString());
+        Debug.Log("Game Id: " + gameCreateData.GameID);
+        PlayerProfile.GameId = Global.currentGameId = gameCreateData.GameID;
+
+        if (PhotonNetwork.InRoom && PhotonNetwork.LocalPlayer.IsMasterClient)
+        {
+            Debug.Log("Updating GameId Id on Photon.");
+            RoomOptions roomOptions = new RoomOptions();
+            _myCustomProperties["GameID"] = Global.currentGameId;
+            roomOptions.CustomRoomPropertiesForLobby = new string[1] { "GameID" };
+            roomOptions.CustomRoomProperties = _myCustomProperties;
+            PhotonNetwork.CurrentRoom.SetCustomProperties(_myCustomProperties);
+        }
+
     }
 
 

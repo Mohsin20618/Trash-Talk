@@ -86,10 +86,6 @@ public class PlayerUI : MonoBehaviour
 
             if (voicePlayer == null)
                 voicePlayer = FindObjectsOfType<VoicePlayer>().ToList().Find(x => x.userId.Equals(this.userId));
-            foreach (var item in FindObjectsOfType<VoicePlayer>())
-            {
-                item.EnableDisableAudioSource();
-            }
             if (voicePlayer)
             {
                 Debug.Log("Disable voice for: " + voicePlayer.userId);
@@ -102,8 +98,13 @@ public class PlayerUI : MonoBehaviour
             enableOrDisable = voicePlayer.audioSource.enabled;
            
             Color color = muteIcon.color;
-            color.a = enableOrDisable ? 1 : .3f;
+            color.a = muteIcon.color.a == 0.3f ? 1 : 0.3f;
             muteIcon.color = color;
+
+            foreach (var item in FindObjectsOfType<VoicePlayer>())
+            {
+                item.EnableDisableAudioSource();
+            }
         }
 
         //Color color = muteIcon.color;

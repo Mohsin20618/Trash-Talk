@@ -67,6 +67,11 @@ public class PlayerUI : MonoBehaviour
     public void MicBtnListener()
     {
         bool enableOrDisable = false;
+        if (playerData.isBot)
+        {
+            return;
+        }
+
 
         if (userId.Equals(PhotonNetwork.LocalPlayer.UserId)) //Disable Mic Transmission of myself
         {

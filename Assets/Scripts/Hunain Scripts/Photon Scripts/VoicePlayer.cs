@@ -22,6 +22,8 @@ public class VoicePlayer : MonoBehaviour
 
     public void EnableDisableAudioSource()
     {
-        audioSource.enabled = speaker.enabled = !audioSource.enabled;
+        bool doEnable = !audioSource.enabled;
+        audioSource.enabled = speaker.enabled = doEnable;
+        audioSource.volume = doEnable ? 1 : 0;
     }
 }

@@ -175,10 +175,13 @@ public class GameplayPanel : UIPanel
                     PhotonRoomCreator.instance.LeavePhotonRoom();
                 }
                 SoundManager.Instance.StopBackgroundMusic();
-                Hide();
+                //Hide();
+                GameplayManager.instance.partnerPanel.EnableDisablePanel(false);
+                UIEvents.HidePanel(Panel.GameplayPanel);
+                UIEvents.HidePanel(Panel.EndGamePanel);
                 UIEvents.ShowPanel(Panel.TabPanels);
-                //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
                 UIEvents.ShowPanel(Panel.GameSelectPanel);
+                //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
             }
         }, "SetData", "Are you sure you want to leave game?", "NO", "YES");
 

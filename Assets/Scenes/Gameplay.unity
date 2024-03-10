@@ -10280,7 +10280,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1809039648
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10385,7 +10385,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 2100000, guid: 3bf50530d49ca504dacf149e786ad485, type: 2}
+  m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
@@ -12635,6 +12635,18 @@ PrefabInstance:
     - target: {fileID: 502287528165352943, guid: 04d523d008ffa47058995719de8fa1ef, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6272708415844478740, guid: 04d523d008ffa47058995719de8fa1ef, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 503867577}
+    - target: {fileID: 6272708415844478740, guid: 04d523d008ffa47058995719de8fa1ef, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnHomeButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 6272708415844478740, guid: 04d523d008ffa47058995719de8fa1ef, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: GameplayPanel, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 9065150459490789234, guid: 04d523d008ffa47058995719de8fa1ef, type: 3}
       propertyPath: m_Name

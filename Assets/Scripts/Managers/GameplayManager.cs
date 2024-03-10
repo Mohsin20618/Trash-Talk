@@ -336,18 +336,58 @@ public class GameplayManager : MonoBehaviour
     void CreateBotPlayerForMultiplayer()
     {
         int bp = 0;
-        for (int i = 0; i < 4; i++)
+        if (PhotonNetwork.CurrentRoom.PlayerCount == 2)
         {
-            if (string.IsNullOrEmpty(PlayerManager.instance.player[i].id))
+            if (PhotonNetwork.LocalPlayer.IsMasterClient)
             {
-                bp++;
-                PlayerManager.instance.players[i].name = $"Bot Player {bp}";
-                PlayerManager.instance.players[i].isOwn = false;
-                PlayerManager.instance.players[i].isMaster = false;
-                PlayerManager.instance.players[i].isBot = true;
-                PlayerManager.instance.players[i].id = $"BP{bp}";
-                //   PlayerManager.instance.players[i].tablePosition = 0;
-                //   PlayerManager.instance.players[i].photonIndex = i;
+                for (int i = 0; i < 4; i++)
+                {
+                    if (string.IsNullOrEmpty(PlayerManager.instance.player[i].id))
+                    {
+                        bp++;
+                        PlayerManager.instance.players[i].name = $"Bot Player {bp}";
+                        PlayerManager.instance.players[i].isOwn = false;
+                        PlayerManager.instance.players[i].isMaster = false;
+                        PlayerManager.instance.players[i].isBot = true;
+                        PlayerManager.instance.players[i].id = $"BP{bp}";
+                        //   PlayerManager.instance.players[i].tablePosition = 0;
+                        //   PlayerManager.instance.players[i].photonIndex = i;
+                    }
+                }
+            }
+            else
+            {
+                for (int i = 3; i >= 0; i--)
+                {
+                    if (string.IsNullOrEmpty(PlayerManager.instance.player[i].id))
+                    {
+                        bp++;
+                        PlayerManager.instance.players[i].name = $"Bot Player {bp}";
+                        PlayerManager.instance.players[i].isOwn = false;
+                        PlayerManager.instance.players[i].isMaster = false;
+                        PlayerManager.instance.players[i].isBot = true;
+                        PlayerManager.instance.players[i].id = $"BP{bp}";
+                        //   PlayerManager.instance.players[i].tablePosition = 0;
+                        //   PlayerManager.instance.players[i].photonIndex = i;
+                    }
+                }
+            }
+        }
+        else
+        {
+            for (int i = 0; i < 4; i++)
+            {
+                if (string.IsNullOrEmpty(PlayerManager.instance.player[i].id))
+                {
+                    bp++;
+                    PlayerManager.instance.players[i].name = $"Bot Player {bp}";
+                    PlayerManager.instance.players[i].isOwn = false;
+                    PlayerManager.instance.players[i].isMaster = false;
+                    PlayerManager.instance.players[i].isBot = true;
+                    PlayerManager.instance.players[i].id = $"BP{bp}";
+                    //   PlayerManager.instance.players[i].tablePosition = 0;
+                    //   PlayerManager.instance.players[i].photonIndex = i;
+                }
             }
         }
     }
@@ -778,7 +818,9 @@ public class GameplayManager : MonoBehaviour
 
     void CompleteTrick()
     {
-        if (IsRoundOver())
+        bool isOver = IsRoundOver();
+        Debug.Log("isOver: " + isOver);
+        if (isOver)
         {
             RoundManager.instance.AddCurrentRoundProgress();
             SetPlayerTurnIndication(null, true);

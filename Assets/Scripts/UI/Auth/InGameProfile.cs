@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,7 +13,8 @@ public class InGameProfile : MonoBehaviour
     public Text playerTotalGames;
     public Text playerWins;
     public Text playerLevel;
-    public Button closeButton;
+    public Button closeButton; 
+    public Button addButton;
     public string userId;
 
     public List<Countries> countries = new();
@@ -30,6 +32,12 @@ public class InGameProfile : MonoBehaviour
         playerWins.text = player.wonCount;
         playerLevel.text = player.level;
         this.userId = player.id;
+
+        if (player.isBot || PlayerProfile.instance.friendsUsers.Any(user => user.UserId == player.id))
+            addButton.gameObject.SetActive(false);
+        else 
+            addButton.gameObject.SetActive(true);
+
         ImageCacheManager.instance.CheckOrDownloadImage(player.imageURL, playerPicture);
 
         Sprite flagSprite = GetFlag();

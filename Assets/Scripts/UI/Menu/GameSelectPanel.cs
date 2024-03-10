@@ -184,7 +184,8 @@ public class GameSelectPanel : UIPanel
     public void ShareonNativeApp()
     {
         NativeShare nativeShare = new NativeShare();
-        nativeShare.SetSubject("Game Request").SetTitle("Request").SetText("Room Id = " + Global.roomName).SetUrl("Will be store link").Share();
+        Debug.Log("Roomname:" + Global.roomName); 
+        nativeShare.SetSubject("Game Request").SetTitle("Request").SetText("Room Id : ").SetUrl(Global.roomName).Share();
     }
     void OpenTabPanel()
     {

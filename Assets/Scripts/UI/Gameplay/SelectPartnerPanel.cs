@@ -7,8 +7,11 @@ public class SelectPartnerPanel : MonoBehaviour
     public Transform container;
     public List<PartnerObject> partnerObjects;
 
-    private void OnEnable()
+    public void ShareonNativeApp()
     {
+        NativeShare nativeShare = new NativeShare();
+        Debug.Log("Roomname:" + Global.roomName);
+        nativeShare.SetSubject("Game Request").SetTitle("Request").SetText("Room Id : ").SetUrl(Global.roomName).Share();
     }
 
     public void EnableDisablePanel(bool state) { gameObject.SetActive(state); }

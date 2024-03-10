@@ -253,9 +253,9 @@ public class GameplayManager : MonoBehaviour
     private void OnGameStartSuccessfully(JObject obj, long code)
     {
         Debug.Log("OnGameStartSuccessfully: " + obj.ToString());
-        var gameCreateData = DeSerialize.FromJson<GameCreateData>(obj.ToString());
-        Debug.Log("Game Id: " + gameCreateData.GameID);
-        PlayerProfile.GameId = Global.currentGameId = gameCreateData.GameID;
+        var gameCreateData = DeSerialize.FromJson<GameCreateResp>(obj.ToString());
+        Debug.Log("Game Id: " + gameCreateData.Data.GameID);
+        PlayerProfile.GameId = Global.currentGameId = gameCreateData.Data.GameID;
 
         if (PhotonNetwork.InRoom && PhotonNetwork.LocalPlayer.IsMasterClient)
         {

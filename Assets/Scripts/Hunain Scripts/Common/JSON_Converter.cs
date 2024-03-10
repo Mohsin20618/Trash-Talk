@@ -25,6 +25,17 @@ namespace TrashTalk
         public User User { get; set; }
     }
 
+    public partial class GameCreateResp
+    {
+        [JsonProperty("msg")]
+        public string Msg;// { get; set; }
+
+        [JsonProperty("data")]
+        public GameCreateData Data;//{ get; set; }
+    }
+
+
+    [Serializable]
     public partial class GameCreateData
     {
         public string GameID;//{ get; set; }

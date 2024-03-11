@@ -126,6 +126,8 @@ public class PhotonRoomCreator : MonoBehaviourPunCallbacks
                 roomOptions.CustomRoomProperties = _myCustomProperties;
                 RoomID = roomName.ToUpper();
 
+                Global.roomName = RoomID;
+
                 Debug.Log("RoomID: " + RoomID);
 
                 PhotonNetwork.CreateRoom(RoomID, roomOptions, TypedLobby.Default);
@@ -153,6 +155,7 @@ public class PhotonRoomCreator : MonoBehaviourPunCallbacks
                 roomOptions.CustomRoomProperties = _myCustomProperties;
                 //roomName = string.IsNullOrEmpty(roomName) ?"SAND_"+ randomNo:roomName;
                 //RoomID = roomName.ToUpper();
+
 
                 PhotonNetwork.JoinRandomOrCreateRoom(_myCustomProperties, 0, MatchmakingMode.FillRoom, TypedLobby.Default, null, null, roomOptions, null);
             }
@@ -243,7 +246,7 @@ public class PhotonRoomCreator : MonoBehaviourPunCallbacks
     public override void OnJoinedRoom()
     {
         Debug.Log("OnJoinedRoom()");
-        PlayerProfile.RoomId = RoomID;
+        PlayerProfile.RoomId = Global.roomName = RoomID = PhotonNetwork.CurrentRoom.Name;
         if (PhotonNetwork.LocalPlayer.IsMasterClient)
         {
             RoomOptions roomOptions = new RoomOptions();

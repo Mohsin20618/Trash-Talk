@@ -1,17 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SelectPartnerPanel : MonoBehaviour
 {
+    public Button inviteBtn;
     public Transform container;
     public List<PartnerObject> partnerObjects;
 
+    private void OnEnable()
+    {
+        inviteBtn.gameObject.SetActive(!Global.isPublicRoom);
+
+    }
     public void ShareonNativeApp()
     {
         NativeShare nativeShare = new NativeShare();
         Debug.Log("Roomname:" + Global.roomName);
-        nativeShare.SetSubject("Game Request").SetTitle("Request").SetText("Room Id : ").SetUrl(Global.roomName).Share();
+        nativeShare.SetSubject("Game Request").SetTitle("Trash Talk").SetText("Room Id : " + Global.roomName).Share();
     }
 
     public void EnableDisablePanel(bool state) { gameObject.SetActive(state); }

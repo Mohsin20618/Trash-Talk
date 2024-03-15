@@ -774,7 +774,23 @@ public class GameplayManager : MonoBehaviour
             print("in else total played player: " + this.totalPlayerPlayed);
             if (this.totalPlayerPlayed == this.totalPlayers)
             {
-                Invoke("OnWinTrick", 1);
+                Invoke(nameof(OnWinTrick), 1);
+            }
+        }
+    }
+
+    void FindRenegePlayers()
+    {
+        Debug.Log("FindRenegePlayers");
+        if (TrickManager.cards[0].cardOwner.id == PhotonNetwork.LocalPlayer.UserId)
+        {
+            Debug.Log("FindRenegePlayers()" + TrickManager.cards[0].suit);
+        
+            foreach (var item in TrickManager.cards)
+            {
+
+                Debug.Log("item.suit: " + item.suit);
+                Debug.Log("Name: "+item.cardOwner.name);
             }
         }
     }
@@ -785,7 +801,8 @@ public class GameplayManager : MonoBehaviour
 
         if (this.totalPlayerPlayed == this.totalPlayers)
         {
-            Invoke("OnWinTrick", 1);
+            if(Global.isMultiplayer) FindRenegePlayers();
+            Invoke(nameof(OnWinTrick), 1);
             return;
         }
 
@@ -825,11 +842,11 @@ public class GameplayManager : MonoBehaviour
             RoundManager.instance.AddCurrentRoundProgress();
             SetPlayerTurnIndication(null, true);
 
-            Invoke("OnRoundOver", 1);
+            Invoke(nameof(OnRoundOver), 1);
         }
         else
         {
-            Invoke("ResetTrick", 1);
+            Invoke(nameof(ResetTrick), 1);
         }
 
     }

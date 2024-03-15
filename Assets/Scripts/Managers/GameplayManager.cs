@@ -801,7 +801,6 @@ public class GameplayManager : MonoBehaviour
 
         if (this.totalPlayerPlayed == this.totalPlayers)
         {
-            if(Global.isMultiplayer) FindRenegePlayers();
             Invoke(nameof(OnWinTrick), 1);
             return;
         }
@@ -826,6 +825,8 @@ public class GameplayManager : MonoBehaviour
 
     void OnWinTrick()
     {
+        if (Global.isMultiplayer) FindRenegePlayers();
+
         Player player = TrickManager.GetTrickWinner();
         this.trickWinner = player;
         UIEvents.UpdateData(Panel.PlayersUIPanel, null, "WinnerAnimation", player.tablePosition);

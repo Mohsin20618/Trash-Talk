@@ -35,6 +35,19 @@ public class PhotonRPCManager : MonoBehaviourPunCallbacks
         }
     }
 
+    [PunRPC]
+    public void ShowRenegeBonusRPC(int score, string renegePersonId, string senderName)
+    {
+        foreach (var item in GameplayManager.instance.playersUIPanel.playerUI)
+        {
+            if (item.playerData.id.Equals(renegePersonId))
+            {
+                Debug.Log(senderName + " Renege it.");
+                item.ShowRenegeBonus(score);
+                break;
+            }
+        }
+    }
 
     [PunRPC]
     public void SpawnPlayers_Rpc(string shuffledCards ,string sortedIds)

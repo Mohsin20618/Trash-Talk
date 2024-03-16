@@ -74,12 +74,14 @@ public class PlayerUI : MonoBehaviour
 
     public void ShowRenegeBonus(int renegeScore) 
     {
+
         playerData.renegeScore += renegeScore;
         renegeBonus.text = renegeScore > 0 ? "+30" : "-30";
         renegeBonus.gameObject.SetActive(true);
         renegeBonus.color = renegeScore > 0 ? Color.white : Color.red;
         LeanTween.textAlpha(renegeBonus.GetComponent<RectTransform>(), 0 , 2f);
         Invoke(nameof(HideRenegeBonus), 2f);
+
     }
     void HideRenegeBonus() 
     {
@@ -93,17 +95,23 @@ public class PlayerUI : MonoBehaviour
             Debug.Log("Suit:" + lastPlayedCard.suit);
             Debug.Log("shortCode:" + lastPlayedCard.data.shortCode);
             bool isCaught = TrickManager.CheckRenege(playerData, lastPlayedCard);
+            int score = 0;
             if (isCaught)
             {
+
                 Debug.Log("-30");
-                ShowRenegeBonus(-30);
+                score = -30;
+                ShowRenegeBonus(score);
 
             }
             else
             {
                 Debug.Log("+30");
-                ShowRenegeBonus(+30);
+                score = +30;
+                ShowRenegeBonus(score);
             }
+            
+            PhotonRPCManager.Instance.SendRPC("ShowRenegeBonusRPC", RpcTarget.Others, score, playerData.id, PhotonNetwork.LocalPlayer.NickName);
         }
         else
         {

@@ -9,10 +9,14 @@ using System.Linq;
 
 public class PlayerUI : MonoBehaviour
 {
+    public RenegePopup renegePopUp;
+    public Text renegeBonus;
+
+    [Space]
+    [Space]
     public Button playerProfileBtn;
     public GameObject inGameProfile;
     public Player playerData;
-    public AddFriend addFriendBtn;
     public FriendRequestPopUp friendRequestPopUp;
     public PlayerBidUI bidUI;
     public Text myBids;
@@ -36,7 +40,9 @@ public class PlayerUI : MonoBehaviour
 
     public Image bonusImage;
     public GameObject timerObj;
-    
+
+    public Card lastPlayedCard;
+
     //private string profileImageURL = "https://i.pravatar.cc/300";
 
     System.Action<int> callBack;
@@ -53,14 +59,58 @@ public class PlayerUI : MonoBehaviour
 
     private void Start()
     {
-        if (Global.isMultiplayer) { }
+        if (Global.isMultiplayer)
         {
             muteBtn.onClick.AddListener(() => MicBtnListener());
+
+            if (playerProfileBtn)
+            {
+                playerProfileBtn.onClick.AddListener(() => OpenInGameProfile());
+            }
         }
-        if (playerProfileBtn && !playerData.isBot)
+
+        if (renegePopUp != null) renegePopUp.renegeBtn.onClick.AddListener(() => RenegeBtnListener());
+    }
+
+    public void ShowRenegeBonus(int renegeScore) 
+    {
+        playerData.renegeScore += renegeScore;
+        renegeBonus.text = renegeScore > 0 ? "+30" : "-30";
+        renegeBonus.gameObject.SetActive(true);
+        renegeBonus.color = renegeScore > 0 ? Color.white : Color.red;
+        LeanTween.textAlpha(renegeBonus.GetComponent<RectTransform>(), 0 , 2f);
+        Invoke(nameof(HideRenegeBonus), 2f);
+    }
+    void HideRenegeBonus() 
+    {
+        renegeBonus.gameObject.SetActive(false);
+    }
+
+    void RenegeBtnListener() 
+    {
+        if (lastPlayedCard != null)
         {
-            playerProfileBtn.onClick.AddListener(() => OpenInGameProfile());
-        }   
+            Debug.Log("Suit:" + lastPlayedCard.suit);
+            Debug.Log("shortCode:" + lastPlayedCard.data.shortCode);
+            bool isCaught = TrickManager.CheckRenege(playerData, lastPlayedCard);
+            if (isCaught)
+            {
+                Debug.Log("-30");
+                ShowRenegeBonus(-30);
+
+            }
+            else
+            {
+                Debug.Log("+30");
+                ShowRenegeBonus(+30);
+            }
+        }
+        else
+        {
+            Debug.LogError("Some Error Here.");
+        }
+
+        ShowHideRenegePopUp(false);
     }
 
 
@@ -167,6 +217,8 @@ public class PlayerUI : MonoBehaviour
 
     public void OpenInGameProfile()
     {
+        if (playerData.isBot)
+            return;
         inGameProfile.SetActive(true);
         inGameProfile.GetComponent<InGameProfile>().OpenProfile(playerData);
     }
@@ -312,5 +364,17 @@ public class PlayerUI : MonoBehaviour
     public void HideBidUI()
     {
         this.bidUI.gameObject.SetActive(false);
+    }
+
+    internal void ShowRenegeUI(Card card)
+    {
+        Debug.Log("Show Renege Button On my Profile." , gameObject);
+        lastPlayedCard = card;
+        ShowHideRenegePopUp(true);
+    }
+
+    internal void ShowHideRenegePopUp(bool state)
+    {
+        if(renegePopUp!=null) renegePopUp.gameObject.SetActive(state);
     }
 }

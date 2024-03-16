@@ -135,6 +135,7 @@ public class PlayersUIPanel : UIPanel
             ui.ResetUI();
         }
 
+        ResetRenegeScore();
         yourTurnHeading.SetActive(false);
     }
 
@@ -210,5 +211,32 @@ public class PlayersUIPanel : UIPanel
         }
     }
 
+    internal void ShowRenege(Player currentPlayer, Card card)
+    {
+        foreach (PlayerUI player in playerUI)
+        {
+            if (player.playerData.id == currentPlayer.id)
+            {
+                player.ShowRenegeUI(card);
+                break;
+            }
+        }
+    }
+
+    internal void HideRenegeOption()
+    {
+        foreach (PlayerUI player in playerUI)
+        {
+            player.ShowHideRenegePopUp(false);
+        }
+    }
+
+    internal void ResetRenegeScore() 
+    {
+        foreach (var playerUI in playerUI)
+        {
+            playerUI.playerData.ResetRenegeScore();
+        }
+    }
 
 }

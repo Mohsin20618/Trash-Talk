@@ -274,6 +274,40 @@ public class FacebookManager : MonoBehaviour
         PlayerProfile.SaveDataToPrefs();
         PlayerProfile.showPlayerDetails();
         PhotonConnectionController.Instance.ConnectingToPhoton();
+        if (!PlayerPrefs.HasKey(Global.fbLoginRewardKey))
+        {
+            PurchaseThroughFacebookLogin(100,0,"facebookLogin");
+        }
+
+    }
+
+    void PurchaseThroughFacebookLogin(int totalCoins, int price, string productID)
+    {
+        //InappManager.instance.PurchaseItem(productID, (payload, signature) =>
+        //{
+        Dictionary<string, object> keyValuePairs = new Dictionary<string, object>();
+        keyValuePairs.Add("UserID", PlayerProfile.Player_UserID);
+        keyValuePairs.Add("ProductID", productID);
+        keyValuePairs.Add("Price", price);
+        keyValuePairs.Add("PurchaseCoins", totalCoins);
+
+        WebServiceManager.instance.APIRequest(WebServiceManager.instance.purchaseCoinsFunction, Method.POST, null, keyValuePairs, OnPurchaseSuccess, OnFail, CACHEABLE.NULL, true, null);
+
+        //});
+    }
+
+    void OnPurchaseSuccess(JObject resp, long arg2)
+    {
+        PlayerPrefs.SetInt(Global.fbLoginRewardKey, 1);
+       
+        PlayerProfile.Player_coins += 100;
+
+        if (EventManager.UpdateUI != null)
+            EventManager.UpdateUI.Invoke("UpdateCoins");
+
+        UIEvents.ShowPanel(Panel.Popup);
+        UIEvents.UpdateData(Panel.Popup, null, "SetData", "Facebook Login Reward.", "", "OK");
+
     }
 
     /// <summary>

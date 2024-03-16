@@ -20,7 +20,8 @@ public class GameplayManager : MonoBehaviour
     public HandCardsUI cardHand;
 
     public SelectPartnerPanel partnerPanel;
-  //  private Trick currentTrick;
+    public PlayersUIPanel playersUIPanel;
+    //  private Trick currentTrick;
 
     public int totalPlayers;
     public int currentPlayerIndex;
@@ -707,6 +708,8 @@ public class GameplayManager : MonoBehaviour
         UIEvents.UpdateData(Panel.PlayersUIPanel, null, "UpdateCardCount", this.currentPlayerIndex, player.hand.Count);
 
         DecideNext();
+
+
     }
 
     void ShowTrashTalk(Card card)
@@ -764,7 +767,20 @@ public class GameplayManager : MonoBehaviour
             });
         }
 
-        if (Photon.Pun.PhotonNetwork.IsMasterClient)
+        //Show Renege Button
+        if (TrickManager.cards.Count > 1 && TrickManager.cards[0].cardOwner.id == PhotonNetwork.LocalPlayer.UserId)
+        {
+            if (TrickManager.CompareSuitDifference(card))
+            {
+                Debug.Log("Don't Show Renege Button.");
+            }
+            else 
+            {
+                Debug.Log("Yes, Show Renege Button.");
+                playersUIPanel.ShowRenege(currentPlayer, card);
+            }
+        }
+        if (PhotonNetwork.IsMasterClient)
         {
             DecideNext();
         }
@@ -774,23 +790,7 @@ public class GameplayManager : MonoBehaviour
             print("in else total played player: " + this.totalPlayerPlayed);
             if (this.totalPlayerPlayed == this.totalPlayers)
             {
-                Invoke(nameof(OnWinTrick), 1);
-            }
-        }
-    }
-
-    void FindRenegePlayers()
-    {
-        Debug.Log("FindRenegePlayers");
-        if (TrickManager.cards[0].cardOwner.id == PhotonNetwork.LocalPlayer.UserId)
-        {
-            Debug.Log("FindRenegePlayers()" + TrickManager.cards[0].suit);
-        
-            foreach (var item in TrickManager.cards)
-            {
-
-                Debug.Log("item.suit: " + item.suit);
-                Debug.Log("Name: "+item.cardOwner.name);
+                Invoke(nameof(OnWinTrick), 2);
             }
         }
     }
@@ -801,7 +801,7 @@ public class GameplayManager : MonoBehaviour
 
         if (this.totalPlayerPlayed == this.totalPlayers)
         {
-            Invoke(nameof(OnWinTrick), 1);
+            Invoke(nameof(OnWinTrick), 2);
             return;
         }
 
@@ -825,7 +825,7 @@ public class GameplayManager : MonoBehaviour
 
     void OnWinTrick()
     {
-        if (Global.isMultiplayer) FindRenegePlayers();
+        if (Global.isMultiplayer) playersUIPanel.HideRenegeOption();
 
         Player player = TrickManager.GetTrickWinner();
         this.trickWinner = player;

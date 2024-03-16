@@ -56,11 +56,11 @@ public class FriendRequestManager : Singleton<FriendRequestManager>
             keyValuePairs.Add("user_id1", userId1);
             keyValuePairs.Add("user_id2", userId2);
 
-            WebServiceManager.instance.APIRequest(WebServiceManager.instance.addFriends, Method.POST, null, keyValuePairs, OnLoginSuccess, OnFail, CACHEABLE.NULL, false, null);
+            WebServiceManager.instance.APIRequest(WebServiceManager.instance.addFriends, Method.POST, null, keyValuePairs, OnFriendShipSuccess, OnFail, CACHEABLE.NULL, false, null);
         }
     }
 
-    private void OnLoginSuccess(JObject arg1, long arg2)
+    private void OnFriendShipSuccess(JObject arg1, long arg2)
     {
         Debug.Log(arg1.ToString());
     }

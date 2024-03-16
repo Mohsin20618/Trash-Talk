@@ -11,7 +11,19 @@ public class AddFriend : MonoBehaviour
 
     private void Awake()
     {
-        addFriendBtn.gameObject.SetActive(Global.isMultiplayer);
+        if (Global.isMultiplayer)
+        {
+            addFriendBtn.gameObject.SetActive(true);
+            if (AlreadyFriend())
+            {
+                addFriendBtn.gameObject.SetActive(false);
+            }
+
+        }
+        else
+        {
+            addFriendBtn.gameObject.SetActive(false);
+        }
     }
     private void Start()
     {
@@ -30,5 +42,10 @@ public class AddFriend : MonoBehaviour
 
         addImage.SetActive(state);
         sentImage.SetActive(!state);
+    }
+
+    public bool AlreadyFriend() 
+    {
+        return PlayerProfile.instance.friendsUsers.Exists(x=> x.UserId.Equals(GetComponentInParent<InGameProfile>().userId));
     }
 }

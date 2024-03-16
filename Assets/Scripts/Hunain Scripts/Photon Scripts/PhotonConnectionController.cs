@@ -97,6 +97,15 @@ public class PhotonConnectionController : MonoBehaviourPunCallbacks
         PhotonNetwork.GameVersion = gameVersion;
     }
 
+
+    public void GetFriends() 
+    {
+        Dictionary<string, object> keyValuePairs = new Dictionary<string, object>();
+        keyValuePairs.Add("PageNo", 1);
+        WebServiceManager.instance.APIRequest(WebServiceManager.instance.getFriends, Method.POST, null, keyValuePairs, OnGetFriendsUsers, OnFailGlobalUser, CACHEABLE.NULL, true, null);
+
+    }
+
     public void OnGetGlobalUsers(JObject resp, long arg2)
     {
         var globalUsers = GlobalUsers.FromJson(resp.ToString());

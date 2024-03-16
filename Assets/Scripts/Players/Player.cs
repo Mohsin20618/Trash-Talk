@@ -30,6 +30,7 @@ public class Player : IPlayer
     public int teamBidPlaced;
     public int teamBidWon;
     public int roundBags;
+    public int renegeScore = 0;
     public int roundBounus;
     public int roundPoints;
     public int roundTotalBags;
@@ -63,6 +64,7 @@ public class Player : IPlayer
         this.bidPlaced = -1;
         this.bidWon = 0;
         this.roundBags = 0;
+        this.renegeScore = 0;
         this.roundBounus = 0;
         this.roundPoints = 0;
         this.roundTotalBags = 0;
@@ -111,7 +113,10 @@ public class Player : IPlayer
         this.bidPlaced = bid;
     }
 
-
+    public void ResetRenegeScore() 
+    {
+        renegeScore = 0;
+    }
 
     //public Player(string name)
     //{

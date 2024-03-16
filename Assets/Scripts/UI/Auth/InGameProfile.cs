@@ -33,7 +33,7 @@ public class InGameProfile : MonoBehaviour
         playerLevel.text = player.level;
         this.userId = player.id;
 
-        if (player.isBot || PlayerProfile.instance.friendsUsers.Any(user => user.UserId == player.id))
+        if (player.isBot || PlayerProfile.instance.friendsUsers.Exists(user => user.UserId == player.id))
             addButton.gameObject.SetActive(false);
         else 
             addButton.gameObject.SetActive(true);

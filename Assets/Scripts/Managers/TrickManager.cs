@@ -14,6 +14,7 @@ public static class TrickManager
         cards = new List<Card>();
     }
 
+    public static bool isFirstCard = false;
     public static void AddCard(Card card)
     {
         SoundManager.Instance.PlaySoundEffect(Sound.Place);
@@ -21,7 +22,11 @@ public static class TrickManager
         if (cards.Count == 0)
         {
             leadingCard = card;
-      //      leadingSuit = card.suit;
+            isFirstCard = true;
+        }
+        else
+        {
+            isFirstCard = false;
         }
 
         cards.Add(card);
@@ -156,5 +161,23 @@ public static class TrickManager
         {
             cards = new List<Card>();
         }
+    }
+
+    internal static bool CheckRenege(Player currentPlayer, Card card)
+    {
+        if (card.suit != leadingCard.suit && currentPlayer.hand.Exists(x => x.suit == leadingCard.suit))
+        {
+            Debug.Log("Yes, it's a renege, " + currentPlayer.name + " Get caught.");
+            return true;
+        }
+        else
+        {
+            Debug.Log("No, it was not a renege.");
+            return false;
+        }
+    }
+    internal static bool CompareSuitDifference(Card card)
+    {
+        return card.suit == leadingCard.suit;
     }
 }

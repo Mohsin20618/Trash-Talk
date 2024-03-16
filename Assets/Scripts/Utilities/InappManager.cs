@@ -85,8 +85,8 @@ public class InappManager : MonoBehaviour, IStoreListener
 //   {
 
 //}
-
-private bool IsInitialized()
+	
+	private bool IsInitialized()
 	{
 		// Only say we are initialized if both the Purchasing references are set.
 		return m_StoreController != null && m_StoreExtensionProvider != null;
@@ -161,7 +161,10 @@ private bool IsInitialized()
 		Debug.Log("PurchaseItem: " + IsInitialized()) ;
 
 		if (!IsInitialized())
-			return;
+		{
+			Debug.LogError("In App Not Initialized.");
+		 	return;
+		}
 
 	//	UIManager.instance.ShowHideLoader();
 		this.OnPurchasedSuccess = onSuccess;
@@ -245,9 +248,10 @@ private bool IsInitialized()
 			}
             else
             {
-                Debug.Log("Cannot redeem on this platform or on editor.");
-            }
-        }
+                Debug.Log("Purchase in Editor.");
+				this.OnPurchasedSuccess(payload, signature);
+			}
+		}
         else
         {
             Debug.Log(string.Format("ProcessPurchase: FAIL. Unrecognized product: '{0}'", args.purchasedProduct.definition.id));

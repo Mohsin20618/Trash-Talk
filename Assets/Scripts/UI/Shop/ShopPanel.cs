@@ -81,7 +81,8 @@ public class ShopPanel : UIPanel
 
     void PurchaseThroughInApp(int totalCoins, int price, string productID)
     {
-  //      InappManager.instance.PurchaseItem(productID, (payload, signature) => {
+        //InappManager.instance.PurchaseItem(productID, (payload, signature) =>
+        //{
             Dictionary<string, object> keyValuePairs = new Dictionary<string, object>();
             keyValuePairs.Add("UserID", PlayerProfile.Player_UserID);
             keyValuePairs.Add("ProductID", productID);
@@ -92,7 +93,7 @@ public class ShopPanel : UIPanel
 
             WebServiceManager.instance.APIRequest(WebServiceManager.instance.purchaseCoinsFunction, Method.POST, null, keyValuePairs, OnPurchaseSuccess, OnFail, CACHEABLE.NULL, true, null);
 
-     //   });
+        //});
     }
 
     void OnPurchaseSuccess(JObject resp, long arg2)
@@ -101,11 +102,17 @@ public class ShopPanel : UIPanel
 
         if (EventManager.UpdateUI != null)
             EventManager.UpdateUI.Invoke("UpdateCoins");
+
+        UIEvents.ShowPanel(Panel.Popup);
+        UIEvents.UpdateData(Panel.Popup, null, "SetData", "Purchase Successfully", "", "OK");
+
     }
 
     void OnFail(string msg)
     {
         print(msg);
+        UIEvents.ShowPanel(Panel.Popup);
+        UIEvents.UpdateData(Panel.Popup, null, "SetData", "Purchase Fail: " + msg, "", "OK");
     }
 
 }

@@ -11,8 +11,6 @@ public class FriendRequestPopUp : MonoBehaviour
     public Button acceptRequestBtn;
     public Button rejectRequestBtn;
 
-    public Animation anim;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -44,13 +42,7 @@ public class FriendRequestPopUp : MonoBehaviour
 
     void ShowHidePopUp(bool state) 
     {
-
-        anim[anim.clip.name].speed = state ? 1 : -1;
-        anim.Play();
-        if (state)
-        {
-            gameObject.SetActive(state);
-        }
+        gameObject.SetActive(state);
     }
 
 

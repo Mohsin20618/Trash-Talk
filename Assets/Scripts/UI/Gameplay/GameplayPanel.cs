@@ -146,7 +146,7 @@ public class GameplayPanel : UIPanel
 
         trashTalk.gameObject.SetActive(false);
 
-        trashTalk.sprite = sprite;
+        trashTalk.transform.GetChild(0).GetComponent<Image>().sprite = sprite;
 
         trashTalk.gameObject.SetActive(true);
         Invoke("HideTrashTalk", 1);
@@ -160,6 +160,7 @@ public class GameplayPanel : UIPanel
 
     public void OnHomeButton()
     {
+
         CloseSettings();
         Time.timeScale = 0;
         UIEvents.ShowPanel(Panel.Popup);
@@ -172,6 +173,7 @@ public class GameplayPanel : UIPanel
                 forceQuit = true;
                 if (Global.isMultiplayer && Photon.Pun.PhotonNetwork.InRoom)
                 {
+                    PhotonConnectionController.Instance.GetFriends();
                     PhotonRoomCreator.instance.LeavePhotonRoom();
                 }
                 SoundManager.Instance.StopBackgroundMusic();

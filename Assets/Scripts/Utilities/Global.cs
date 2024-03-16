@@ -34,6 +34,6 @@ public static class Global
     public static bool isMusicOn = true;
     public static bool isSoundOn = true;
 
-
+    public const string fbLoginRewardKey = "FbLogin";
 
 }

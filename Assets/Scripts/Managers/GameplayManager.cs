@@ -776,7 +776,7 @@ public class GameplayManager : MonoBehaviour
             }
             else 
             {
-                if (currentPlayer.partner.id != PhotonNetwork.LocalPlayer.UserId)
+                //if (currentPlayer?.partner?.id != PhotonNetwork.LocalPlayer.UserId)
                 {
                     Debug.Log("Yes, Show Renege Button.");
                     playersUIPanel.ShowRenege(currentPlayer, card);

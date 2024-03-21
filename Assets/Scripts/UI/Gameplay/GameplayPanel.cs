@@ -173,6 +173,13 @@ public class GameplayPanel : UIPanel
                 forceQuit = true;
                 if (Global.isMultiplayer && Photon.Pun.PhotonNetwork.InRoom)
                 {
+
+                    int gameplayed = PlayerPrefs.GetInt(ConstantVariables.Gameplayed);
+                        gameplayed++;
+                        PlayerPrefs.SetInt(ConstantVariables.Gameplayed, gameplayed);
+                        PlayerProfile.gamesPlayed = gameplayed;
+
+
                     PhotonConnectionController.Instance.GetFriends();
                     PhotonRoomCreator.instance.LeavePhotonRoom();
                 }

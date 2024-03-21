@@ -185,7 +185,7 @@ public class GameSelectPanel : UIPanel
     {
         NativeShare nativeShare = new NativeShare();
         Debug.Log("Roomname:" + Global.roomName); 
-        nativeShare.SetSubject("Game Request").SetTitle("Request").SetText("Room Id : ").SetUrl(Global.roomName).Share();
+        nativeShare.SetSubject("Game Request").SetTitle("Request").SetText("Your friend invited you to join a Trash Talk Table. \n The Room Id is: ").SetUrl(Global.roomName).Share();
     }
     void OpenTabPanel()
     {

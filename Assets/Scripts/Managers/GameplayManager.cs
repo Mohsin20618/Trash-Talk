@@ -273,7 +273,7 @@ public class GameplayManager : MonoBehaviour
 
     private void OnGameEndedSuccessfully(JObject obj, long code)
     {
-        Debug.Log("OnGameEndedSuccessfully: " + obj.ToString());
+        Debug.Log("OnGameEndedSuccessfully: ");
     }
 
     string multiplayerCards = null;

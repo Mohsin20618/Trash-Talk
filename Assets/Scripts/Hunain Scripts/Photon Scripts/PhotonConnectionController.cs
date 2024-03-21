@@ -105,8 +105,8 @@ public class PhotonConnectionController : MonoBehaviourPunCallbacks
         WebServiceManager.instance.APIRequest(WebServiceManager.instance.getFriends, Method.POST, null, keyValuePairs, OnGetFriendsUsers, OnFailGlobalUser, CACHEABLE.NULL, true, null);
 
         Dictionary<string, object> keyValuePairs2 = new Dictionary<string, object>();
-        keyValuePairs2.Add("userID", PlayerProfile.Player_UserID);
-        WebServiceManager.instance.APIRequest(WebServiceManager.instance.getProfileFunction, Method.POST, null, keyValuePairs2, OnProfileSuccess, OnFailGlobalUser, CACHEABLE.NULL, false, null);
+        keyValuePairs2.Add("UserID", PlayerProfile.Player_UserID);
+        WebServiceManager.instance.APIRequest(WebServiceManager.instance.getProfileFunction, Method.POST, null, keyValuePairs2, OnProfileSuccess, OnFailGlobalUser, CACHEABLE.NULL, true, null);
     }
 
     private void OnProfileSuccess(JObject resp, long arg2)

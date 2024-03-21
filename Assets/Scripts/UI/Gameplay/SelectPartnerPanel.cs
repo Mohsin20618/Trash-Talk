@@ -18,7 +18,7 @@ public class SelectPartnerPanel : MonoBehaviour
     {
         NativeShare nativeShare = new NativeShare();
         Debug.Log("Roomname:" + Global.roomName);
-        nativeShare.SetSubject("Game Request").SetTitle("Trash Talk").SetText("Room Id : " + Global.roomName).Share();
+        nativeShare.SetSubject("Game Request").SetTitle("Trash Talk").SetText("Your friend invited you to join a Trash Talk Table. \n The Room Id is: " + Global.roomName).Share();
     }
 
     public void EnableDisablePanel(bool state) { gameObject.SetActive(state); }

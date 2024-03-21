@@ -40,7 +40,6 @@ public class TabPanels : UIPanel
         EventManager.UpdateProfilePic += UpdateProfilePic;
 
         UpdateUI("coins");
-        SetLevelUI();
         //SelectPanel(3);
     }
 
@@ -90,6 +89,7 @@ public class TabPanels : UIPanel
     {
         coinsText.text = PlayerProfile.Player_coins.ToString();
         playerName.text = PlayerProfile.Player_UserName;
+        SetLevelUI();
     }
 
 

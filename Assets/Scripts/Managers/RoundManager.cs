@@ -140,7 +140,7 @@ public class RoundManager : MonoBehaviour
 
             player.roundTotalBags += roundBag;
 
-            player.roundBonus = GetPlayerBonus(player) + GetPlayerBonus(player.partner) + player.renegeScore;
+            player.roundBonus = (GetPlayerBonus(player) + GetPlayerBonus(player.partner)) + (player.renegeScore + player.partner.renegeScore);
 
             player.score = myScore + player.roundBonus;
 

@@ -74,7 +74,7 @@ public class PlayerUI : MonoBehaviour
 
     public void ShowRenegeBonus(int renegeScore) 
     {
-
+        Debug.Log("Renege this person: " + playerData.name,gameObject);
         playerData.renegeScore += renegeScore;
         renegeBonus.text = renegeScore > 0 ? "+30" : "-30";
         renegeBonus.gameObject.SetActive(true);

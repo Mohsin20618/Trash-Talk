@@ -11,7 +11,7 @@ public static class Global
     public static int coinsRequired = 0;  //It is temporary and will be changed after getting more screens
     public static string roomName = "";  //It is temporary and will be changed after getting more screens
     public static string currentGameId = "";
-    public static int scoreToWin = 500;
+    public static int scoreToWin = 100;
 
 
     public static int maxTricks = 13;

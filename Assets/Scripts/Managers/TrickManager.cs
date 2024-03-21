@@ -51,7 +51,16 @@ public static class TrickManager
 
     static Card GetBestCard()
     {
-        Card.Suit leadingSuit = TrickManager.cards[0].suit;
+        Card.Suit leadingSuit = Card.Suit.Spades;
+        try
+        {
+            leadingSuit = TrickManager.cards[0].suit;
+        }
+        catch (Exception ex)
+        {
+
+            Debug.LogError("ex: " + ex);
+        }
 
 
         Card bestCard = null;

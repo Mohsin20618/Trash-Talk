@@ -98,14 +98,26 @@ public class PhotonConnectionController : MonoBehaviourPunCallbacks
     }
 
 
-    public void GetFriends() 
+    public void GetFriends()
     {
         Dictionary<string, object> keyValuePairs = new Dictionary<string, object>();
         keyValuePairs.Add("PageNo", 1);
         WebServiceManager.instance.APIRequest(WebServiceManager.instance.getFriends, Method.POST, null, keyValuePairs, OnGetFriendsUsers, OnFailGlobalUser, CACHEABLE.NULL, true, null);
 
+        Dictionary<string, object> keyValuePairs2 = new Dictionary<string, object>();
+        keyValuePairs2.Add("userID", PlayerProfile.Player_UserID);
+        WebServiceManager.instance.APIRequest(WebServiceManager.instance.getProfileFunction, Method.POST, null, keyValuePairs2, OnProfileSuccess, OnFailGlobalUser, CACHEABLE.NULL, false, null);
     }
 
+    private void OnProfileSuccess(JObject resp, long arg2)
+    {
+        Debug.Log("OnProfileSuccess: " + resp.ToString());
+
+        var playerData = PlayerData.FromJson(resp.ToString());
+        PlayerProfile.UpdatePlayerData(playerData.User);
+        tabPanels.UpdateUI("coins");
+
+    }
     public void OnGetGlobalUsers(JObject resp, long arg2)
     {
         var globalUsers = GlobalUsers.FromJson(resp.ToString());

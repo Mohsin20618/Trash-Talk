@@ -14,6 +14,7 @@ using System.IO;
 using Random = UnityEngine.Random;
 using System.Collections.Generic;
 using Newtonsoft.Json.Linq;
+using TrashTalk;
 
 public class AppleManager : MonoBehaviour
 , ILoginWithAppleIdResponse
@@ -311,12 +312,24 @@ public class AppleManager : MonoBehaviour
         Debug.LogError("OnFail: " + obj.ToString());
     }
 
-    private void OnLoginSuccess(JObject arg1, long arg2)
+    private void OnLoginSuccess(JObject resp, long arg2)
     {
-        Debug.LogError("OnLoginSuccess: " + arg1.ToString());
+
+        Debug.Log("OnLoginSuccess: " + resp.ToString());
+
+        var playerData = PlayerData.FromJson(resp.ToString());
+        PlayerProfile.UpdatePlayerData(playerData.User);
+        PlayerProfile.SaveDataToPrefs();
+        PlayerProfile.showPlayerDetails();
         CountDownTimer.instance.SetTimerData();
+        PhotonConnectionController.Instance.ConnectingToPhoton();
+
+
+
         UIEvents.ShowPanel(Panel.TabPanels);
+        UIEvents.ShowPanel(Panel.GameSelectPanel);
         UIEvents.HidePanel(Panel.SignupPanel);
+
     }
 
 

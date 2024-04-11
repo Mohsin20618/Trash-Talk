@@ -66,12 +66,44 @@ MonoBehaviour:
     name: 
     shortCode: 
     suit: 
+    valueName: 
     description: 
     score: 0
     rank: 0
     value: 0
   front: {fileID: 7700201883273222276}
   back: {fileID: 947619266951649424}
+  isLeadingCard: 0
+  cardOwner:
+    name: 
+    hand: []
+    score: 0
+    tablePosition: 0
+    bidPlaced: 0
+    bidWon: 0
+    isBot: 0
+    isOwn: 0
+    winningCards: []
+    photonIndex: 0
+    id: 
+    isMaster: 0
+    imageURL: 
+    roundBonus: 0
+    teamBidPlaced: 0
+    teamBidWon: 0
+    roundBags: 0
+    renegeScore: 0
+    roundBounus: 0
+    roundPoints: 0
+    roundTotalBags: 0
+    roundGabPenalty: 0
+    roundTotalPoints: 0
+    bostonWon: 0
+    wonCount: 
+    level: 
+    gamesPlayed: 
+    country: 
+  suit: 0
 --- !u!114 &1910253711728049190
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -196,7 +228,7 @@ MonoBehaviour:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: f794e131d6e4b43c6aeed72f67f636d5, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -270,9 +302,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 5c54bccc790b24518914bb1c3755b4b6, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1

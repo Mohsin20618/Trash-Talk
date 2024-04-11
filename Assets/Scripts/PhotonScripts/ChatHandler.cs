@@ -18,7 +18,8 @@ public class ChatHandler : MonoBehaviour
     public static ChatHandler instance;
 
     public List<Sprite> emojis = new();
-    public List<Text> texts = new();
+    public List<Sprite> chats = new();
+    //public List<Text> texts = new();
 
 
     public GameObject emojiPrefab;
@@ -82,7 +83,7 @@ public class ChatHandler : MonoBehaviour
     {
         gameObject.SetActive(state);
         chatBtn.gameObject.SetActive(state);
-        emojiBtn.gameObject.SetActive(state);
+        //emojiBtn.gameObject.SetActive(state);
     }
 }
 

@@ -115,13 +115,13 @@ public class CountDownTimer : MonoBehaviour
         show();
         if (isSpin)
         {
-            DescriptionText.text = "Next Spin Will Be in";
+            DescriptionText.text = "Spin Rewarded!\nKeep an eye on the timer for next reward. Happy gaming!";
             timeTextForAds.gameObject.SetActive(false);
             timeTextForSpin.gameObject.SetActive(true);
         }
         else
         {
-            DescriptionText.text = "Next Ad Will Be in";
+            DescriptionText.text = "Ad Watched!\nKeep an eye on the timer for next spin. Happy gaming!";
             timeTextForAds.gameObject.SetActive(true);
             timeTextForSpin.gameObject.SetActive(false);
         }
@@ -151,7 +151,7 @@ public class CountDownTimer : MonoBehaviour
                 int remainingMinutes = totalMinute % 60;
                 int remainingHours = toatalHours % 24;
 
-                timeTextForSpin.text = days.ToString("00") + ":" + remainingHours.ToString("00") + ":" + remainingMinutes.ToString("00") + ":" + ((int)(timeLeft % 60)).ToString("00");
+                timeTextForSpin.text = remainingHours.ToString("00") + ":" + remainingMinutes.ToString("00") + ":" + ((int)(timeLeft % 60)).ToString("00");
 
 
                 //timeText.text = "00:" + timeLeft.ToString("00");
@@ -183,7 +183,7 @@ public class CountDownTimer : MonoBehaviour
                 int remainingMinutes = totalMinute % 60;
                 int remainingHours = toatalHours % 24;
 
-                timeTextForAds.text = days.ToString("00") + ":" + remainingHours.ToString("00") + ":" + remainingMinutes.ToString("00") + ":" + ((int)(timeLeft % 60)).ToString("00");
+                timeTextForAds.text = remainingHours.ToString("00") + ":" + remainingMinutes.ToString("00") + ":" + ((int)(timeLeft % 60)).ToString("00");
 
 
                 //timeText.text = "00:" + timeLeft.ToString("00");

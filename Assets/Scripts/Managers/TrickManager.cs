@@ -142,7 +142,16 @@ public static class TrickManager
 
     public static Player GetTrickWinner()
     {
-        Player roundWinner = GetBestCard().cardOwner;
+        Player roundWinner = null;
+        try
+        {
+            roundWinner = GetBestCard().cardOwner;
+
+        }
+        catch (Exception ex)
+        {
+            Debug.LogError("Catch Ex: " + ex);
+        }
 
         return roundWinner;
     }

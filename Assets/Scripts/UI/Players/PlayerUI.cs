@@ -244,28 +244,30 @@ public class PlayerUI : MonoBehaviour
             }
             else
             {
-                string msg = ChatHandler.instance.texts[index].text;
+                //string msg = ChatHandler.instance.texts[index].text;
+                Sprite sprite = ChatHandler.instance.chats[index];
                 prefab = Instantiate(ChatHandler.instance.textPrefab, spawnPoint, false);
-                prefab.transform.GetComponentInChildren<Text>(true).text = msg;
-                Debug.Log("msg: " + msg);
+                prefab.transform.GetChild(0).GetComponent<Image>().sprite = sprite;
+                //prefab.transform.GetComponentInChildren<Text>(true).text = msg;
+                //Debug.Log("msg: " + msg);
             }
 
             prefab.transform.position = Vector3.zero;
             prefab.transform.rotation = Quaternion.identity;
-            prefab.transform.localScale = Vector3.one;
-
+            prefab.transform.localScale = Vector3.zero;
             prefab.transform.localPosition = Vector3.zero;
             prefab.transform.localRotation = Quaternion.identity;
-            prefab.transform.localScale = Vector3.one;
-            StartCoroutine(_DestroyChat(prefab));
+            prefab.transform.localScale = Vector3.zero;
 
+            LeanTween.scale(prefab, Vector3.one, 0.2f);
+            StartCoroutine(_DestroyChat(prefab));
         }
     }
 
     IEnumerator _DestroyChat(GameObject prefab)
     {
         yield return new WaitForSeconds(1.5f);
-        Destroy(prefab);
+        LeanTween.textAlpha(prefab.transform.GetChild(0).GetComponent<RectTransform>(), 0, 1f).setOnComplete(()=> Destroy(prefab));
     }
 
     public void ShowBonusImage(Sprite sprite)

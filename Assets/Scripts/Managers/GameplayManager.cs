@@ -832,8 +832,15 @@ public class GameplayManager : MonoBehaviour
 
         Player player = TrickManager.GetTrickWinner();
         this.trickWinner = player;
-        UIEvents.UpdateData(Panel.PlayersUIPanel, null, "WinnerAnimation", player.tablePosition);
-        TrickManager.GiveCardsToWinner(player);
+        try
+        {
+            UIEvents.UpdateData(Panel.PlayersUIPanel, null, "WinnerAnimation", player.tablePosition);
+            TrickManager.GiveCardsToWinner(player);
+        }
+        catch (System.Exception ex)
+        {
+            Debug.LogError("Catch Ex: " + ex);
+        }
         CompleteTrick();
     }
 

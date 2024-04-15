@@ -67,6 +67,13 @@ public class PhotonChat : MonoBehaviourPunCallbacks, IChatClientListener
         if (state == ChatState.Disconnected)
         {
             PhotonConnectionController.isChatConnected = false;
+
+            // Application resumed, try to reconnect Chat client
+            if (chatClient != null)
+            {
+                chatClient = null;
+            }
+            Connect();
         }
         //throw new System.NotImplementedException();
     }

@@ -76,7 +76,7 @@ public class PlayerUI : MonoBehaviour
     {
         Debug.Log("Renege this person: " + playerData.name,gameObject);
         playerData.renegeScore += renegeScore;
-        renegeBonus.text = renegeScore > 0 ? "+30" : "-30";
+        renegeBonus.text = renegeScore > 0 ? "+100" : "-100";
         renegeBonus.gameObject.SetActive(true);
         renegeBonus.color = renegeScore > 0 ? Color.white : Color.red;
         LeanTween.textAlpha(renegeBonus.GetComponent<RectTransform>(), 0 , 2f);
@@ -99,15 +99,15 @@ public class PlayerUI : MonoBehaviour
             if (isCaught)
             {
 
-                Debug.Log("-30");
-                score = -30;
+                Debug.Log("-100");
+                score = -100;
                 ShowRenegeBonus(score);
 
             }
             else
             {
-                Debug.Log("+30");
-                score = +30;
+                Debug.Log("+100");
+                score = +100;
                 ShowRenegeBonus(score);
             }
             

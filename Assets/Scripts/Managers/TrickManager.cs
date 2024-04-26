@@ -137,6 +137,11 @@ public static class TrickManager
             bestCard = leadingSuitCard; // Leading suit card wins if no Jokers or Spades
         }
 
+        //if (bestCard.suit != cards[0].suit)
+        //{
+        //    Debug.LogError("Condition Found");
+        //}
+
         return bestCard;
     }
 

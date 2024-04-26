@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44402185, g: 0.49316466, b: 0.57223153, a: 1}
+  m_IndirectSpecularColor: {r: 0.4439372, g: 0.49315345, b: 0.5721989, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2069,7 +2069,7 @@ RectTransform:
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &401103809
 Animator:
-  serializedVersion: 4
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -2086,7 +2086,8 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &401103810
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2999,6 +3000,70 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1662254602}
+    - target: {fileID: 9215373207096911523, guid: 24640a6568fbf4157936e2ed707a3157, type: 3}
+      propertyPath: botImages.Array.size
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 9215373207096911523, guid: 24640a6568fbf4157936e2ed707a3157, type: 3}
+      propertyPath: botImages.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: 675fc1772245f9447ac601eacf4fd99c, type: 3}
+    - target: {fileID: 9215373207096911523, guid: 24640a6568fbf4157936e2ed707a3157, type: 3}
+      propertyPath: botImages.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: 987d1bd7ef4146349baf1f9a56eb91b5, type: 3}
+    - target: {fileID: 9215373207096911523, guid: 24640a6568fbf4157936e2ed707a3157, type: 3}
+      propertyPath: botImages.Array.data[2]
+      value: 
+      objectReference: {fileID: 21300000, guid: e8bca3ce80c3fd749b0383ea0ec9c9dd, type: 3}
+    - target: {fileID: 9215373207096911523, guid: 24640a6568fbf4157936e2ed707a3157, type: 3}
+      propertyPath: botImages.Array.data[3]
+      value: 
+      objectReference: {fileID: 21300000, guid: 2ffd21e8b4820d44c85d546efc85873e, type: 3}
+    - target: {fileID: 9215373207096911523, guid: 24640a6568fbf4157936e2ed707a3157, type: 3}
+      propertyPath: botImages.Array.data[4]
+      value: 
+      objectReference: {fileID: 21300000, guid: f7fc91e3134b9564fbbb29b5ed94e0a3, type: 3}
+    - target: {fileID: 9215373207096911523, guid: 24640a6568fbf4157936e2ed707a3157, type: 3}
+      propertyPath: botImages.Array.data[5]
+      value: 
+      objectReference: {fileID: 21300000, guid: ddee28c649d1e7d44a9a2dac76459a06, type: 3}
+    - target: {fileID: 9215373207096911523, guid: 24640a6568fbf4157936e2ed707a3157, type: 3}
+      propertyPath: botImages.Array.data[6]
+      value: 
+      objectReference: {fileID: 21300000, guid: f253e277ef659844abce0303cc02c0f9, type: 3}
+    - target: {fileID: 9215373207096911523, guid: 24640a6568fbf4157936e2ed707a3157, type: 3}
+      propertyPath: botImages.Array.data[7]
+      value: 
+      objectReference: {fileID: 21300000, guid: d6d93c09f58b3964aa4159ccac6ac3cb, type: 3}
+    - target: {fileID: 9215373207096911523, guid: 24640a6568fbf4157936e2ed707a3157, type: 3}
+      propertyPath: botImages.Array.data[8]
+      value: 
+      objectReference: {fileID: 21300000, guid: 38a5d55627d5ddf4f8bd1520804dd443, type: 3}
+    - target: {fileID: 9215373207096911523, guid: 24640a6568fbf4157936e2ed707a3157, type: 3}
+      propertyPath: botImages.Array.data[9]
+      value: 
+      objectReference: {fileID: 21300000, guid: 96d35a5bf8b46044ea89207aa261f484, type: 3}
+    - target: {fileID: 9215373207096911523, guid: 24640a6568fbf4157936e2ed707a3157, type: 3}
+      propertyPath: botImages.Array.data[10]
+      value: 
+      objectReference: {fileID: 21300000, guid: 761e28a0dcbc95d48abe6dde6f44ee6a, type: 3}
+    - target: {fileID: 9215373207096911523, guid: 24640a6568fbf4157936e2ed707a3157, type: 3}
+      propertyPath: botImages.Array.data[11]
+      value: 
+      objectReference: {fileID: 21300000, guid: a3a3d3214655b8d46a1e82fed242b8b0, type: 3}
+    - target: {fileID: 9215373207096911523, guid: 24640a6568fbf4157936e2ed707a3157, type: 3}
+      propertyPath: botImages.Array.data[12]
+      value: 
+      objectReference: {fileID: 21300000, guid: d8210ede86a933440855005ee7222404, type: 3}
+    - target: {fileID: 9215373207096911523, guid: 24640a6568fbf4157936e2ed707a3157, type: 3}
+      propertyPath: botImages.Array.data[13]
+      value: 
+      objectReference: {fileID: 21300000, guid: a531faae348f036478300447441cb8f6, type: 3}
+    - target: {fileID: 9215373207096911523, guid: 24640a6568fbf4157936e2ed707a3157, type: 3}
+      propertyPath: botImages.Array.data[14]
+      value: 
+      objectReference: {fileID: 21300000, guid: cc75a97a7d76cb247b03fb7c21221e08, type: 3}
     - target: {fileID: 9215373207222108329, guid: 24640a6568fbf4157936e2ed707a3157, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -9743,7 +9808,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7502729984626355123, guid: 8e90fd623e30946a0a2d317f738b2c66, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -78.000244
+      value: -78.00012
       objectReference: {fileID: 0}
     - target: {fileID: 7950387982878504370, guid: 8e90fd623e30946a0a2d317f738b2c66, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -10754,6 +10819,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_SendPointerHoverToParent: 1
   m_HorizontalAxis: Horizontal
   m_VerticalAxis: Vertical
   m_SubmitButton: Submit
@@ -11901,7 +11967,7 @@ RectTransform:
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &2028779235
 Animator:
-  serializedVersion: 4
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -11918,7 +11984,8 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &2028779236
 MonoBehaviour:
   m_ObjectHideFlags: 0

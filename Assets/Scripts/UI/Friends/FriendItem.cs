@@ -26,7 +26,7 @@ public class FriendItem : MonoBehaviour
     public void SetData(int type, User user, Action<User, bool> selectCallBack)
     {
         addButton.GetComponent<Button>().interactable = true;
-
+        addButton.gameObject.SetActive(!FriendsPanel.dummy);
         this.user = user;
         this.selectionCallBack = selectCallBack;
         this.imageURL = user.ImagePath + "/" + user.Image;

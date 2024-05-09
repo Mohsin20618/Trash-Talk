@@ -5,16 +5,30 @@ using UnityEngine;
 
 public class FriendsPanel : UIPanel
 {
+
     public Transform panels;
     public Transform tabButtons;
     
     int lastActiveIndex = 0;
 
+    public static bool dummy = false;
+
     private void OnEnable()
     {
       //  SelectPanel(0);
+
+
     }
 
+    public void ShowDummyFriendList()
+    {
+        dummy = true;
+    }
+
+    private void OnDisable()
+    {
+       dummy = false;
+    }
     public override void Show()
     {
         gameObject.SetActive(true);

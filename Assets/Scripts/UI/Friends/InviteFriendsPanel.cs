@@ -32,6 +32,7 @@ public class InviteFriendsPanel : MonoBehaviour
         selectedUsers = new List<User>();
         sendRequestBtn.interactable = false;
         StartCoroutine(ShowList());
+        sendRequestBtn.gameObject.SetActive(!FriendsPanel.dummy);
     }
 
     private void OnDisable()

@@ -714,7 +714,8 @@ public class GameplayManager : MonoBehaviour
 
     void ShowTrashTalk(Card card)
     {
-        UIEvents.UpdateData(Panel.GameplayPanel, null, "ShowTrashTalk", card.suit.ToString(), card.data.valueName);
+        Debug.Log("ShowTrashTalk");
+        //UIEvents.UpdateData(Panel.GameplayPanel, null, "ShowTrashTalk", card.suit.ToString(), card.data.valueName);
     }
 
 

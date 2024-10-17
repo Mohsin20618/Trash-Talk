@@ -89,19 +89,20 @@ public class CountDownTimer : MonoBehaviour
             EventManager.UpdateUI.Invoke("UpdateCoins");
     }
 
+    int SpinReward = 0;
     #endregion
     #region Update Spin Timer
     public void UpdateSpinTimer(string coins)
     {
         Dictionary<string, object> keyValuePairs = new Dictionary<string, object>();
-
+        SpinReward = int.Parse(coins);
         keyValuePairs.Add("timerType", ConstantVariables.Spin);
         keyValuePairs.Add("Coins", coins);
         WebServiceManager.instance.APIRequest(WebServiceManager.instance.UpdateTimerForSpinOrAd, Method.POST, null, keyValuePairs, TimerUpdateSuccessSpin, OnFail, CACHEABLE.NULL, true, null);
     }
     private void TimerUpdateSuccessSpin(JObject resp, long arg2)
     {
-        OnRewardSuccess(500);
+        OnRewardSuccess(SpinReward);
         TimerDataForSpinAndAdd timers = DeSerialize.FromJson<TimerDataForSpinAndAdd>(resp.ToString());
         Epoch.UpdateDiff(timers.ServerTime.ToUnixTimeMilliseconds()); //Server Current Time
         double spinTime = timers.Data.RemainingSpinTimer.ToUnixTimeMilliseconds();

@@ -175,9 +175,19 @@ public class ProfilePanel : UIPanel
     {
         UIEvents.ShowPanel(Panel.Popup);
         UIEvents.UpdateData(Panel.Popup, null, "SetData", "Profile updated", "", "OK");
+
+        Dictionary<string, object> keyValuePairs2 = new Dictionary<string, object>();
+        keyValuePairs2.Add("UserID", PlayerProfile.Player_UserID);
+        WebServiceManager.instance.APIRequest(WebServiceManager.instance.getProfileFunction, Method.POST, null, keyValuePairs2, OnProfileSuccess, OnFail, CACHEABLE.NULL, true, null);
     }
 
+    private void OnProfileSuccess(JObject resp, long arg2)
+    {
+        Debug.Log("OnProfileSuccess: " + resp.ToString());
 
+        var playerData = PlayerData.FromJson(resp.ToString());
+        PlayerProfile.UpdatePlayerData(playerData.User);
+    }
 
 
 }

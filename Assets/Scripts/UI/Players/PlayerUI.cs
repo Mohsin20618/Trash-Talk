@@ -200,7 +200,8 @@ public class PlayerUI : MonoBehaviour
             gameScore.text = score.ToString();
 
 
-        if(profileImage !=null)
+        Debug.Log("image Url:" + imageUrl);
+        if (profileImage !=null)
         {
             //Profile work
             if (botSprite !=null)
